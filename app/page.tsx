@@ -1,113 +1,237 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+import { Carousel } from "./components";
 
 export default function Home() {
+  const [carousel, setCarousel] = useState([
+    {
+      image: "https://example.com/carousel-image-1.jpg",
+      id: 1,
+    },
+  ]);
+  const [worshipPlaces, setWorshipPlaces] = useState([
+    {
+      name: "Main Sanctuary",
+      imageUrl: "",
+      prayers: [
+        {
+          day: "string",
+          time: "string",
+          description: "string", // Optional description
+          imageUrl: "string",
+        },
+      ],
+    },
+  ]);
+  const [magazineData, setMagazineData] = useState({
+    downloadLink: "https://example.com/download-vogue-may-2024.pdf",
+    title: "Vogue May 2024",
+    imageUrl: "https://example.com/vogue-may-2024.jpg",
+    month: "May 2024",
+    name: "Devuni Sparsha Magazine",
+  });
+
+  useEffect(() => {
+    fetch("http://localhost:8000/carousel/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCarousel(data);
+      });
+
+    // fetch("/api/worshipPlaces")
+    //  .then((res) => res.json())
+    //  .then((data) => {
+    //     console.log(data);
+    //     worshipPlaces.push(data);
+    //   })
+    //  .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    // fetch("/api/magazine")
+    //  .then((res) => res.json())
+    //  .then((data) => {
+    //     console.log(data);
+    //     magazineData.push(data);
+    //   })
+    //  .catch((err) => {
+    //     console.log(err);
+    //   });
+  });
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main>
+      <Carousel images={carousel} />
+      <WorshipPlaces places={worshipPlaces} />
+      <MagazineDisplay {...magazineData} />
     </main>
   );
 }
+
+// --------------------------link formatter------------------------
+function linkFormatter(s: string) {
+  return s.replace("&export=download", "");
+}
+
+// --------------------------Magazines------------------------
+interface Magazine {
+  name: string;
+  month: string;
+  imageUrl: string;
+  downloadLink: string;
+}
+
+const MagazineDisplay: React.FC<Magazine> = ({
+  name,
+  month,
+  imageUrl,
+  downloadLink,
+}) => {
+  return (
+    <div className="px-5 md:px-20 pb-4  ">
+      <p className=" text-2xl font-bold  mb-4">Devuni Sparsha Magazine</p>
+      <div className=" flex flex-row bg-fourth gap-4 rounded-3xl overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={`${name}`}
+          className="w-1/2 h-auto object-cover"
+        />
+        <div className="flex flex-col justify-between p-4">
+          <div className=" my-auto">
+            <h3 className="text-xl font-medium mb-2">{name}</h3>
+            <p className=" font-light text-md">{month}</p>
+          </div>
+          <a
+            href={downloadLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Download
+            <svg
+              className="ml-2 -mr-1 w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-1.293-1.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+//------------------------ Worship places------------------------
+interface WorshipPlace {
+  name: string;
+  imageUrl?: string; // Optional image URL
+  prayers: Prayer[]; // Array of prayers associated with the place
+}
+
+interface Prayer {
+  day: string;
+  time: string;
+  description?: string; // Optional description
+  imageUrl?: string; // Optional image URL
+}
+
+interface WorshipPlacesProps {
+  places: WorshipPlace[];
+}
+
+const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
+  const [popup, setPopup] = useState<null | number>(null); // Changed type of popup state
+
+  const onPopup = (index: number) => {
+    setPopup(index); // Set the index of the clicked place
+  };
+
+  const offPopup = () => {
+    setPopup(null); // Close the popup
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <h2 className="text-2xl font-bold mb-8">Worship Places & Prayers</h2>
+      <div className="grid grid-cols-3   md:flex md:flex-wrap gap-4 justify-center">
+        {places.map((place, index) => (
+          <div key={place.name} className="relative">
+            <button
+              onClick={() => onPopup(index)}
+              className="shadow-md rounded-md overflow-hidden h-64 w-auto bg-secondary"
+            >
+              {place.imageUrl && (
+                <img
+                  src={place.imageUrl}
+                  alt={`${place.name} Image`}
+                  className="w-full h-48 object-cover"
+                />
+              )}
+              <div className="p-4">
+                <h3 className="text-lg text-center font-medium mb-2">
+                  {place.name}
+                </h3>
+              </div>
+            </button>
+            {popup === index && ( // Render popup only if popup state matches the current index
+              <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex flex-shrink justify-center items-center">
+                <div className="bg-white w-[70%] rounded-md p-4 shadow-md">
+                  <table className="w-full table-auto">
+                    <thead>
+                      <tr>
+                        <th className="text-left font-medium pb-2 border-b border-gray-200">
+                          Day
+                        </th>
+                        <th className="text-left font-medium pb-2 border-b border-gray-200">
+                          Time
+                        </th>
+                        {place.prayers.some((prayer) => prayer.description) && ( // Conditionally render description column
+                          <th className="text-left font-medium pb-2 border-b border-gray-200">
+                            Description
+                          </th>
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {place.prayers.map((prayer) => (
+                        <tr
+                          key={prayer.day}
+                          className="border-b border-gray-200 hover:bg-gray-100"
+                        >
+                          <td className="text-gray-600 py-1">{prayer.day}</td>
+                          <td className="text-gray-600 py-1">{prayer.time}</td>
+                          {prayer.description && (
+                            <td className="text-gray-600 py-1">
+                              {prayer.description}
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <button
+                    onClick={offPopup}
+                    className="mt-4 inline-flex items-center px-4 py-2 rounded-md bg-white text-indigo-600 font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Close
+                  </button>
+                </div>
+                <button
+                  onClick={offPopup}
+                  className="absolute top-0 bottom-0 left-0 right-0 w-full h-full cursor-pointer"
+                ></button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
