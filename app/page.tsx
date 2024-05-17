@@ -30,8 +30,7 @@ export default function Home() {
     month: "May 2024",
     name: "Devuni Sparsha Magazine",
   });
-
-  useEffect(() => {
+  function fetchData() {
     fetch("http://localhost:8000/carousel/")
       .then((res) => res.json())
       .then((data) => {
@@ -58,7 +57,10 @@ export default function Home() {
     //  .catch((err) => {
     //     console.log(err);
     //   });
-  });
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <main>

@@ -9,4 +9,4 @@ gd_storage = GoogleDriveStorage()
 
 
 class Carousel(models.Model):
-    image = models.ImageField(storage=gd_storage, upload_to="Carousel")
+    image = models.ImageField(upload_to="home/carousel/")

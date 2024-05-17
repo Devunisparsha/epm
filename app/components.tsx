@@ -1,26 +1,23 @@
 "use client";
-import React, { useState } from "react";
-
-//-----------------------link formatter--------------------------------
-function linkFormatter(s: string){
-  return s.replace('&export=download', "");
-}
+import { cookies } from "next/headers";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { CiUser } from "react-icons/ci";
 
 // ------------------------Navbar--------------------------------
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
   // Define an array of navbar items
   const navItems = [
-    { text: 'Home', link: '/' },
-    { text: 'About Us', link: '/about' },
-    { text: 'Library', link: '/library' },
-    { text: 'Contact', link: '/contact' },
-    { text: 'Messages', link: '/message' },
+    { text: "Home", link: "/" },
+    { text: "About Us", link: "/about" },
+    { text: "Library", link: "/library" },
+    { text: "Contact", link: "/contact" },
+    { text: "Messages", link: "/message" },
   ];
 
   return (
@@ -37,12 +34,19 @@ export const Navbar: React.FC = () => {
               <div className="flex items-baseline space-x-4 text-white">
                 {/* Map over navItems array to render navbar links */}
                 {navItems.map((item, index) => (
-                  <a key={index} href={item.link} className="hover:text-white px-3 py-2 rounded-md">
+                  <a
+                    key={index}
+                    href={item.link}
+                    className=" px-3 py-2 rounded-md"
+                  >
                     {item.text}
                   </a>
                 ))}
               </div>
             </div>
+            <a href="/login" className=" flex gap-2 text-white py-2 rounded-md">
+              <CiUser className=" text-2xl font-bold" /> Login
+            </a>
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -60,7 +64,12 @@ export const Navbar: React.FC = () => {
                   stroke="currentColor"
                   aria-hidden="true"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
                 </svg>
               ) : (
                 <svg
@@ -71,7 +80,12 @@ export const Navbar: React.FC = () => {
                   stroke="currentColor"
                   aria-hidden="true"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               )}
             </button>
@@ -83,7 +97,11 @@ export const Navbar: React.FC = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {/* Render mobile menu links dynamically */}
             {navItems.map((item, index) => (
-              <a key={index} href={item.link} className="hover:text-white block px-3 py-2 rounded-md text-bas">
+              <a
+                key={index}
+                href={item.link}
+                className="hover:text-white block px-3 py-2 rounded-md text-bas"
+              >
                 {item.text}
               </a>
             ))}
@@ -93,7 +111,6 @@ export const Navbar: React.FC = () => {
     </div>
   );
 };
-
 
 // --------------------------Carousel------------------------
 
@@ -109,7 +126,9 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   return (
@@ -119,10 +138,10 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
           {images.map((item, index) => (
             <img
               key={item.id}
-              src={"https://drive.google.com/uc?id=17_1LowcrqwtxGRp8517WqStSnYmYhwLg"}
+              src={"D:Workepaphrasepm\backendepmmediahomecarousel\taytay1.jpg"}
               alt={`Slide ${index}`}
               className={`w-full h-full object-cover absolute top-0 left-0 opacity-0 ${
-                index === currentIndex ? 'opacity-100' : ''
+                index === currentIndex ? "opacity-100" : ""
               }`}
             />
           ))}
@@ -134,7 +153,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`mx-1 w-4 h-4 rounded-full bg-gray-500 hover:bg-gray-700 ${
-              index === currentIndex ? 'bg-gray-800' : ''
+              index === currentIndex ? "bg-gray-800" : ""
             }`}
           />
         ))}
@@ -149,7 +168,12 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6l6-6" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 18l-6-6l6-6"
+          />
         </svg>
       </button>
       <button
@@ -162,16 +186,19 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </button>
     </div>
   );
 };
 
-
 // ----------------------- Footer --------------------
-
 
 export const Footer: React.FC = () => {
   return (
@@ -198,9 +225,11 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="container mx-auto text-center mt-4 text-xs">
-        <p>&copy; {new Date().getFullYear()} Epaphras Ministries. All Rights Reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} Epaphras Ministries. All Rights
+          Reserved.
+        </p>
       </div>
     </footer>
   );
 };
-
