@@ -13,18 +13,21 @@ const Contact: React.FC = () => {
           any questions, concerns, or feedback.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Location</h2>
-            <p>123 Church St</p>
-            <p>City, State, Zip</p>
+          <div className= " bg-fourth p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">Office Location</h2>
+            <p>Plot number 1</p>
+            <p>Shanti Nagar</p>
+            <p>Bhagyalatha Colony</p>
+            <p>Vanasthapuram, Hyderabad-500070</p>
+            <p>Telangana, India</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className=" bg-fourth p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
-            <p>Phone: (123) 456-7890</p>
-            <p>Email: info@ourchurch.com</p>
+            <p>Phone: 96666 66249</p>
+            <p>Email: mail2church@gmail.com</p>
           </div>
         </div>
-        <form className="mt-8 bg-white p-6 rounded-lg shadow-md">
+        <form className="mt-8 bg-fourth p-6 rounded-lg shadow-md">
           <div className="mb-4">
             <label
               htmlFor="name"
@@ -57,24 +60,24 @@ const Contact: React.FC = () => {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="message"
+              htmlFor="prayer"
               className="block text-sm font-medium text-gray-700"
             >
-              Message
+              Prayer Request
             </label>
             <textarea
-              id="message"
-              name="message"
+              id="prayer"
+              name="prayer"
               rows={4}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Your Message"
+              placeholder="Your Prayer Request"
             ></textarea>
           </div>
           <button
             type="submit"
             className="bg-indigo-500 text-white py-3 px-6 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            Send Message
+            Send Prayer Request
           </button>
         </form>
       </div>

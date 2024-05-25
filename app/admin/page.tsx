@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {Home} from "./home";
+import  AboutUS  from "./aboutus";
 
 export default function AdminPage() {
   const [component, setComponent] = useState(<Home />);
@@ -21,6 +22,7 @@ export default function AdminPage() {
   const Sidebar: React.FC = () => {
     const navLinks: INavLink[] = [
       { label: "Home", component: <Home /> },
+      { label: "About Us", component: <AboutUS /> },
     ];
     return (
       <nav className=" bg-third  rounded-xl text-center p-2 max-h-96 md:max-h-screen md:w-64 overflow-y-auto transition duration-300 ease-in-out z-50">

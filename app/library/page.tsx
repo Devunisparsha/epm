@@ -1,25 +1,32 @@
+"use client";
+import Link from "next/link";
 // components/LibraryPage.tsx
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const LibraryPage: React.FC = () => {
-    const magazines = [
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        { name: 'File 1', month: 'April', downloadLink: '/download/file1.pdf' },
-        { name: 'File 2', month: 'May', downloadLink: '/download/file2.zip' },
-        // Add more data objects
-      ];
+  interface Magazine {
+    name: string;
+    month: string;
+    image: string;
+    download_url: string;
+  }
+  const [magazine, setMagazine] = useState<Magazine[]>([
+    {
+      name: "",
+      month: "",
+      image: "",
+      download_url: "",
+    },
+  ]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/magazines")
+      .then((response) => response.json())
+      .then((data) => {
+        setMagazine(data);
+      });
+  }, []);
 
   return (
     <div className="mx-5  md:mx-20 my-10">
@@ -29,14 +36,19 @@ const LibraryPage: React.FC = () => {
 
       <p className=" text-xl mb-4">Devuni Sparsha</p>
       <div>
-        <MagazineView magazines={magazines}/>
+        <MagazineView magazines={magazine} />
       </div>
     </div>
   );
 };
 
 interface MagazineViewProps {
-  magazines: { name: string; month: string; downloadLink: string }[];
+  magazines: {
+    name: string;
+    month: string;
+    image: string;
+    download_url: string;
+  }[];
 }
 
 const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
@@ -56,9 +68,13 @@ const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
               <td className="p-4">{item.name}</td>
               <td className="p-4">{item.month}</td>
               <td className="p-4">
-                <a href={item.downloadLink} className="text-blue-500 underline">
+                <Link
+                  href={item.download_url}
+                  target="_blank"
+                  className="text-blue-500 underline"
+                >
                   Download
-                </a>
+                </Link>
               </td>
             </tr>
           ))}

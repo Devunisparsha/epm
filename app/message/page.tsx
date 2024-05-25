@@ -18,9 +18,9 @@ const videos: Video[] = [
   // Replace with your actual video data
   {
     id: 1,
-    title: "Sunday Service - May 5th, 2024",
-    description: "A message from Pastor John about...",
-    youtubeUrl: "https://www.youtube.com/watch?v=abc123",
+    title: "Devuni Sparsha",
+    description: "",
+    youtubeUrl: "https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA",
   },
   // ... more videos
 ];

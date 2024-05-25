@@ -1,6 +1,9 @@
 "use client";
+import { deleteCookie, getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
 
@@ -25,28 +28,28 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <span className="text-white font-bold text-2xl">
+            <Link href="/" className="text-white font-bold text-2xl">
               Epaphras Ministries
-            </span>
+            </Link>
           </div>
           <div className="flex justify-center flex-1 md:justify-around">
             <div className="hidden md:block">
               <div className="flex items-baseline space-x-4 text-white">
                 {/* Map over navItems array to render navbar links */}
                 {navItems.map((item, index) => (
-                  <a
+                  <Link
                     key={index}
                     href={item.link}
                     className=" px-3 py-2 rounded-md"
                   >
                     {item.text}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
-            <a href="/login" className=" flex gap-2 text-white py-2 rounded-md">
+            <Link href='/admin' className=" flex gap-2 text-white py-2 rounded-md">
               <CiUser className=" text-2xl font-bold" /> Login
-            </a>
+            </Link>
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -97,13 +100,13 @@ export const Navbar: React.FC = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {/* Render mobile menu links dynamically */}
             {navItems.map((item, index) => (
-              <a
+              <Link
                 key={index}
                 href={item.link}
                 className="hover:text-white block px-3 py-2 rounded-md text-bas"
               >
                 {item.text}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -138,7 +141,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
           {images.map((item, index) => (
             <img
               key={item.id}
-              src={"D:Workepaphrasepm\backendepmmediahomecarousel\taytay1.jpg"}
+              src={item.image.replace(/.*\/public/, "http://localhost:3000/")}
               alt={`Slide ${index}`}
               className={`w-full h-full object-cover absolute top-0 left-0 opacity-0 ${
                 index === currentIndex ? "opacity-100" : ""
@@ -200,35 +203,46 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
 // ----------------------- Footer --------------------
 
+import { FaFacebook, FaTwitter,FaYoutube , FaInstagram } from "react-icons/fa";
+
 export const Footer: React.FC = () => {
   return (
-    <footer className=" bg-primary p-40 text-white">
-      <div className="container mx-auto flex flex-wrap justify-between items-center">
-        <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-          <p className="text-lg font-bold">Epaphras Ministries</p>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-          <nav className="flex space-x-4">
-            <a href="#" className="text-base hover:underline">
+    <footer className="bg-primary text-white">
+      <div className="container mx-auto py-12 px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="text-center md:text-left mb-4 md:mb-0">
+            <p className="text-lg font-bold">Epaphras Ministries</p>
+            <p className="text-sm mt-2">Follow us on social media:</p>
+            <div className="flex justify-around md:justify-start mt-2">
+              <Link href="https://www.facebook.com/Epaphrasministrieshyd/" target="_blank" className="text-white mr-2 hover:text-gray-300">
+                <FaFacebook />
+              </Link>
+              <Link href="#" target="_blank" className="text-white mr-2 hover:text-gray-300">
+                <FaTwitter />
+              </Link>
+              <Link href="#" target="_blank" className="text-white hover:text-gray-300">
+                <FaInstagram />
+              </Link>
+              <Link href="https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA" target="_blank" className="text-white hover:text-gray-300 ml-2">
+                <FaYoutube  />
+              </Link>
+            </div>
+          </div>
+          <nav className="text-center md:text-right">
+            <Link href="#" className="text-base hover:underline inline-block mr-4">
               About Us
-            </a>
-            <a href="#" className="text-base hover:underline">
-              Ministries
-            </a>
-            <a href="#" className="text-base hover:underline">
-              Sermons
-            </a>
-            <a href="#" className="text-base hover:underline">
-              Contact
-            </a>
+            </Link>
+            
           </nav>
         </div>
       </div>
-      <div className="container mx-auto text-center mt-4 text-xs">
-        <p>
-          &copy; {new Date().getFullYear()} Epaphras Ministries. All Rights
-          Reserved.
-        </p>
+      <div className="bg-black text-center py-4">
+        <div className="container mx-auto">
+          <p className="text-xs">
+            &copy; {new Date().getFullYear()} Epaphras Ministries. All Rights
+            Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
