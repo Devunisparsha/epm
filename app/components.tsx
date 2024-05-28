@@ -47,8 +47,12 @@ export const Navbar: React.FC = () => {
                 ))}
               </div>
             </div>
-            <Link href='/admin' className=" flex gap-2 text-white py-2 rounded-md">
-              <CiUser className=" text-2xl font-bold" /> Login
+            <Link
+              href="/admin"
+              className=" flex gap-2 text-white py-2 rounded-md"
+            >
+              <CiUser className=" text-2xl font-bold" />
+              Login
             </Link>
           </div>
           <div className="-mr-2 flex md:hidden">
@@ -135,7 +139,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full h-[400px]">
+    <div className="relative w-full h-[500px]">
       <div className="overflow-hidden">
         <div className="flex transition-transform duration-500 ease-in-out">
           {images.map((item, index) => (
@@ -203,9 +207,15 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
 // ----------------------- Footer --------------------
 
-import { FaFacebook, FaTwitter,FaYoutube , FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 export const Footer: React.FC = () => {
+  const footer = [
+    { name: "About us ", href: "/about" },
+    { name: "Library", href: "/library" },
+    { name: "Contact", href: "/contact" },
+    { name: "Messages", href: "/message" },
+  ];
   return (
     <footer className="bg-primary text-white">
       <div className="container mx-auto py-12 px-4">
@@ -214,25 +224,45 @@ export const Footer: React.FC = () => {
             <p className="text-lg font-bold">Epaphras Ministries</p>
             <p className="text-sm mt-2">Follow us on social media:</p>
             <div className="flex justify-around md:justify-start mt-2">
-              <Link href="https://www.facebook.com/Epaphrasministrieshyd/" target="_blank" className="text-white mr-2 hover:text-gray-300">
+              <Link
+                href="https://www.facebook.com/Epaphrasministrieshyd/"
+                target="_blank"
+                className="text-white mr-2 hover:text-gray-300"
+              >
                 <FaFacebook />
               </Link>
-              <Link href="#" target="_blank" className="text-white mr-2 hover:text-gray-300">
+              <Link
+                href="#"
+                target="_blank"
+                className="text-white mr-2 hover:text-gray-300"
+              >
                 <FaTwitter />
               </Link>
-              <Link href="#" target="_blank" className="text-white hover:text-gray-300">
+              <Link
+                href="#"
+                target="_blank"
+                className="text-white hover:text-gray-300"
+              >
                 <FaInstagram />
               </Link>
-              <Link href="https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA" target="_blank" className="text-white hover:text-gray-300 ml-2">
-                <FaYoutube  />
+              <Link
+                href="https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA"
+                target="_blank"
+                className="text-white hover:text-gray-300 ml-2"
+              >
+                <FaYoutube />
               </Link>
             </div>
           </div>
           <nav className="text-center md:text-right">
-            <Link href="#" className="text-base hover:underline inline-block mr-4">
-              About Us
-            </Link>
-            
+            {footer.map((item, index) => (
+              <Link
+                href={item.href}
+                className="text-base hover:underline inline-block mr-4"
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
         </div>
       </div>
