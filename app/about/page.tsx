@@ -2,16 +2,20 @@
 import React, { useEffect, useState } from "react";
 
 const AboutUs: React.FC = () => {
-  const [about, setAbout]=useState({
-    image:"",
-    description:""
+  const [about, setAbout] = useState({
+    image: "",
+    description: ""
   })
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:8000/aboutus/")
-   .then((response)=>response.json())
-   .then((data)=>setAbout(data[0]))
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length != 0) {
+          setAbout(data[0])
+        }
+      })
 
-  },[])
+  }, [])
   return (
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">About Us</h1>

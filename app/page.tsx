@@ -79,7 +79,9 @@ const MagazineDisplay: React.FC = () => {
     fetch("http://localhost:8000/magazines/")
       .then((res) => res.json())
       .then((data) => {
-        setMagazine(data[data.length - 1]);
+        if (data.length != 0) {
+          setMagazine(data[data.length - 1]);
+        }
       });
   }, []);
 
@@ -135,7 +137,7 @@ interface Prayer {
   day: string;
   time: string;
   description: string;
-  place:number;
+  place: number;
 }
 
 interface WorshipPlacesProps {
@@ -157,8 +159,8 @@ const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
 
   const onPopup = (index: number, placeId: number) => {
     setPopup(index);
-    const filteredPrayers =prayers.filter(p => p.place===placeId);
-      setSelectedPrayers(filteredPrayers);
+    const filteredPrayers = prayers.filter(p => p.place === placeId);
+    setSelectedPrayers(filteredPrayers);
     console.log(selectPrayers);
   };
 

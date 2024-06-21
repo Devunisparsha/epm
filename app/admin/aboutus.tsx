@@ -18,7 +18,9 @@ const AboutUS: React.FC = () => {
     fetch("http://localhost:8000/aboutus/")
       .then((res) => res.json())
       .then((data) => {
-        setFormData(data[0]);
+        if (data.length != 0) {
+          setFormData(data[0]);
+        }
       });
   }, []);
 
@@ -48,8 +50,8 @@ const AboutUS: React.FC = () => {
     }
 
     formData.append("description", form.description);
-    fetch("http://localhost:8000/aboutus/" + form.id + "/", {
-      method: "PUT",
+    fetch("http://localhost:8000/aboutus/", {
+      method: "POST",
       headers: {
         Authorization: `Token ${getCookie("token")}`,
       },
