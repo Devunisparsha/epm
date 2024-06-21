@@ -171,6 +171,7 @@ const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
   return (
     <div className="container mx-auto px-4 py-16">
       <h2 className="text-2xl font-bold mb-8">Worship Places & Prayers</h2>
+      <p className=" my-4">Click on the image to view the prayer details.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {places.map((place, index) => (
           <div key={place.id} className="relative">
