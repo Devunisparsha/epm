@@ -1,9 +1,44 @@
-// pages/contact.tsx
-
-import React from "react";
-import Head from "next/head";
+'use client'
+import React, { useState } from "react";
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    prayer: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8000/prayerrequest/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Handle success, e.g., show a success message
+        console.log("Prayer request sent successfully!");
+      } else {
+        // Handle errors, e.g., show an error message
+        console.error("Failed to send prayer request");
+      }
+    } catch (error) {
+      console.error("Error occurred while sending prayer request:", error);
+    }
+  };
+
   return (
     <div>
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -13,7 +48,7 @@ const Contact: React.FC = () => {
           any questions, concerns, or feedback.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className= " bg-fourth p-6 rounded-lg shadow-md">
+          <div className="bg-fourth p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Office Location</h2>
             <p>Plot number 1</p>
             <p>Shanti Nagar</p>
@@ -21,13 +56,16 @@ const Contact: React.FC = () => {
             <p>Vanasthapuram, Hyderabad-500070</p>
             <p>Telangana, India</p>
           </div>
-          <div className=" bg-fourth p-6 rounded-lg shadow-md">
+          <div className="bg-fourth p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
             <p>Phone: 96666 66249</p>
             <p>Email: mail2church@gmail.com</p>
           </div>
         </div>
-        <form className="mt-8 bg-fourth p-6 rounded-lg shadow-md">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 bg-fourth p-6 rounded-lg shadow-md"
+        >
           <div className="mb-4">
             <label
               htmlFor="name"
@@ -39,6 +77,8 @@ const Contact: React.FC = () => {
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Your Name"
             />
@@ -54,6 +94,8 @@ const Contact: React.FC = () => {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Your Email"
             />
@@ -68,10 +110,12 @@ const Contact: React.FC = () => {
             <textarea
               id="prayer"
               name="prayer"
+              value={formData.prayer}
+              onChange={handleInputChange}
               rows={4}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Your Prayer Request"
-            ></textarea>
+            />
           </div>
           <button
             type="submit"
