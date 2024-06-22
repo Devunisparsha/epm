@@ -41,7 +41,7 @@ function Carousel() {
       const data = await response.json();
       setCarousel(data);
     } catch (error) {
-      console.error("Error fetching carousel data:", error);
+      console.log("Error fetching carousel data:", error);
     }
   };
 
@@ -63,7 +63,7 @@ function Carousel() {
       const updatedCarousel = carousel.filter((item) => item.id !== id);
       setCarousel(updatedCarousel);
     } catch (error) {
-      console.error("Error deleting image:", error);
+      console.log("Error deleting image:", error);
     }
   };
 
@@ -96,7 +96,6 @@ function Carousel() {
 
       alert("Image uploaded successfully");
     } catch (error) {
-      console.error("Error uploading image:", error);
       alert("Failed to upload image");
     }
   };
@@ -182,7 +181,7 @@ const WorshipPlaces: React.FC = () => {
       const data = await response.json();
       setWorshipPlaces(data);
     } catch (error) {
-      console.error("Error fetching worship places:", error);
+      console.log("Error fetching worship places:", error);
     }
   };
 
@@ -195,7 +194,7 @@ const WorshipPlaces: React.FC = () => {
       const data = await response.json();
       setPrayers(data);
     } catch (error) {
-      console.error("Error fetching prayers:", error);
+      console.log("Error fetching prayers:", error);
     }
   };
 
@@ -241,13 +240,13 @@ const WorshipPlaces: React.FC = () => {
 
         if (response.ok) {
           // Data successfully posted
-          console.log("Data posted successfully");
+          alert("Data posted successfully");
         } else {
           // Error handling
-          console.error("Failed to post data");
+          alert("Failed to post data");
         }
       } catch (error) {
-        console.error("Error posting data:", error);
+        console.log("Error posting data:", error);
       }
     };
 
@@ -338,14 +337,14 @@ const WorshipPlaces: React.FC = () => {
         );
 
         if (response.ok) {
-          console.log("Worship place updated successfully");
+          alert("Worship place updated successfully");
           fetchWorshipPlaces();
           onClose();
         } else {
-          console.error("Failed to update worship place");
+          alert("Failed to update worship place");
         }
       } catch (error) {
-        console.error("Error updating worship place:", error);
+        console.log("Error updating worship place:", error);
       }
     };
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -427,13 +426,13 @@ const WorshipPlaces: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to delete image");
       }
-
+      alert('Deleted successfully')
       const updatedWorshipPlaces = worshipPlaces.filter(
         (item) => item.id !== id
       );
       setWorshipPlaces(updatedWorshipPlaces);
     } catch (error) {
-      console.error("Error deleting image:", error);
+      console.log("Error deleting image:", error);
     }
   };
 
@@ -462,10 +461,10 @@ const WorshipPlaces: React.FC = () => {
           throw new Error("Failed to fetch prayers");
         }
         const data = await response.json();
-        const filteredData=data.filter((prayer: { place: number; })=>prayer.place===placeId)
+        const filteredData = data.filter((prayer: { place: number; }) => prayer.place === placeId)
         setPrayers(filteredData);
       } catch (error) {
-        console.error("Error fetching prayers:", error);
+        console.log("Error fetching prayers:", error);
       }
     };
 
@@ -490,7 +489,7 @@ const WorshipPlaces: React.FC = () => {
         });
 
         if (response.ok) {
-          console.log("Prayer added successfully");
+          alert("Prayer added successfully");
           fetchPrayers(); // Refresh prayer list
           setNewPrayer({
             id: 0,
@@ -500,10 +499,10 @@ const WorshipPlaces: React.FC = () => {
             place: placeId,
           }); // Reset form fields
         } else {
-          console.error("Failed to add prayer");
+          alert("Failed to add prayer");
         }
       } catch (error) {
-        console.error("Error adding prayer:", error);
+        console.log("Error adding prayer:", error);
       }
     };
 
@@ -527,14 +526,14 @@ const WorshipPlaces: React.FC = () => {
         );
 
         if (response.ok) {
-          console.log("Prayer edited successfully");
+       alert("Prayer edited successfully");
           fetchPrayers(); // Refresh prayer list
           setEditingPrayer(null); // Clear editing mode
         } else {
-          console.error("Failed to edit prayer");
+          alert("Failed to edit prayer");
         }
       } catch (error) {
-        console.error("Error editing prayer:", error);
+        console.log("Error editing prayer:", error);
       }
     };
 
@@ -548,10 +547,10 @@ const WorshipPlaces: React.FC = () => {
           console.log("Prayer deleted successfully");
           fetchPrayers(); // Refresh prayer list
         } else {
-          console.error("Failed to delete prayer");
+          alert("Failed to delete prayer");
         }
       } catch (error) {
-        console.error("Error deleting prayer:", error);
+        console.log("Error deleting prayer:", error);
       }
     };
 
@@ -826,7 +825,7 @@ const Magazine: React.FC = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (!image || !pdfFile) {
-        console.error("Image or PDF file not selected");
+        alert("Image or PDF file not selected");
         return;
       }
 
