@@ -86,13 +86,13 @@ const MagazineDisplay: React.FC = () => {
   }, []);
 
   return (
-    <div className="px-5 md:px-20 pb-4  ">
+    <div className="px-5 md:px-20 pb-10  ">
       <p className=" text-2xl font-bold  mb-4">Devuni Sparsha Magazine</p>
       <div className=" flex flex-row bg-fourth gap-4 rounded-3xl overflow-hidden">
         <img
           src={magazine.image.replace(/.*\/public/, "http://localhost:3000/")}
           alt={`${magazine.name}`}
-          className="w-1/2 h-96 object-cover"
+          className="w-1/2 h-96 object-fill"
         />
         <div className="flex flex-col justify-between p-4">
           <div className=" my-auto">
@@ -169,7 +169,7 @@ const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="px-5 md:px-20 pb-10 py-16">
       <h2 className="text-2xl font-bold mb-8">Worship Places & Prayers</h2>
       <p className=" my-4">Click on the image to view the prayer details.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
