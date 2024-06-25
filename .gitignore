@@ -38,8 +38,6 @@ next-env.d.ts
 
 #backend
 backend/env
-public
 backend\.idea
-backend/epm/db.sqlite3
 
 .vscode
