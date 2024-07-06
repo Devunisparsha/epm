@@ -257,6 +257,7 @@ export const Footer: React.FC = () => {
           <nav className="text-center md:text-right">
             {footer.map((item, index) => (
               <Link
+                key={index}
                 href={item.href}
                 className="text-base hover:underline inline-block mr-4"
               >
