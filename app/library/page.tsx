@@ -13,20 +13,26 @@ const LibraryPage: React.FC = () => {
   }
   const [magazine, setMagazine] = useState<Magazine[]>([
     {
-      name: "",
-      month: "",
-      image: "",
-      download_url: "",
+      name: "Devuni Sparsha ",
+      month: "May June 2024",
+      image: "/magazine/may_jun_24.jpg",
+      download_url: "/magazine/sparsa_may-june_2024.pdf",
+    },
+    {
+      name: "Devuni Sparsha ",
+      month: "March April 2024",
+      image: "/magazine/mar_apr_24.jpg",
+      download_url: "/magazine/sparsa_mar_Apr_2024.pdf",
     },
   ]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/magazines")
-      .then((response) => response.json())
-      .then((data) => {
-        setMagazine(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/magazines")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMagazine(data);
+  //     });
+  // }, []);
 
   return (
     <div className="mx-5  md:mx-20 my-10">

@@ -52,8 +52,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
 const MessagePage: React.FC<MessagePageProps> = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Latest Messages</h1>
-      {/* Display Videos */}
+      <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">Latest Messages</h1>
       {videos.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}

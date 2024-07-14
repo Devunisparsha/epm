@@ -3,8 +3,8 @@ import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import {Home} from "./home";
-import  AboutUS  from "./aboutus";
+import { Home } from "./home";
+import AboutUS from "./aboutus";
 
 export default function AdminPage() {
   const [component, setComponent] = useState(<Home />);
@@ -45,9 +45,10 @@ export default function AdminPage() {
   return (
     <div className=" m-3 ">
       <p className=" font-medium text-center text-4xl">Welcome to Admin Page</p>
-      <div className=" md:flex md:space-x-5"><Sidebar />
-      {component}</div>
-      
+      <div className=" md:flex md:space-x-5">
+        <Sidebar />
+        {component}
+      </div>
     </div>
   );
 }

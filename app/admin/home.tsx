@@ -333,7 +333,7 @@ const WorshipPlaces: React.FC = () => {
           {
             method: "PUT",
             body: formData,
-          }
+          },
         );
 
         if (response.ok) {
@@ -420,15 +420,15 @@ const WorshipPlaces: React.FC = () => {
         {
           method: "DELETE",
           headers: headers,
-        }
+        },
       );
 
       if (!response.ok) {
         throw new Error("Failed to delete image");
       }
-      alert('Deleted successfully')
+      alert("Deleted successfully");
       const updatedWorshipPlaces = worshipPlaces.filter(
-        (item) => item.id !== id
+        (item) => item.id !== id,
       );
       setWorshipPlaces(updatedWorshipPlaces);
     } catch (error) {
@@ -461,7 +461,9 @@ const WorshipPlaces: React.FC = () => {
           throw new Error("Failed to fetch prayers");
         }
         const data = await response.json();
-        const filteredData = data.filter((prayer: { place: number; }) => prayer.place === placeId)
+        const filteredData = data.filter(
+          (prayer: { place: number }) => prayer.place === placeId,
+        );
         setPrayers(filteredData);
       } catch (error) {
         console.log("Error fetching prayers:", error);
@@ -469,7 +471,7 @@ const WorshipPlaces: React.FC = () => {
     };
 
     const handleInputChange = (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
       const { name, value } = e.target;
       setNewPrayer((prevState) => ({
@@ -522,11 +524,11 @@ const WorshipPlaces: React.FC = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(editingPrayer),
-          }
+          },
         );
 
         if (response.ok) {
-       alert("Prayer edited successfully");
+          alert("Prayer edited successfully");
           fetchPrayers(); // Refresh prayer list
           setEditingPrayer(null); // Clear editing mode
         } else {
@@ -981,7 +983,7 @@ const Magazine: React.FC = () => {
       };
 
       const handleDownloadUrlChange = (
-        e: React.ChangeEvent<HTMLInputElement>
+        e: React.ChangeEvent<HTMLInputElement>,
       ) => {
         if (e.target.files && e.target.files.length > 0) {
           const downloadUrl = e.target.files[0];

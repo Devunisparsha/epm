@@ -3,57 +3,28 @@ import { useEffect, useState } from "react";
 import { Carousel } from "./components";
 
 export default function Home() {
-  const [carousel, setCarousel] = useState([
-    {
-      image: "",
-      id: 1,
-    },
-  ]);
-  const [worshipPlaces, setWorshipPlaces] = useState([
-    {
-      id: 0,
-      name: "",
-      image: "",
-      prayers: [
-        {
-          id: 0,
-          day: "",
-          time: "",
-          description: "", // Optional description
-          image: "",
-        },
-      ],
-    },
-  ]);
-  const [magazineData, setMagazineData] = useState({
-    downloadLink: "",
-    title: "",
-    image: "",
-    month: "",
-    name: "Devuni Sparsha Magazine",
-  });
-  function fetchData() {
-    fetch("http://localhost:8000/carousel/")
-      .then((res) => res.json())
-      .then((data) => {
-        setCarousel(data);
-      });
+  // function fetchData() {
+  //   fetch("http://localhost:8000/carousel/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCarousel(data);
+  //     });
 
-    fetch("http://localhost:8000/worshipplaces/")
-      .then((res) => res.json())
-      .then((data) => {
-        setWorshipPlaces(data);
-        console.log(data);
-      });
-  }
-  useEffect(() => {
-    fetchData();
-  }, []);
+  //   fetch("http://localhost:8000/worshipplaces/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setWorshipPlaces(data);
+  //       console.log(data);
+  //     });
+  // }
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   return (
     <main>
-      <Carousel images={carousel} />
-      <WorshipPlaces places={worshipPlaces} />
+      <Carousel />
+      <WorshipPlaces />
       <MagazineDisplay />
     </main>
   );
@@ -68,58 +39,76 @@ const MagazineDisplay: React.FC = () => {
     image: string;
     download_url: string;
   }
-  const [magazine, setMagazine] = useState<Magazine>({
-    name: "",
-    month: "",
-    image: "",
-    download_url: "",
-  });
+  const [magazines, setMagazines] = useState<Magazine[]>([
+    {
+      name: "Devuni Sparsha ",
+      month: "May June 2024",
+      image: "/magazine/may_jun_24.jpg",
+      download_url: "/magazine/sparsa_may-june_2024.pdf",
+    },
+    {
+      name: "Devuni Sparsha ",
+      month: "March April 2024",
+      image: "/magazine/mar_apr_24.jpg",
+      download_url: "/magazine/sparsa_mar_Apr_2024.pdf",
+    },
+  ]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/magazines/")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length != 0) {
-          setMagazine(data[data.length - 1]);
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/magazines/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.length != 0) {
+  //         setMagazine(data[data.length - 1]);
+  //       }
+  //     });
+  // }, []);
 
   return (
-    <div className="px-5 md:px-20 pb-10  ">
+    <div className="px-5 md:px-20 pb-10 my-10">
       <p className=" text-2xl font-bold  mb-4">Devuni Sparsha Magazine</p>
-      <div className=" flex flex-row bg-fourth gap-4 rounded-3xl overflow-hidden">
-        <img
-          src={magazine.image.replace(/.*\/public/, "http://localhost:3000/")}
-          alt={`${magazine.name}`}
-          className="w-1/2 h-96 object-fill"
-        />
-        <div className="flex flex-col justify-between p-4">
-          <div className=" my-auto">
-            <h3 className="text-xl font-medium mb-2">{magazine.name}</h3>
-            <p className=" font-light text-md">{magazine.month}</p>
-          </div>
-          <a
-            href={magazine.download_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      <div className="flex flex-wrap md:grid md:grid-flow-col  gap-10 ">
+        {magazines.map((magazine, index) => (
+          <div
+            key={index}
+            className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden"
           >
-            Download
-            <svg
-              className="ml-2 -mr-1 w-4 h-4"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-1.293-1.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </a>
-        </div>
+            <img
+              src={magazine.image.replace(
+                /.*\/public/,
+                "http://localhost:3000/",
+              )}
+              alt={`${magazine.name}`}
+              className="w-1/3 object-fill"
+            />
+            <div className="flex flex-col m-auto gap-14  p-4">
+              <div className="my-auto">
+                <h3 className="text-xl font-medium mb-2">{magazine.name}</h3>
+                <p className="font-light text-md">{magazine.month}</p>
+              </div>
+              <a
+                href={magazine.download_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Download
+                <svg
+                  className="ml-2 -mr-1 w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-1.293-1.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -144,22 +133,53 @@ interface WorshipPlacesProps {
   places: WorshipPlace[];
 }
 
-const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
+const WorshipPlaces = () => {
+  const [worshipPlaces, setWorshipPlaces] = useState([
+    {
+      id: 0,
+      name: "Pedda Amberpet",
+      image: "/home/worshipPlace/peddaamberpet.jpg",
+    },
+    {
+      id: 1,
+      name: "Bhagyalatha",
+      image: "/home/worshipPlace/chinthal.jpg",
+    },
+    {
+      id: 2,
+      name: "Chinthal",
+      image: "/home/worshipPlace/chinthal.jpg",
+    },
+    {
+      id: 3,
+      name: "Anajpur",
+      image: "/home/worshipPlace/anajpur.jpg",
+    },
+  ]);
+
   const [popup, setPopup] = useState<null | number>(null);
-  const [prayers, setPrayers] = useState<Prayer[]>([]);
+  const [prayers, setPrayers] = useState<Prayer[]>([
+    {
+      id: 0,
+      day: "Sunday",
+      time: "9: 30 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 0,
+    },
+  ]);
   const [selectPrayers, setSelectedPrayers] = useState<Prayer[]>([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/prayers/")
-      .then((res) => res.json())
-      .then((data) => {
-        setPrayers(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/prayers/")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPrayers(data);
+  //     });
+  // }, []);
 
   const onPopup = (index: number, placeId: number) => {
     setPopup(index);
-    const filteredPrayers = prayers.filter(p => p.place === placeId);
+    const filteredPrayers = prayers.filter((p) => p.place === placeId);
     setSelectedPrayers(filteredPrayers);
     console.log(selectPrayers);
   };
@@ -169,32 +189,33 @@ const WorshipPlaces: React.FC<WorshipPlacesProps> = ({ places }) => {
   };
 
   return (
-    <div className="px-5 md:px-20 pb-10 py-16">
-      <h2 className="text-2xl font-bold mb-8">Worship Places & Prayers</h2>
-      <p className=" my-4">Click on the image to view the prayer details.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {places.map((place, index) => (
-          <div key={place.id} className="relative">
-            <button
-              onClick={() => onPopup(index, place.id)}
-              className="shadow-md rounded-xl w-full h-64 bg-secondary"
-            >
+    <div className="px-5 md:px-20 pb-10 py-16  ">
+      <h2 className="text-3xl font-bold mb-8">Worship Places & Prayers</h2>
+      {/* <p className=" my-4 font-semibold">Click on the image to view the prayer details.</p> */}
+      <div className="flex overflow-scroll p-10 gap-10">
+        {worshipPlaces.map((place, index) => (
+          <div key={place.id} className="relative ">
+            <div className=" shadow-md rounded-xl w-80  h-[450px]">
               {place.image && (
                 <img
                   src={place.image.replace(
                     /.*\/public/,
-                    "http://localhost:3000/"
+                    "http://localhost:3000/",
                   )}
                   alt={`${place.name} Image`}
-                  className="w-full h-48 object-cover rounded-t-xl"
+                  className="w-80 h-1/2 object-cover rounded-t-xl"
                 />
               )}
-              <div className="p-4">
-                <h3 className="text-lg text-center font-medium mb-2">
-                  {place.name}
-                </h3>
-              </div>
-            </button>
+              <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">
+                {place.name}
+                <button
+                  onClick={() => onPopup(index, place.id)}
+                  className=" bg-blue-600 text-white px-2 py-1 w-fit rounded-2xl"
+                >
+                  Click here
+                </button>
+              </h3>
+            </div>
             {popup === index && (
               <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex flex-shrink justify-center items-center">
                 <div className="bg-white w-full md:w-[70%] rounded-md p-4 shadow-md">
