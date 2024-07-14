@@ -157,7 +157,7 @@ export const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full h-[600px]">
+    <div className="relative w-full h-[300px] md:h-[600px]">
       <div className="overflow-hidden">
         <div className="flex transition-transform duration-500 ease-in-out">
           {carousel.map((item, index) => (
