@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 
 const Contact: React.FC = () => {
@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
   });
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
   return (
     <div>
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-center">Contact Us</h1>
+        <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">Contact Us</h1>
         <p className="mb-6 text-center">
-          We'd love to hear from you! Please feel free to reach out to us with
-          any questions, concerns, or feedback.
+          We would love to hear from you! Please feel free to reach out to us
+          with any questions, concerns, or feedback.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-fourth p-6 rounded-lg shadow-md">

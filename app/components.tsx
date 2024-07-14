@@ -47,13 +47,13 @@ export const Navbar: React.FC = () => {
                 ))}
               </div>
             </div>
-            <Link
+            {/* <Link
               href="/admin"
               className=" flex gap-2 text-white py-2 rounded-md"
             >
               <CiUser className=" text-2xl font-bold" />
               Login
-            </Link>
+            </Link> */}
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden" id="mobile-menu">
+        <div className="md:hidden text-white" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {/* Render mobile menu links dynamically */}
             {navItems.map((item, index) => (
@@ -121,28 +121,46 @@ export const Navbar: React.FC = () => {
 
 // --------------------------Carousel------------------------
 
-interface CarouselProps {
-  images: { id: number; image: string }[];
-}
-
-export const Carousel: React.FC<CarouselProps> = ({ images }) => {
+export const Carousel = () => {
+  const [carousel, setCarousel] = useState([
+    {
+      image: "/home/carousel/1.JPG",
+      id: 1,
+    },
+    {
+      image: "/home/carousel/2.JPG",
+      id: 2,
+    },
+    {
+      image: "/home/carousel/3.JPG",
+      id: 3,
+    },
+    {
+      image: "/home/carousel/4.JPG",
+      id: 4,
+    },
+    {
+      image: "/home/carousel/5.JPG",
+      id: 5,
+    },
+  ]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carousel.length);
   };
 
   const handlePrev = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length,
     );
   };
 
   return (
-    <div className="relative w-full h-[500px]">
+    <div className="relative w-full h-[600px]">
       <div className="overflow-hidden">
         <div className="flex transition-transform duration-500 ease-in-out">
-          {images.map((item, index) => (
+          {carousel.map((item, index) => (
             <img
               key={item.id}
               src={item.image.replace(/.*\/public/, "http://localhost:3000/")}
@@ -155,7 +173,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
         </div>
       </div>
       <div className="absolute bottom-4 left-0 flex justify-center w-full">
-        {images.map((_, index) => (
+        {carousel.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
@@ -167,7 +185,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
       </div>
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-2 bg-transparent hover:bg-gray-200 rounded-full p-2"
+        className="absolute top-1/2 left-2 bg-transparent bg-blue-400 hover:bg-gray-200 rounded-full p-2"
       >
         <svg
           className="w-6 h-6 text-white"
@@ -185,7 +203,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
       </button>
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-2 bg-transparent hover:bg-gray-200 rounded-full p-2"
+        className="absolute top-1/2 right-2 bg-transparent bg-blue-400 hover:bg-gray-200 rounded-full p-2"
       >
         <svg
           className="w-6 h-6 text-white"
@@ -223,32 +241,25 @@ export const Footer: React.FC = () => {
           <div className="text-center md:text-left mb-4 md:mb-0">
             <p className="text-lg font-bold">Epaphras Ministries</p>
             <p className="text-sm mt-2">Follow us on social media:</p>
-            <div className="flex justify-around md:justify-start mt-2">
+            <div className="flex justify-around md:justify-start mt-2 gap-4">
               <Link
                 href="https://www.facebook.com/Epaphrasministrieshyd/"
                 target="_blank"
-                className="text-white mr-2 hover:text-gray-300"
+                className="text-white hover:text-gray-300"
               >
                 <FaFacebook />
               </Link>
               <Link
                 href="#"
                 target="_blank"
-                className="text-white mr-2 hover:text-gray-300"
+                className="text-white hover:text-gray-300"
               >
                 <FaTwitter />
               </Link>
               <Link
-                href="#"
-                target="_blank"
-                className="text-white hover:text-gray-300"
-              >
-                <FaInstagram />
-              </Link>
-              <Link
                 href="https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA"
                 target="_blank"
-                className="text-white hover:text-gray-300 ml-2"
+                className="text-white hover:text-gray-300 "
               >
                 <FaYoutube />
               </Link>
@@ -257,6 +268,7 @@ export const Footer: React.FC = () => {
           <nav className="text-center md:text-right">
             {footer.map((item, index) => (
               <Link
+                key={index}
                 href={item.href}
                 className="text-base hover:underline inline-block mr-4"
               >
