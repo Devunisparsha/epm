@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             <p>Email: mail2church@gmail.com</p>
           </div>
         </div>
-        <form
+        {/* <form
           onSubmit={handleSubmit}
           className="mt-8 bg-fourth p-6 rounded-lg shadow-md"
         >
@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
           >
             Send Prayer Request
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );
