@@ -166,6 +166,59 @@ const WorshipPlaces = () => {
       description: "పునరుత్థానపు ఆరాధన",
       place: 0,
     },
+    {
+      id: 1,
+      day: "Sunday",
+      time: "9: 30 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 1,
+    },{
+      id: 2,
+      day: "Saturday",
+      time: "7: 00 PM",
+      description: "శనివారం ఉపవాస ప్రార్ధన",
+      place: 1,
+    },
+    {
+      id: 3,
+      day: "1st Wednesday",
+      time: "7: 00 PM",
+      description: "స్త్రీల కూడిక ",
+      place: 1,
+    },{
+      id: 4,
+      day: "2nd Wednesday",
+      time: "7: 00 PM",
+      description: "Youth Meeting",
+      place: 1,
+    },{
+      id: 5,
+      day: "Sunday",
+      time: "7: 00 PM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 2,
+    },
+    {
+      id: 6,
+      day: "Friday",
+      time: "7: 00 PM",
+      description: "Friday Worship",
+      place: 2,
+    },
+    {
+      id: 7,
+      day: "Sunday",
+      time: "8: 00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 3,
+    },
+    {
+      id: 8,
+      day: "Saturday",
+      time: "7: 00 PM",
+      description: "శనివారం ఉపవాస ప్రార్ధన",
+      place: 3,
+    },
   ]);
   const [selectPrayers, setSelectedPrayers] = useState<Prayer[]>([]);
 
@@ -195,7 +248,7 @@ const WorshipPlaces = () => {
       <div className="flex overflow-scroll gap-10">
         {worshipPlaces.map((place, index) => (
           <div key={place.id} className="relative ">
-            <div className=" shadow-md rounded-xl w-80  h-[450px]">
+            <div className=" shadow-md rounded-xl w-80 my-3 h-[400px]">
               {place.image && (
                 <img
                   src={place.image.replace(
@@ -203,7 +256,7 @@ const WorshipPlaces = () => {
                     "http://localhost:3000/",
                   )}
                   alt={`${place.name} Image`}
-                  className="w-80 h-1/2 object-cover rounded-t-xl"
+                  className="w-80 h-2/3 object-cover rounded-t-xl"
                 />
               )}
               <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">
