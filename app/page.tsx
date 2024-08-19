@@ -192,7 +192,7 @@ const WorshipPlaces = () => {
     <div className="px-5 md:px-20 pb-10 py-16  ">
       <h2 className="text-3xl font-bold mb-8">Worship Places & Prayers</h2>
       {/* <p className=" my-4 font-semibold">Click on the image to view the prayer details.</p> */}
-      <div className="flex overflow-scroll p-10 gap-10">
+      <div className="flex overflow-scroll gap-10">
         {worshipPlaces.map((place, index) => (
           <div key={place.id} className="relative ">
             <div className=" shadow-md rounded-xl w-80  h-[450px]">
