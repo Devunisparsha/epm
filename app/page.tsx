@@ -143,7 +143,7 @@ const WorshipPlaces = () => {
     {
       id: 1,
       name: "Bhagyalatha",
-      image: "/epm/home/worshipPlace/chinthal.jpg",
+      image: "/epm/home/worshipPlace/bhagyalatha.jpg",
     },
     {
       id: 2,
@@ -169,51 +169,57 @@ const WorshipPlaces = () => {
     {
       id: 1,
       day: "Sunday",
-      time: "9: 30 AM",
+      time: "8: 00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 1,
+    }, {
+      id: 2,
+      day: "Sunday",
+      time: "10: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 1,
     },{
-      id: 2,
+      id: 3,
       day: "Saturday",
       time: "7: 00 PM",
       description: "శనివారం ఉపవాస ప్రార్ధన",
       place: 1,
     },
     {
-      id: 3,
+      id: 4,
       day: "1st Wednesday",
       time: "7: 00 PM",
       description: "స్త్రీల కూడిక ",
       place: 1,
     },{
-      id: 4,
+      id: 5,
       day: "2nd Wednesday",
       time: "7: 00 PM",
       description: "Youth Meeting",
       place: 1,
     },{
-      id: 5,
+      id: 6,
       day: "Sunday",
       time: "7: 00 PM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 2,
     },
     {
-      id: 6,
+      id: 7,
       day: "Friday",
       time: "7: 00 PM",
       description: "Friday Worship",
       place: 2,
     },
     {
-      id: 7,
+      id: 8,
       day: "Sunday",
-      time: "8: 00 AM",
+      time: "10: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 3,
     },
     {
-      id: 8,
+      id: 9,
       day: "Saturday",
       time: "7: 00 PM",
       description: "శనివారం ఉపవాస ప్రార్ధన",
@@ -248,7 +254,7 @@ const WorshipPlaces = () => {
       <div className="flex overflow-scroll gap-10">
         {worshipPlaces.map((place, index) => (
           <div key={place.id} className="relative ">
-            <div className=" shadow-md rounded-xl w-80 my-3 h-[400px]">
+            <div className=" shadow-md rounded-xl w-100 my-3 h-[400px] bg-gradient-to-b from-white to-blue-100">
               {place.image && (
                 <img
                   src={place.image.replace(
@@ -256,7 +262,7 @@ const WorshipPlaces = () => {
                     "http://localhost:3000/",
                   )}
                   alt={`${place.name} Image`}
-                  className="w-80 h-2/3 object-cover rounded-t-xl"
+                  className="w-80 h-2/3  rounded-t-xl"
                 />
               )}
               <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">
