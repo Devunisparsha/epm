@@ -161,13 +161,17 @@ export const Carousel = () => {
       <div className="overflow-hidden">
         <div className="flex transition-transform duration-500 ease-in-out">
           {carousel.map((item, index) => (
-            <img
+            <Image
               key={item.id}
-              src={item.image.replace(/.*\/public/, "http://localhost:3000/")}
+              src={item.image} // Assuming item.image is the path in your public directory
               alt={`Slide ${index}`}
               className={`w-full h-full object-cover absolute top-0 left-0 opacity-0 ${
                 index === currentIndex ? "opacity-100" : ""
               }`}
+              width={7680}
+              height={4320}
+              // layout="fill" // To make it fill the container (like object-cover)
+              objectFit="cover"
             />
           ))}
         </div>

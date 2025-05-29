@@ -123,10 +123,13 @@ function Carousel() {
       <div className="flex gap-3 flex-wrap">
         {carousel.map((image, index) => (
           <div className="w-80 bg-fourth h-60" key={index}>
-            <img
-              src={image.image.replace(/.*\/public/, "http://localhost:3000/")} // Assuming `image` contains the local path of the image
+            <Image
+              src={image.image} // Assuming image.image is the path in your public directory (e.g., "/path/to/your/image.jpg")
               alt={String(image.id)}
-              className="bg-slate-400 w-full h-44 mx-auto"
+              className="bg-slate-400 w-full h-44 mx-auto object-cover"
+              width={1920}
+              height={1080}
+              objectFit="cover" // Ensures the image covers the area without distortion
             />
             <div className="flex justify-around">
               <button
@@ -727,10 +730,12 @@ const WorshipPlaces: React.FC = () => {
       <div className=" flex flex-wrap gap-2">
         {worshipPlaces.map((place, index) => (
           <div key={index} className="my-2 bg-fourth w-80">
-            <img
+            <Image
               src={place.image.replace(/.*\/public/, "http://localhost:3000/")} // Assuming `image` contains the local path of the image
               alt={String(place.id)}
               className="bg-slate-400 w-80 h-44 mx-auto"
+              width={1920}
+              height={1080}
             />
             <p className="p-2 text-center">{place.name}</p>
             <div className="p-3 flex justify-around">

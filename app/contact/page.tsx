@@ -42,7 +42,9 @@ const Contact: React.FC = () => {
   return (
     <div>
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">Contact Us</h1>
+        <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">
+          Contact Us
+        </h1>
         <p className="mb-6 text-center">
           We would love to hear from you! Please feel free to reach out to us
           with any questions, concerns, or feedback.

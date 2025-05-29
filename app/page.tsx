@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Carousel } from "./components";
+import Image from "next/image";
 
 export default function Home() {
   // function fetchData() {
@@ -73,13 +74,15 @@ const MagazineDisplay: React.FC = () => {
             key={index}
             className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden"
           >
-            <img
+            <Image
               src={magazine.image.replace(
                 /.*\/public/,
                 "http://localhost:3000/",
               )}
               alt={`${magazine.name}`}
               className="w-1/3 object-fill"
+              width={1920}
+              height={1080}
             />
             <div className="flex flex-col m-auto gap-14  p-4">
               <div className="my-auto">
@@ -172,13 +175,15 @@ const WorshipPlaces = () => {
       time: "8: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 1,
-    }, {
+    },
+    {
       id: 2,
       day: "Sunday",
       time: "10: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 1,
-    },{
+    },
+    {
       id: 3,
       day: "Saturday",
       time: "7: 00 PM",
@@ -191,13 +196,15 @@ const WorshipPlaces = () => {
       time: "7: 00 PM",
       description: "స్త్రీల కూడిక ",
       place: 1,
-    },{
+    },
+    {
       id: 5,
       day: "2nd Wednesday",
       time: "7: 00 PM",
       description: "Youth Meeting",
       place: 1,
-    },{
+    },
+    {
       id: 6,
       day: "Sunday",
       time: "7: 00 PM",
@@ -256,13 +263,12 @@ const WorshipPlaces = () => {
           <div key={place.id} className="relative ">
             <div className=" shadow-md rounded-xl w-100 my-3 h-[400px] bg-gradient-to-b from-white to-blue-100">
               {place.image && (
-                <img
-                  src={place.image.replace(
-                    /.*\/public/,
-                    "http://localhost:3000/",
-                  )}
+                <Image
+                  src={place.image}
                   alt={`${place.name} Image`}
-                  className="w-80 h-2/3  rounded-t-xl"
+                  className="w-80 h-2/3 rounded-t-xl"
+                  width={7680}
+                  height={4320}
                 />
               )}
               <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">

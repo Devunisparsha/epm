@@ -1,5 +1,7 @@
 // MessagePage.tsx
+"use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image"; // Import the Image component
 
 interface Video {
   id: number;
@@ -21,6 +23,7 @@ const videos: Video[] = [
     title: "Devuni Sparsha",
     description: "",
     youtubeUrl: "https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA",
+    thumbnailUrl: "/images/default-thumbnail.jpg", // Added a placeholder thumbnail
   },
   // ... more videos
 ];
@@ -29,10 +32,13 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
   return (
     <div className="mb-8 bg-white rounded shadow-md p-4 flex flex-col">
       {video.thumbnailUrl && (
-        <img
+        <Image
           src={video.thumbnailUrl}
           alt={video.title}
           className="w-full h-48 object-cover rounded-t-md mb-4"
+          width={1920}
+          height={1080}
+          objectFit="cover"
         />
       )}
       <h2 className="text-xl font-bold mb-2">{video.title}</h2>
@@ -52,7 +58,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
 const MessagePage: React.FC<MessagePageProps> = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">Latest Messages</h1>
+      <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">
+        Latest Messages
+      </h1>
       {videos.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}

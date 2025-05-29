@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image"; // Import the Image component
 
 const AboutUs: React.FC = () => {
   const [about, setAbout] = useState({
@@ -28,14 +29,19 @@ The messages which are being preached by Bro.Epaphras from 10 long years are eas
   // }, [])
   return (
     <div className=" bg-gradient-to-br from-white to-blue-100 mx-auto px-3 md:px-20 py-16">
-      <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">About Us</h1>
+      <h1 className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">
+        About Us
+      </h1>
       <div className="">
-        <img
-          src={about.image.replace(/.*\/public/, "http://localhost:3000/")} // Replace with path to your about us image
+        <Image
+          src={about.image} // Assuming about.image is the path in your public directory
           alt="About Us Image"
-          className="object-cover h-full md:w-[55%] mb-5  xl:float-left  xl:m-10 rounded-lg "
+          className="object-cover h-full md:w-[55%] mb-5 xl:float-left xl:m-10 rounded-lg"
+          width={1920} // Specify the desired width
+          height={1080} // Specify the desired height
+          style={{ height: "auto" }} // Adjust height to maintain aspect ratio if needed
         />
-           <p className=" text-justify">{about.description}</p>
+        <p className=" text-justify">{about.description}</p>
       </div>
     </div>
   );
