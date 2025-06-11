@@ -4,7 +4,7 @@ import Image from "next/image"; // Import the Image component
 
 const AboutUs: React.FC = () => {
   const [about, setAbout] = useState({
-    image: "/epm/aboutus/1.JPG",
+    image: "/aboutus/1.JPG",
     description: `
 Bro. Epaphras came to know the Lord personally in the year 1990 and the truth and love which he experienced through the Lord Jesus Christ inspired him to share this good news to two persons initially and later on grew in the Lord. By the will of God, he established Epaphras Ministry in the year 2004 and started serving the Lord in full-time ministry, in and around Hyderabad. He organized Gospel Meetings and worship services to people especially those who are nominal in their life-style and those who do not know the truth and living God, and they inturn changed their lives by knowing the truth and are preparing themselves to enter into the Lord’s kingdom.
 

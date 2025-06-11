@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/epm",
-  output: 'export',
+  // basePath: "/epm",
 };
 
 export default nextConfig;

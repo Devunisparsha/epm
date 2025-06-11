@@ -124,23 +124,23 @@ export const Navbar: React.FC = () => {
 export const Carousel = () => {
   const [carousel, setCarousel] = useState([
     {
-      image: "/epm/home/carousel/1.JPG",
+      image: ""/home/carousel/1.JPG",
       id: 1,
     },
     {
-      image: "/epm/home/carousel/2.JPG",
+      image: ""/home/carousel/2.JPG",
       id: 2,
     },
     {
-      image: "/epm/home/carousel/3.JPG",
+      image: ""/home/carousel/3.JPG",
       id: 3,
     },
     {
-      image: "/epm/home/carousel/4.JPG",
+      image: ""/home/carousel/4.JPG",
       id: 4,
     },
     {
-      image: "/epm/home/carousel/5.JPG",
+      image: ""/home/carousel/5.JPG",
       id: 5,
     },
   ]);
