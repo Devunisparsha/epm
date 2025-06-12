@@ -175,20 +175,14 @@ export const Carousel = () => {
     );
   };
 
-  /**
-   * Records the X coordinate when a touch starts.
-   * @param {TouchEvent} e - The touch event object.
-   */
-  const onTouchStart = (e: TouchEvent) => {
+  // Corrected type for the event parameter
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
     touchEndX.current = 0; // Reset end position for a new swipe
   };
 
-  /**
-   * Records the X coordinate as a touch moves.
-   * @param {TouchEvent} e - The touch event object.
-   */
-  const onTouchMove = (e: TouchEvent) => {
+  // Corrected type for the event parameter
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     touchEndX.current = e.touches[0].clientX;
   };
 
@@ -201,7 +195,7 @@ export const Carousel = () => {
     if (touchEndX.current === 0) return;
 
     const distance = touchStartX.current - touchEndX.current;
-    const isLeftSwipe = distance > minSwipeDistance;    // Swiping left (dragging finger left)
+    const isLeftSwipe = distance > minSwipeDistance; // Swiping left (dragging finger left)
     const isRightSwipe = distance < -minSwipeDistance; // Swiping right (dragging finger right)
 
     if (isLeftSwipe) {
@@ -234,10 +228,11 @@ export const Carousel = () => {
             key={item.id}
             src={item.image}
             alt={`Slide ${index + 1}`}
-            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-          // No explicit width/height props are needed here as 'w-full h-full object-cover'
-          // classes handle sizing and aspect ratio within the container.
+            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+            // No explicit width/height props are needed here as 'w-full h-full object-cover'
+            // classes handle sizing and aspect ratio within the container.
           />
         ))}
       </div>
@@ -249,8 +244,9 @@ export const Carousel = () => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             // Responsive sizing and enhanced styling for dots.
-            className={`mx-1 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-400 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors transform ${index === currentIndex ? "bg-gray-800 scale-125" : "" // Active dot is darker and slightly larger
-              }`}
+            className={`mx-1 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-400 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors transform ${
+              index === currentIndex ? "bg-gray-800 scale-125" : "" // Active dot is darker and slightly larger
+            }`}
             aria-label={`Go to slide ${index + 1}`} // Accessibility label
           />
         ))}
