@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CiUser } from "react-icons/ci";
 
 // ------------------------Navbar--------------------------------
@@ -122,6 +122,7 @@ export const Navbar: React.FC = () => {
 // --------------------------Carousel------------------------
 
 export const Carousel = () => {
+  // State to manage the carousel items
   const [carousel, setCarousel] = useState([
     {
       image: "/home/carousel/1.JPG",
@@ -144,55 +145,126 @@ export const Carousel = () => {
       id: 5,
     },
   ]);
+
+  // State to keep track of the currently active slide index
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Refs to store touch start and end coordinates for swipe detection
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  // Minimum horizontal distance required for a swipe gesture to be registered
+  const minSwipeDistance = 50;
+
+  /**
+   * Handles navigation to the next slide.
+   * Uses the modulo operator to loop back to the first slide
+   * after reaching the last slide.
+   */
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carousel.length);
   };
 
+  /**
+   * Handles navigation to the previous slide.
+   * Uses a common pattern with modulo for correct negative indexing
+   * to loop back to the last slide after reaching the first.
+   */
   const handlePrev = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length,
     );
   };
 
+  /**
+   * Records the X coordinate when a touch starts.
+   * @param {TouchEvent} e - The touch event object.
+   */
+  const onTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = 0; // Reset end position for a new swipe
+  };
+
+  /**
+   * Records the X coordinate as a touch moves.
+   * @param {TouchEvent} e - The touch event object.
+   */
+  const onTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  /**
+   * Determines the swipe direction and triggers slide change on touch end.
+   * A swipe is registered if the horizontal distance exceeds `minSwipeDistance`.
+   */
+  const onTouchEnd = () => {
+    // If touchEndX is still 0, it means no significant horizontal movement occurred
+    if (touchEndX.current === 0) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > minSwipeDistance;    // Swiping left (dragging finger left)
+    const isRightSwipe = distance < -minSwipeDistance; // Swiping right (dragging finger right)
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+    // Reset touch coordinates after swipe detection
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
   return (
-    <div className="relative w-full h-[300px] md:h-[600px]">
-      <div className="overflow-hidden">
-        <div className="flex transition-transform duration-500 ease-in-out">
-          {carousel.map((item, index) => (
-            <Image
-              key={item.id}
-              src={item.image} // Assuming item.image is the path in your public directory
-              alt={`Slide ${index}`}
-              className={`w-full h-full object-cover absolute top-0 left-0 opacity-0 ${
-                index === currentIndex ? "opacity-100" : ""
+    <div
+      // Main container for the carousel
+      // Sets responsive height and attaches touch event listeners for swiping.
+      className="relative w-full h-[300px] md:h-[600px] overflow-hidden"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      {/* Inner container for images. Uses relative positioning to allow
+          absolutely positioned child images to stack. */}
+      <div className="relative w-full h-full">
+        {carousel.map((item, index) => (
+          // Using a standard <img> tag.
+          // Images are absolutely positioned to stack on top of each other.
+          // Opacity and transition classes manage the fade effect.
+          <img
+            key={item.id}
+            src={item.image}
+            alt={`Slide ${index + 1}`}
+            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
-              width={7680}
-              height={4320}
-              // layout="fill" // To make it fill the container (like object-cover)
-              objectFit="cover"
-            />
-          ))}
-        </div>
+          // No explicit width/height props are needed here as 'w-full h-full object-cover'
+          // classes handle sizing and aspect ratio within the container.
+          />
+        ))}
       </div>
-      <div className="absolute bottom-4 left-0 flex justify-center w-full">
+
+      {/* Dot Indicators for navigation */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center w-full z-10">
         {carousel.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`mx-1 w-4 h-4 rounded-full bg-gray-500 hover:bg-gray-700 ${
-              index === currentIndex ? "bg-gray-800" : ""
-            }`}
+            // Responsive sizing and enhanced styling for dots.
+            className={`mx-1 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-400 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors transform ${index === currentIndex ? "bg-gray-800 scale-125" : "" // Active dot is darker and slightly larger
+              }`}
+            aria-label={`Go to slide ${index + 1}`} // Accessibility label
           />
         ))}
       </div>
+
+      {/* Previous Slide Button */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-2 bg-transparent bg-blue-400 hover:bg-gray-200 rounded-full p-2"
+        // Responsive positioning and enhanced styling with transparency and shadow.
+        className="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-blue-500 bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 md:p-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 z-10"
+        aria-label="Previous slide" // Accessibility label
       >
         <svg
-          className="w-6 h-6 text-white"
+          className="w-5 h-5 md:w-6 md:h-6" // Responsive SVG icon size
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -205,12 +277,16 @@ export const Carousel = () => {
           />
         </svg>
       </button>
+
+      {/* Next Slide Button */}
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-2 bg-transparent bg-blue-400 hover:bg-gray-200 rounded-full p-2"
+        // Responsive positioning and enhanced styling with transparency and shadow.
+        className="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-blue-500 bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 md:p-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 z-10"
+        aria-label="Next slide" // Accessibility label
       >
         <svg
-          className="w-6 h-6 text-white"
+          className="w-5 h-5 md:w-6 md:h-6" // Responsive SVG icon size
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -231,50 +307,79 @@ export const Carousel = () => {
 
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
+/**
+ * A responsive and visually appealing footer component for the website.
+ * It includes navigation links, social media icons, and copyright information.
+ */
 export const Footer: React.FC = () => {
-  const footer = [
-    { name: "About us ", href: "/about" },
+  // Navigation items for the footer
+  const footerLinks = [
+    { name: "About us", href: "/about" },
     { name: "Library", href: "/library" },
     { name: "Contact", href: "/contact" },
     { name: "Messages", href: "/message" },
   ];
+
   return (
-    <footer className="bg-primary text-white">
-      <div className="container mx-auto py-12 px-20">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-center md:text-left mb-4 md:mb-0">
-            <p className="text-lg font-bold">Epaphras Ministries</p>
-            <p className="text-sm mt-2">Follow us on social media:</p>
-            <div className="flex justify-around md:justify-start mt-2 gap-4">
+    <footer className="bg-gradient-to-r from-blue-700 to-blue-800 text-white shadow-lg">
+      <div className="container mx-auto py-8 px-6 md:px-12 lg:px-20">
+        {/* Main content section of the footer */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+
+          {/* Branding and Social Media Section */}
+          <div className="text-center md:text-left mb-6 md:mb-0">
+            <p className="text-2xl font-extrabold mb-2 tracking-wide">Epaphras Ministries</p>
+            <p className="text-sm md:text-base text-gray-200 mt-2">Follow us on social media:</p>
+            <div className="flex justify-center md:justify-start mt-4 gap-6">
+              {/* Facebook Icon */}
               <Link
                 href="https://www.facebook.com/Epaphrasministrieshyd/"
                 target="_blank"
-                className="text-white hover:text-gray-300"
+                rel="noopener noreferrer" // Recommended for target="_blank" for security
+                className="text-white hover:text-blue-300 transform hover:scale-110 transition duration-300 text-2xl"
+                aria-label="Facebook"
               >
                 <FaFacebook />
               </Link>
-              <Link
-                href="#"
+              {/* Twitter Icon */}
+              {/* <Link
+                href="#" // Placeholder for Twitter link
                 target="_blank"
-                className="text-white hover:text-gray-300"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-300 transform hover:scale-110 transition duration-300 text-2xl"
+                aria-label="Twitter"
               >
                 <FaTwitter />
-              </Link>
+              </Link> */}
+              {/* YouTube Icon */}
               <Link
                 href="https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA"
                 target="_blank"
-                className="text-white hover:text-gray-300 "
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-300 transform hover:scale-110 transition duration-300 text-2xl"
+                aria-label="YouTube"
               >
                 <FaYoutube />
               </Link>
+              {/* <Link
+                href="#" // Placeholder for Instagram link
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-300 transform hover:scale-110 transition duration-300 text-2xl"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </Link> */}
             </div>
           </div>
-          <nav className="text-center md:text-right">
-            {footer.map((item, index) => (
+
+          {/* Navigation Links Section */}
+          <nav className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-center md:text-left"> {/* Changed to grid for 2 columns */}
+            {footerLinks.map((item, index) => (
               <Link
                 key={index}
                 href={item.href}
-                className="text-base hover:underline inline-block mr-4"
+                className="text-base md:text-lg text-gray-100 hover:text-white hover:underline hover:scale-105 transition-all duration-300 whitespace-nowrap" 
               >
                 {item.name}
               </Link>
@@ -282,11 +387,12 @@ export const Footer: React.FC = () => {
           </nav>
         </div>
       </div>
-      <div className="bg-black text-center py-4">
+
+      {/* Copyright Section */}
+      <div className="bg-blue-900 text-center py-4 px-6">
         <div className="container mx-auto">
-          <p className="text-xs">
-            &copy; {new Date().getFullYear()} Epaphras Ministries. All Rights
-            Reserved.
+          <p className="text-xs md:text-sm text-gray-300">
+            &copy; {new Date().getFullYear()} Epaphras Ministries. All Rights Reserved.
           </p>
         </div>
       </div>

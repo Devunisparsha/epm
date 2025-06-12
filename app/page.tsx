@@ -55,24 +55,16 @@ const MagazineDisplay: React.FC = () => {
     },
   ]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/magazines/")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.length != 0) {
-  //         setMagazine(data[data.length - 1]);
-  //       }
-  //     });
-  // }, []);
-
   return (
     <div className="px-5 md:px-20 pb-10 my-10">
-      <p className=" text-2xl font-bold  mb-4">Devuni Sparsha Magazine</p>
-      <div className="flex flex-wrap md:grid md:grid-flow-col  gap-10 ">
+      <p className="text-2xl font-bold mb-4">Devuni Sparsha Magazine</p>
+      <div className="flex flex-wrap md:grid md:grid-flow-col gap-10">
         {magazines.map((magazine, index) => (
           <div
             key={index}
-            className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden"
+            className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden
+                       transition-all duration-300 ease-in-out transform
+                       hover:scale-105 hover:shadow-lg" // Added hover animations here
           >
             <Image
               src={magazine.image.replace(
@@ -84,7 +76,7 @@ const MagazineDisplay: React.FC = () => {
               width={1920}
               height={1080}
             />
-            <div className="flex flex-col m-auto gap-14  p-4">
+            <div className="flex flex-col m-auto gap-14 p-4">
               <div className="my-auto">
                 <h3 className="text-xl font-medium mb-2">{magazine.name}</h3>
                 <p className="font-light text-md">{magazine.month}</p>
@@ -93,7 +85,9 @@ const MagazineDisplay: React.FC = () => {
                 href={magazine.download_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium
+                           hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                           transition-colors duration-200" // Added transition for button hover
               >
                 Download
                 <svg
