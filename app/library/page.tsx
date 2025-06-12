@@ -15,13 +15,13 @@ const LibraryPage: React.FC = () => {
     {
       name: "Devuni Sparsha ",
       month: "May June 2024",
-      image: "/magazine/may_jun_24.jpg",
+      image: "/magazine/may_jun_24.webp",
       download_url: "/magazine/sparsa_may-june_2024.pdf",
     },
     {
       name: "Devuni Sparsha ",
       month: "March April 2024",
-      image: "/magazine/mar_apr_24.jpg",
+      image: "/magazine/mar_apr_24.webp",
       download_url: "/magazine/sparsa_mar_Apr_2024.pdf",
     },
   ]);

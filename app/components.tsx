@@ -125,23 +125,23 @@ export const Carousel = () => {
   // State to manage the carousel items
   const [carousel, setCarousel] = useState([
     {
-      image: "/home/carousel/1.JPG",
+      image: "/home/carousel/1.webp",
       id: 1,
     },
     {
-      image: "/home/carousel/2.JPG",
+      image: "/home/carousel/2.webp",
       id: 2,
     },
     {
-      image: "/home/carousel/3.JPG",
+      image: "/home/carousel/3.webp",
       id: 3,
     },
     {
-      image: "/home/carousel/4.JPG",
+      image: "/home/carousel/4.webp",
       id: 4,
     },
     {
-      image: "/home/carousel/5.JPG",
+      image: "/home/carousel/5.webp",
       id: 5,
     },
   ]);

@@ -124,7 +124,7 @@ function Carousel() {
         {carousel.map((image, index) => (
           <div className="w-80 bg-fourth h-60" key={index}>
             <Image
-              src={image.image} // Assuming image.image is the path in your public directory (e.g., "/path/to/your/image.jpg")
+              src={image.image} // Assuming image.image is the path in your public directory (e.g., "/path/to/your/image.webp")
               alt={String(image.id)}
               className="bg-slate-400 w-full h-44 mx-auto object-cover"
               width={1920}

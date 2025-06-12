@@ -44,13 +44,13 @@ const MagazineDisplay: React.FC = () => {
     {
       name: "Devuni Sparsha ",
       month: "May June 2024",
-      image: "/magazine/may_jun_24.jpg",
+      image: "/magazine/may_jun_24.webp",
       download_url: "/magazine/sparsa_may-june_2024.pdf",
     },
     {
       name: "Devuni Sparsha ",
       month: "March April 2024",
-      image: "/magazine/mar_apr_24.jpg",
+      image: "/magazine/mar_apr_24.webp",
       download_url: "/magazine/sparsa_mar_Apr_2024.pdf",
     },
   ]);
@@ -135,22 +135,22 @@ const WorshipPlaces = () => {
     {
       id: 0,
       name: "Pedda Amberpet",
-      image: "/home/worshipPlace/peddaamberpet.jpg",
+      image: "/home/worshipPlace/peddaamberpet.webp",
     },
     {
       id: 1,
       name: "Bhagyalatha",
-      image: "/home/worshipPlace/bhagyalatha.jpg",
+      image: "/home/worshipPlace/bhagyalatha.webp",
     },
     {
       id: 2,
       name: "Chinthal",
-      image: "/home/worshipPlace/chinthal.jpg",
+      image: "/home/worshipPlace/chinthal.webp",
     },
     {
       id: 3,
       name: "Anajpur",
-      image: "/home/worshipPlace/anajpur.jpg",
+      image: "/home/worshipPlace/anajpur.webp",
     },
   ]);
 
