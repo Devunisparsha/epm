@@ -255,75 +255,73 @@ const WorshipPlaces = () => {
   };
 
   return (
-    <div className="px-5 md:px-20 pb-10 py-16  ">
+    <div className="px-5 md:px-20 pb-10 py-16">
       <h2 className="text-3xl font-bold mb-8">Worship Places & Prayers</h2>
       {/* <p className=" my-4 font-semibold">Click on the image to view the prayer details.</p> */}
-      <div className="flex overflow-scroll gap-10">
+      <div className="flex overflow-x-scroll gap-6 md:gap-10 p-2 -mx-2 md:mx-0">
         {worshipPlaces.map((place, index) => (
-          <div key={place.id} className="relative ">
-            <div className=" shadow-md rounded-xl w-100 my-3 h-[400px] bg-gradient-to-b from-white to-blue-100">
+          <div key={place.id} className="relative flex-none w-72 sm:w-80 md:w-96 lg:w-1/4 xl:w-1/5">
+            <div className="shadow-md rounded-xl w-full my-3 h-[400px] bg-gradient-to-b from-white to-blue-100 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"> {/* Added hover effects */}
               {place.image && (
                 <Image
                   src={place.image}
                   alt={`${place.name} Image`}
-                  className="w-80 h-2/3 rounded-t-xl"
+                  className="w-full h-2/3 object-cover rounded-t-xl"
                   width={7680}
                   height={4320}
                 />
               )}
-              <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">
+              <h3 className="p-4 text-lg text-center flex flex-col items-center justify-between flex-grow font-medium mb-2">
                 {place.name}
                 <button
                   onClick={() => onPopup(index, place.id)}
-                  className=" bg-blue-600 text-white px-2 py-1 w-fit rounded-2xl"
+                  className="bg-blue-600 text-white px-4 py-2 w-fit rounded-2xl mt-4 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:-translate-y-1" // Added hover effects
                 >
                   Click here
                 </button>
               </h3>
             </div>
             {popup === index && (
-              <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex flex-shrink justify-center items-center">
-                <div className="bg-white w-full md:w-[70%] rounded-md p-4 shadow-md">
-                  <table className="w-full table-auto">
+              // Backdrop with blur effect
+              <div
+                className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex justify-center items-center p-4" // backdrop-blur-sm added here
+                onClick={offPopup} // Clicking outside closes the popup
+              >
+                <div
+                  className="bg-white rounded-xl p-6 shadow-2xl transform transition-all duration-300 ease-out scale-95 md:scale-100 opacity-0 md:opacity-100 animate-fade-in-scale w-full md:w-[80%] lg:w-[70%] xl:w-[60%] max-h-[90vh] overflow-y-auto relative" // Enhanced popup styling and animation
+                  onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside popup
+                >
+                  <h4 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-3 border-gray-200">Prayer Details for {place.name}</h4> {/* Dynamic title */}
+                  <table className="w-full table-auto text-sm md:text-base border-collapse"> {/* border-collapse for cleaner table */}
                     <thead>
-                      <tr>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Day
-                        </th>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Time
-                        </th>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Description
-                        </th>
+                      <tr className="bg-gray-100"> {/* Header background */}
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tl-lg">Day</th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300">Time</th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tr-lg">Description</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {selectPrayers.map((prayer) => (
+                      {selectPrayers.map((prayer, prayerIndex) => (
                         <tr
                           key={prayer.id}
-                          className="border-b border-gray-200 hover:bg-gray-100"
+                          className={`${prayerIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors duration-200`} // Zebra striping and hover effect
                         >
-                          <td className="text-gray-600 py-1">{prayer.day}</td>
-                          <td className="text-gray-600 py-1">{prayer.time}</td>
-                          <td className="text-gray-600 py-1">
-                            {prayer.description}
-                          </td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.day}</td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.time}</td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.description}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  <button
-                    onClick={offPopup}
-                    className="mt-4 inline-flex items-center px-4 py-2 rounded-md bg-white text-indigo-600 font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Close
-                  </button>
+                  <div className="flex justify-end mt-8">
+                    <button
+                      onClick={offPopup}
+                      className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105" // More prominent close button
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
-                <button
-                  onClick={offPopup}
-                  className="absolute top-0 bottom-0 left-0 right-0 w-full h-full cursor-pointer"
-                ></button>
               </div>
             )}
           </div>
