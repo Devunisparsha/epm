@@ -271,7 +271,7 @@ const WorshipPlaces = () => {
                   onClick={() => onPopup(index, place.id)}
                   className="bg-blue-600 text-white px-4 py-2 w-fit rounded-2xl mt-4 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:-translate-y-1" // Added hover effects
                 >
-                  Click here
+                  Click Here
                 </button>
               </h3>
             </div>

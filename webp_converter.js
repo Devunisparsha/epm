@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 // --- Configuration ---
-const inputDir = './public'; // Directory where your webp/PNG images are located
-const outputDir = './public_webp'; // Directory where converted WebP images will be saved
-const webpQuality = 100; // WebP quality (0-100), 80 is a good balance for most cases
+const inputDir = './public og'; // Directory where your webp/PNG images are located
+const outputDir = './public'; // Directory where converted WebP images will be saved
+const webpQuality = 80; // WebP quality (0-100), 80 is a good balance for most cases
 
 // --- Helper Function to ensure directory exists ---
 function ensureDirectoryExistence(dirPath) {
@@ -44,7 +44,7 @@ async function convertImagesToWebP() {
         const outputFileWebP = path.join(currentOutputDir, `${fileNameWithoutExt}.webp`);
         const fileExtension = path.extname(file).toLowerCase();
 
-        if (fileExtension === '.webp' || fileExtension === '.jpeg' || fileExtension === '.png') {
+        if (fileExtension === '.webp' || fileExtension === '.jpeg'|| fileExtension === '.jpg' || fileExtension === '.png') {
           try {
             console.log(`Processing: ${currentInputPath}`);
             // Use sharp to read the image, convert to webp, and save

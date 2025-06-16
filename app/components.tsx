@@ -305,7 +305,7 @@ import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 /**
  * A responsive and visually appealing footer component for the website.
- * It includes navigation links, social media icons, and copyright information.
+ * It includes navigation links, Social Media icons, and copyright information.
  */
 export const Footer: React.FC = () => {
   // Navigation items for the footer
@@ -325,7 +325,7 @@ export const Footer: React.FC = () => {
           {/* Branding and Social Media Section */}
           <div className="text-center md:text-left mb-6 md:mb-0">
             <p className="text-2xl font-extrabold mb-2 tracking-wide">Epaphras Ministries</p>
-            <p className="text-sm md:text-base text-gray-200 mt-2">Follow us on social media:</p>
+            <p className="text-sm md:text-base text-gray-200 mt-2">Follow us on Social Media:</p>
             <div className="flex justify-center md:justify-start mt-4 gap-6">
               {/* Facebook Icon */}
               <Link
