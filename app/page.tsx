@@ -43,36 +43,28 @@ const MagazineDisplay: React.FC = () => {
   const [magazines, setMagazines] = useState<Magazine[]>([
     {
       name: "Devuni Sparsha ",
-      month: "May June 2024",
-      image: "/epm/magazine/may_jun_24.jpg",
-      download_url: "/epm/magazine/sparsa_may-june_2024.pdf",
+      month: "Jul Aug 2025",
+      image: "/magazine/jul_aug_2025.webp",
+      download_url: "/magazine/sparsha_jul_aug_2025.pdf",
     },
     {
       name: "Devuni Sparsha ",
-      month: "March April 2024",
-      image: "/epm/magazine/mar_apr_24.jpg",
-      download_url: "/epm/magazine/sparsa_mar_Apr_2024.pdf",
+      month: "May June 2025",
+      image: "/magazine/may_jun_2025.webp",
+      download_url: "/magazine/sparsha_may_jun_2025.pdf",
     },
   ]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/magazines/")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.length != 0) {
-  //         setMagazine(data[data.length - 1]);
-  //       }
-  //     });
-  // }, []);
-
   return (
     <div className="px-5 md:px-20 pb-10 my-10">
-      <p className=" text-2xl font-bold  mb-4">Devuni Sparsha Magazine</p>
-      <div className="flex flex-wrap md:grid md:grid-flow-col  gap-10 ">
+      <p className="text-2xl font-bold mb-4">Devuni Sparsha Magazine</p>
+      <div className="flex flex-wrap md:grid md:grid-flow-col gap-10">
         {magazines.map((magazine, index) => (
           <div
             key={index}
-            className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden"
+            className="flex bg-gradient-to-br from-indigo-100 to-blue-200 gap-4 justify-between rounded-3xl overflow-hidden
+                       transition-all duration-300 ease-in-out transform
+                       hover:scale-105 hover:shadow-lg" // Added hover animations here
           >
             <Image
               src={magazine.image.replace(
@@ -84,7 +76,7 @@ const MagazineDisplay: React.FC = () => {
               width={1920}
               height={1080}
             />
-            <div className="flex flex-col m-auto gap-14  p-4">
+            <div className="flex flex-col m-auto gap-14 p-4">
               <div className="my-auto">
                 <h3 className="text-xl font-medium mb-2">{magazine.name}</h3>
                 <p className="font-light text-md">{magazine.month}</p>
@@ -93,7 +85,9 @@ const MagazineDisplay: React.FC = () => {
                 href={magazine.download_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-white font-medium
+                           hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                           transition-colors duration-200" // Added transition for button hover
               >
                 Download
                 <svg
@@ -141,22 +135,22 @@ const WorshipPlaces = () => {
     {
       id: 0,
       name: "Pedda Amberpet",
-      image: "/epm/home/worshipPlace/peddaamberpet.jpg",
+      image: "/home/worshipPlace/peddaamberpet.webp",
     },
     {
       id: 1,
       name: "Bhagyalatha",
-      image: "/epm/home/worshipPlace/bhagyalatha.jpg",
+      image: "/home/worshipPlace/bhagyalatha.webp",
     },
     {
       id: 2,
       name: "Chinthal",
-      image: "/epm/home/worshipPlace/chinthal.jpg",
+      image: "/home/worshipPlace/chinthal.webp",
     },
     {
       id: 3,
       name: "Anajpur",
-      image: "/epm/home/worshipPlace/anajpur.jpg",
+      image: "/home/worshipPlace/anajpur.webp",
     },
   ]);
 
@@ -207,26 +201,33 @@ const WorshipPlaces = () => {
     {
       id: 6,
       day: "Sunday",
-      time: "7: 00 PM",
+      time: "10: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 2,
     },
     {
       id: 7,
+      day: "Sunday",
+      time: "7: 00 PM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 2,
+    },
+    {
+      id: 8,
       day: "Friday",
       time: "7: 00 PM",
       description: "Friday Worship",
       place: 2,
     },
     {
-      id: 8,
+      id: 9,
       day: "Sunday",
       time: "10: 00 AM",
       description: "పునరుత్థానపు ఆరాధన",
       place: 3,
     },
     {
-      id: 9,
+      id: 10,
       day: "Saturday",
       time: "7: 00 PM",
       description: "శనివారం ఉపవాస ప్రార్ధన",
@@ -255,75 +256,73 @@ const WorshipPlaces = () => {
   };
 
   return (
-    <div className="px-5 md:px-20 pb-10 py-16  ">
+    <div className="px-5 md:px-20 pb-10 py-16">
       <h2 className="text-3xl font-bold mb-8">Worship Places & Prayers</h2>
       {/* <p className=" my-4 font-semibold">Click on the image to view the prayer details.</p> */}
-      <div className="flex overflow-scroll gap-10">
+      <div className="flex overflow-x-scroll gap-6 md:gap-10 p-2 -mx-2 md:mx-0">
         {worshipPlaces.map((place, index) => (
-          <div key={place.id} className="relative ">
-            <div className=" shadow-md rounded-xl w-100 my-3 h-[400px] bg-gradient-to-b from-white to-blue-100">
+          <div key={place.id} className="relative flex-none w-72 sm:w-80 md:w-96 lg:w-1/4 xl:w-1/5">
+            <div className="shadow-md rounded-xl w-full my-3 h-[400px] bg-gradient-to-b from-white to-blue-100 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"> {/* Added hover effects */}
               {place.image && (
                 <Image
                   src={place.image}
                   alt={`${place.name} Image`}
-                  className="w-80 h-2/3 rounded-t-xl"
+                  className="w-full h-2/3 object-cover rounded-t-xl"
                   width={7680}
                   height={4320}
                 />
               )}
-              <h3 className="p-4 text-lg text-center flex flex-col items-center gap-5 font-medium mb-2">
+              <h3 className="p-4 text-lg text-center flex flex-col items-center justify-between flex-grow font-medium mb-2">
                 {place.name}
                 <button
                   onClick={() => onPopup(index, place.id)}
-                  className=" bg-blue-600 text-white px-2 py-1 w-fit rounded-2xl"
+                  className="bg-blue-600 text-white px-4 py-2 w-fit rounded-2xl mt-4 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:-translate-y-1" // Added hover effects
                 >
-                  Click here
+                  Click Here
                 </button>
               </h3>
             </div>
             {popup === index && (
-              <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex flex-shrink justify-center items-center">
-                <div className="bg-white w-full md:w-[70%] rounded-md p-4 shadow-md">
-                  <table className="w-full table-auto">
+              // Backdrop with blur effect
+              <div
+                className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex justify-center items-center p-4" // backdrop-blur-sm added here
+                onClick={offPopup} // Clicking outside closes the popup
+              >
+                <div
+                  className="bg-white rounded-xl p-6 shadow-2xl transform transition-all duration-300 ease-out scale-95 md:scale-100 opacity-0 md:opacity-100 animate-fade-in-scale w-full md:w-[80%] lg:w-[70%] xl:w-[60%] max-h-[90vh] overflow-y-auto relative" // Enhanced popup styling and animation
+                  onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside popup
+                >
+                  <h4 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-3 border-gray-200">Prayer Details for {place.name}</h4> {/* Dynamic title */}
+                  <table className="w-full table-auto text-sm md:text-base border-collapse"> {/* border-collapse for cleaner table */}
                     <thead>
-                      <tr>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Day
-                        </th>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Time
-                        </th>
-                        <th className="text-left font-medium pb-2 border-b border-gray-200">
-                          Description
-                        </th>
+                      <tr className="bg-gray-100"> {/* Header background */}
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tl-lg">Day</th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300">Time</th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tr-lg">Description</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {selectPrayers.map((prayer) => (
+                      {selectPrayers.map((prayer, prayerIndex) => (
                         <tr
                           key={prayer.id}
-                          className="border-b border-gray-200 hover:bg-gray-100"
+                          className={`${prayerIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors duration-200`} // Zebra striping and hover effect
                         >
-                          <td className="text-gray-600 py-1">{prayer.day}</td>
-                          <td className="text-gray-600 py-1">{prayer.time}</td>
-                          <td className="text-gray-600 py-1">
-                            {prayer.description}
-                          </td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.day}</td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.time}</td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.description}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  <button
-                    onClick={offPopup}
-                    className="mt-4 inline-flex items-center px-4 py-2 rounded-md bg-white text-indigo-600 font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Close
-                  </button>
+                  <div className="flex justify-end mt-8">
+                    <button
+                      onClick={offPopup}
+                      className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105" // More prominent close button
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
-                <button
-                  onClick={offPopup}
-                  className="absolute top-0 bottom-0 left-0 right-0 w-full h-full cursor-pointer"
-                ></button>
               </div>
             )}
           </div>
