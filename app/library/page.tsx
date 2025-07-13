@@ -16,6 +16,18 @@ const LibraryPage: React.FC = () => {
   const initialMagazines: Magazine[] = [
     {
       name: "Devuni Sparsha ",
+      month: "July August 2025",
+      image: "/magazine/jul_aug_2025.webp",
+      download_url: "/magazine/sparsha_jul_aug_2025.pdf",
+    },
+    {
+      name: "Devuni Sparsha ",
+      month: "May June 2025",
+      image: "/magazine/may_jun_2025.webp",
+      download_url: "/magazine/sparsha_may_jun_2025.pdf",
+    },
+    {
+      name: "Devuni Sparsha ",
       month: "May June 2024",
       image: "/magazine/may_jun_2024.webp",
       download_url: "/magazine/sparsa_may_june_2024.pdf",
