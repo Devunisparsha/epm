@@ -1,11 +1,11 @@
 // Import the sharp library
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
 
 // --- Configuration ---
-const inputDir = './public og'; // Directory where your webp/PNG images are located
-const outputDir = './public'; // Directory where converted WebP images will be saved
+const inputDir = "./public og"; // Directory where your webp/PNG images are located
+const outputDir = "./public"; // Directory where converted WebP images will be saved
 const webpQuality = 80; // WebP quality (0-100), 80 is a good balance for most cases
 
 // --- Helper Function to ensure directory exists ---
@@ -21,7 +21,9 @@ async function convertImagesToWebP() {
   ensureDirectoryExistence(inputDir);
   ensureDirectoryExistence(outputDir);
 
-  console.log(`\nStarting image conversion from '${inputDir}' to '${outputDir}'...`);
+  console.log(
+    `\nStarting image conversion from '${inputDir}' to '${outputDir}'...`,
+  );
 
   // Function to recursively process directories
   async function processDirectory(currentInputDir, currentOutputDir) {
@@ -41,10 +43,18 @@ async function convertImagesToWebP() {
       } else {
         // It's a file, check if it's an image
         const fileNameWithoutExt = path.parse(file).name;
-        const outputFileWebP = path.join(currentOutputDir, `${fileNameWithoutExt}.webp`);
+        const outputFileWebP = path.join(
+          currentOutputDir,
+          `${fileNameWithoutExt}.webp`,
+        );
         const fileExtension = path.extname(file).toLowerCase();
 
-        if (fileExtension === '.webp' || fileExtension === '.jpeg'|| fileExtension === '.jpg' || fileExtension === '.png') {
+        if (
+          fileExtension === ".webp" ||
+          fileExtension === ".jpeg" ||
+          fileExtension === ".jpg" ||
+          fileExtension === ".png"
+        ) {
           try {
             console.log(`Processing: ${currentInputPath}`);
             // Use sharp to read the image, convert to webp, and save
@@ -52,12 +62,19 @@ async function convertImagesToWebP() {
               .webp({ quality: webpQuality }) // Convert to WebP with specified quality
               .toFile(outputFileWebP); // Save the output file
 
-            console.log(`  -> Converted: ${path.relative(inputDir, currentInputPath)} to ${path.relative(outputDir, outputFileWebP)}`);
+            console.log(
+              `  -> Converted: ${path.relative(inputDir, currentInputPath)} to ${path.relative(outputDir, outputFileWebP)}`,
+            );
           } catch (error) {
-            console.error(`  -> Error converting ${path.relative(inputDir, currentInputPath)}:`, error.message);
+            console.error(
+              `  -> Error converting ${path.relative(inputDir, currentInputPath)}:`,
+              error.message,
+            );
           }
         } else {
-          console.log(`Skipping non-image file: ${path.relative(inputDir, currentInputPath)}`);
+          console.log(
+            `Skipping non-image file: ${path.relative(inputDir, currentInputPath)}`,
+          );
         }
       }
     }
@@ -66,7 +83,7 @@ async function convertImagesToWebP() {
   // Start the recursive process from the base input directory
   await processDirectory(inputDir, outputDir);
 
-  console.log('\nImage conversion process completed!');
+  console.log("\nImage conversion process completed!");
 }
 
 // --- Run the conversion ---

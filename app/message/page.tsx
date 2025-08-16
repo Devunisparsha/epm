@@ -23,7 +23,7 @@ const videos: Video[] = [
     title: "Devuni Sparsha",
     description: "",
     youtubeUrl: "https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA",
-    thumbnailUrl: "/images/default-thumbnail.webp", // Added a placeholder thumbnail
+    thumbnailUrl: "/message/banner.jpg", // Added a placeholder thumbnail
   },
   // ... more videos
 ];

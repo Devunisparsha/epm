@@ -52,278 +52,280 @@ const LibraryPage: React.FC = () => {
     },
     {
       name: "Devuni Sparsha ",
-      "month": "Jan Feb 2016",
-      "image": "/magazine/jan_feb_2016.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2016.pdf"
+      month: "Jan Feb 2016",
+      image: "/magazine/jan_feb_2016.webp",
+      download_url: "/magazine/sparsha_jan_feb_2016.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2016",
-      "image": "/magazine/mar_apr_2016.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2016.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2016",
+      image: "/magazine/mar_apr_2016.webp",
+      download_url: "/magazine/sparsha_mar_apr_2016.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2016",
-      "image": "/magazine/may_jun_2016.webp",
-      "download_url": "/magazine/sparsha_may_jun_2016.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2016",
+      image: "/magazine/may_jun_2016.webp",
+      download_url: "/magazine/sparsha_may_jun_2016.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2016",
-      "image": "/magazine/jul_aug_2016.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2016.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2016",
+      image: "/magazine/jul_aug_2016.webp",
+      download_url: "/magazine/sparsha_jul_aug_2016.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2016",
-      "image": "/magazine/sep_oct_2016.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2016.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2016",
+      image: "/magazine/sep_oct_2016.webp",
+      download_url: "/magazine/sparsha_sep_oct_2016.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2015",
-      "image": "/magazine/jan_feb_2015.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2015",
+      image: "/magazine/jan_feb_2015.webp",
+      download_url: "/magazine/sparsha_jan_feb_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2015",
-      "image": "/magazine/mar_apr_2015.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2015",
+      image: "/magazine/mar_apr_2015.webp",
+      download_url: "/magazine/sparsha_mar_apr_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2015",
-      "image": "/magazine/may_jun_2015.webp",
-      "download_url": "/magazine/sparsha_may_jun_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2015",
+      image: "/magazine/may_jun_2015.webp",
+      download_url: "/magazine/sparsha_may_jun_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2015",
-      "image": "/magazine/jul_aug_2015.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2015",
+      image: "/magazine/jul_aug_2015.webp",
+      download_url: "/magazine/sparsha_jul_aug_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2015",
-      "image": "/magazine/sep_oct_2015.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2015",
+      image: "/magazine/sep_oct_2015.webp",
+      download_url: "/magazine/sparsha_sep_oct_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2015",
-      "image": "/magazine/nov_dec_2015.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2015.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2015",
+      image: "/magazine/nov_dec_2015.webp",
+      download_url: "/magazine/sparsha_nov_dec_2015.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2014",
-      "image": "/magazine/jan_feb_2014.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2014",
+      image: "/magazine/jan_feb_2014.webp",
+      download_url: "/magazine/sparsha_jan_feb_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2014",
-      "image": "/magazine/mar_apr_2014.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2014",
+      image: "/magazine/mar_apr_2014.webp",
+      download_url: "/magazine/sparsha_mar_apr_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2014",
-      "image": "/magazine/may_jun_2014.webp",
-      "download_url": "/magazine/sparsha_may_jun_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2014",
+      image: "/magazine/may_jun_2014.webp",
+      download_url: "/magazine/sparsha_may_jun_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2014",
-      "image": "/magazine/jul_aug_2014.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2014",
+      image: "/magazine/jul_aug_2014.webp",
+      download_url: "/magazine/sparsha_jul_aug_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2014",
-      "image": "/magazine/sep_oct_2014.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2014",
+      image: "/magazine/sep_oct_2014.webp",
+      download_url: "/magazine/sparsha_sep_oct_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2014",
-      "image": "/magazine/nov_dec_2014.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2014.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2014",
+      image: "/magazine/nov_dec_2014.webp",
+      download_url: "/magazine/sparsha_nov_dec_2014.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2013",
-      "image": "/magazine/jan_feb_2013.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2013.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2013",
+      image: "/magazine/jan_feb_2013.webp",
+      download_url: "/magazine/sparsha_jan_feb_2013.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2013",
-      "image": "/magazine/mar_apr_2013.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2013.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2013",
+      image: "/magazine/mar_apr_2013.webp",
+      download_url: "/magazine/sparsha_mar_apr_2013.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2013",
-      "image": "/magazine/jul_aug_2013.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2013.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2013",
+      image: "/magazine/jul_aug_2013.webp",
+      download_url: "/magazine/sparsha_jul_aug_2013.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2013",
-      "image": "/magazine/sep_oct_2013.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2013.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2013",
+      image: "/magazine/sep_oct_2013.webp",
+      download_url: "/magazine/sparsha_sep_oct_2013.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2013",
-      "image": "/magazine/nov_dec_2013.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2013.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2013",
+      image: "/magazine/nov_dec_2013.webp",
+      download_url: "/magazine/sparsha_nov_dec_2013.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2012",
-      "image": "/magazine/jan_feb_2012.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2012",
+      image: "/magazine/jan_feb_2012.webp",
+      download_url: "/magazine/sparsha_jan_feb_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2012",
-      "image": "/magazine/mar_apr_2012.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2012",
+      image: "/magazine/mar_apr_2012.webp",
+      download_url: "/magazine/sparsha_mar_apr_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2012",
-      "image": "/magazine/may_jun_2012.webp",
-      "download_url": "/magazine/sparsha_may_jun_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2012",
+      image: "/magazine/may_jun_2012.webp",
+      download_url: "/magazine/sparsha_may_jun_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2012",
-      "image": "/magazine/jul_aug_2012.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2012",
+      image: "/magazine/jul_aug_2012.webp",
+      download_url: "/magazine/sparsha_jul_aug_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2012",
-      "image": "/magazine/sep_oct_2012.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2012",
+      image: "/magazine/sep_oct_2012.webp",
+      download_url: "/magazine/sparsha_sep_oct_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2012",
-      "image": "/magazine/nov_dec_2012.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2012.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2012",
+      image: "/magazine/nov_dec_2012.webp",
+      download_url: "/magazine/sparsha_nov_dec_2012.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2011",
-      "image": "/magazine/jan_feb_2011.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2011",
+      image: "/magazine/jan_feb_2011.webp",
+      download_url: "/magazine/sparsha_jan_feb_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2011",
-      "image": "/magazine/mar_apr_2011.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2011",
+      image: "/magazine/mar_apr_2011.webp",
+      download_url: "/magazine/sparsha_mar_apr_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2011",
-      "image": "/magazine/may_jun_2011.webp",
-      "download_url": "/magazine/sparsha_may_jun_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2011",
+      image: "/magazine/may_jun_2011.webp",
+      download_url: "/magazine/sparsha_may_jun_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2011",
-      "image": "/magazine/jul_aug_2011.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2011",
+      image: "/magazine/jul_aug_2011.webp",
+      download_url: "/magazine/sparsha_jul_aug_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2011",
-      "image": "/magazine/sep_oct_2011.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2011",
+      image: "/magazine/sep_oct_2011.webp",
+      download_url: "/magazine/sparsha_sep_oct_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2011",
-      "image": "/magazine/nov_dec_2011.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2011.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2011",
+      image: "/magazine/nov_dec_2011.webp",
+      download_url: "/magazine/sparsha_nov_dec_2011.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2010",
-      "image": "/magazine/jan_feb_2010.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2010.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2010",
+      image: "/magazine/jan_feb_2010.webp",
+      download_url: "/magazine/sparsha_jan_feb_2010.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Mar Apr 2010",
-      "image": "/magazine/mar_apr_2010.webp",
-      "download_url": "/magazine/sparsha_mar_apr_2010.pdf"
+      name: "Devuni Sparsha ",
+      month: "Mar Apr 2010",
+      image: "/magazine/mar_apr_2010.webp",
+      download_url: "/magazine/sparsha_mar_apr_2010.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "May June 2010",
-      "image": "/magazine/may_jun_2010.webp",
-      "download_url": "/magazine/sparsha_may_jun_2010.pdf"
+      name: "Devuni Sparsha ",
+      month: "May June 2010",
+      image: "/magazine/may_jun_2010.webp",
+      download_url: "/magazine/sparsha_may_jun_2010.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2010",
-      "image": "/magazine/sep_oct_2010.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2010.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2010",
+      image: "/magazine/sep_oct_2010.webp",
+      download_url: "/magazine/sparsha_sep_oct_2010.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2010",
-      "image": "/magazine/nov_dec_2010.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2010.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2010",
+      image: "/magazine/nov_dec_2010.webp",
+      download_url: "/magazine/sparsha_nov_dec_2010.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2008",
-      "image": "/magazine/nov_dec_2008.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2008.pdf"
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2008",
+      image: "/magazine/nov_dec_2008.webp",
+      download_url: "/magazine/sparsha_nov_dec_2008.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jan Feb 2009",
-      "image": "/magazine/jan_feb_2009.webp",
-      "download_url": "/magazine/sparsha_jan_feb_2009.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jan Feb 2009",
+      image: "/magazine/jan_feb_2009.webp",
+      download_url: "/magazine/sparsha_jan_feb_2009.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Jul Aug 2009",
-      "image": "/magazine/jul_aug_2009.webp",
-      "download_url": "/magazine/sparsha_jul_aug_2009.pdf"
+      name: "Devuni Sparsha ",
+      month: "Jul Aug 2009",
+      image: "/magazine/jul_aug_2009.webp",
+      download_url: "/magazine/sparsha_jul_aug_2009.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Sep Oct 2009",
-      "image": "/magazine/sep_oct_2009.webp",
-      "download_url": "/magazine/sparsha_sep_oct_2009.pdf"
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2009",
+      image: "/magazine/sep_oct_2009.webp",
+      download_url: "/magazine/sparsha_sep_oct_2009.pdf",
     },
     {
-      "name": "Devuni Sparsha ",
-      "month": "Nov Dec 2009",
-      "image": "/magazine/nov_dec_2009.webp",
-      "download_url": "/magazine/sparsha_nov_dec_2009.pdf"
-    }
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2009",
+      image: "/magazine/nov_dec_2009.webp",
+      download_url: "/magazine/sparsha_nov_dec_2009.pdf",
+    },
   ];
 
-  const [allMagazines, setAllMagazines] = useState<Magazine[]>(initialMagazines);
-  const [filteredMagazines, setFilteredMagazines] = useState<Magazine[]>(initialMagazines);
+  const [allMagazines, setAllMagazines] =
+    useState<Magazine[]>(initialMagazines);
+  const [filteredMagazines, setFilteredMagazines] =
+    useState<Magazine[]>(initialMagazines);
   const [selectedYear, setSelectedYear] = useState<string>("All"); // State to hold the selected year
 
   // Extract unique years from the magazines data
   const getUniqueYears = (magazines: Magazine[]): string[] => {
     const years = new Set<string>();
-    magazines.forEach(magazine => {
+    magazines.forEach((magazine) => {
       const yearMatch = magazine.month.match(/\d{4}/);
       if (yearMatch) {
         years.add(yearMatch[0]);
@@ -340,8 +342,8 @@ const LibraryPage: React.FC = () => {
     if (selectedYear === "All") {
       setFilteredMagazines(allMagazines);
     } else {
-      const filtered = allMagazines.filter(magazine =>
-        magazine.month.includes(selectedYear)
+      const filtered = allMagazines.filter((magazine) =>
+        magazine.month.includes(selectedYear),
       );
       setFilteredMagazines(filtered);
     }
@@ -357,7 +359,6 @@ const LibraryPage: React.FC = () => {
   //     });
   // }, []);
 
-
   return (
     <div className=" md:mx-20 my-10 mx-[2%]">
       <p className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">
@@ -367,7 +368,9 @@ const LibraryPage: React.FC = () => {
       <div className="flex justify-between items-center mb-4">
         <p className="text-xl">Devuni Sparsha Magazines</p>
         <div className="flex items-center">
-          <label htmlFor="year-select" className="mr-2 font-medium">Filter by Year:</label>
+          <label htmlFor="year-select" className="mr-2 font-medium">
+            Filter by Year:
+          </label>
           <select
             id="year-select"
             value={selectedYear}
@@ -423,8 +426,19 @@ const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
                     aria-label={`Download ${item.name} for ${item.month}`}
                   >
                     Download PDF
-                    <svg className="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <svg
+                      className="ml-2 -mr-1 h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
                     </svg>
                   </Link>
                 </td>

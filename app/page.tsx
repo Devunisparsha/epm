@@ -261,8 +261,13 @@ const WorshipPlaces = () => {
       {/* <p className=" my-4 font-semibold">Click on the image to view the prayer details.</p> */}
       <div className="flex overflow-x-scroll gap-6 md:gap-10 p-2 -mx-2 md:mx-0">
         {worshipPlaces.map((place, index) => (
-          <div key={place.id} className="relative flex-none w-72 sm:w-80 md:w-96 lg:w-1/4 xl:w-1/5">
-            <div className="shadow-md rounded-xl w-full my-3 h-[400px] bg-gradient-to-b from-white to-blue-100 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"> {/* Added hover effects */}
+          <div
+            key={place.id}
+            className="relative flex-none w-72 sm:w-80 md:w-96 lg:w-1/4 xl:w-1/5"
+          >
+            <div className="shadow-md rounded-xl w-full my-3 h-[400px] bg-gradient-to-b from-white to-blue-100 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+              {" "}
+              {/* Added hover effects */}
               {place.image && (
                 <Image
                   src={place.image}
@@ -292,24 +297,43 @@ const WorshipPlaces = () => {
                   className="bg-white rounded-xl p-6 shadow-2xl transform transition-all duration-300 ease-out scale-95 md:scale-100 opacity-0 md:opacity-100 animate-fade-in-scale w-full md:w-[80%] lg:w-[70%] xl:w-[60%] max-h-[90vh] overflow-y-auto relative" // Enhanced popup styling and animation
                   onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside popup
                 >
-                  <h4 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-3 border-gray-200">Prayer Details for {place.name}</h4> {/* Dynamic title */}
-                  <table className="w-full table-auto text-sm md:text-base border-collapse"> {/* border-collapse for cleaner table */}
+                  <h4 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-3 border-gray-200">
+                    Prayer Details for {place.name}
+                  </h4>{" "}
+                  {/* Dynamic title */}
+                  <table className="w-full table-auto text-sm md:text-base border-collapse">
+                    {" "}
+                    {/* border-collapse for cleaner table */}
                     <thead>
-                      <tr className="bg-gray-100"> {/* Header background */}
-                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tl-lg">Day</th>
-                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300">Time</th>
-                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tr-lg">Description</th>
+                      <tr className="bg-gray-100">
+                        {" "}
+                        {/* Header background */}
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tl-lg">
+                          Day
+                        </th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300">
+                          Time
+                        </th>
+                        <th className="text-left font-semibold py-3 px-4 border-b border-gray-300 rounded-tr-lg">
+                          Description
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {selectPrayers.map((prayer, prayerIndex) => (
                         <tr
                           key={prayer.id}
-                          className={`${prayerIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors duration-200`} // Zebra striping and hover effect
+                          className={`${prayerIndex % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors duration-200`} // Zebra striping and hover effect
                         >
-                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.day}</td>
-                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.time}</td>
-                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">{prayer.description}</td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">
+                            {prayer.day}
+                          </td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">
+                            {prayer.time}
+                          </td>
+                          <td className="text-gray-700 py-3 px-4 border-b border-gray-200">
+                            {prayer.description}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
