@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <Carousel />
-      <EpaphraMinistries />
+      <EpaphrasMinistries />
       <WorshipPlaces />
       <MagazineDisplay />
     </main>
@@ -16,7 +16,7 @@ export default function Home() {
 // ---------------- About --------------
 import React from "react";
 
-export function EpaphraMinistries() {
+export function EpaphrasMinistries() {
   return (
     <div className="bg-white text-gray-800 font-sans min-h-screen">
       {/* Header Section */}
@@ -27,7 +27,7 @@ export function EpaphraMinistries() {
             <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-gray-200 flex items-center justify-center shadow-md">
               <img
                 src="/Logo.png"
-                alt="Epaphra Ministries Logo"
+                alt="Epaphras Ministries Logo"
                 className="h-20 w-20 sm:h-24 sm:w-24 rounded-full shadow-md"
               />
             </div>
@@ -42,7 +42,7 @@ export function EpaphraMinistries() {
           </h1>
 
           <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-gray-600">
-            A Life of Example — The Journey of Epaphra Ministries
+            A Life of Example — The Journey of Epaphras Ministries
           </h2>
         </div>
       </header>
@@ -79,7 +79,7 @@ export function EpaphraMinistries() {
         {/* English Content */}
         <div className="space-y-6 text-base sm:text-lg leading-relaxed">
           <p>
-            Brother Epaphra began teaching the love of Christ to two individuals
+            Brother Epaphras began teaching the love of Christ to two individuals
             in 1998. According to God's will, in 2004, he established Epaphra
             Ministries. Through worship services and gospel meetings held around
             Hyderabad, they prepare unbelievers and nominal Christians for the
