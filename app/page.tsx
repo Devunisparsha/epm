@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <Carousel />
-      <EpaphrasMinistries />
+      <EpaphraMinistries />
       <WorshipPlaces />
       <MagazineDisplay />
     </main>
@@ -16,7 +16,7 @@ export default function Home() {
 // ---------------- About --------------
 import React from "react";
 
-export function EpaphrasMinistries() {
+export function EpaphraMinistries() {
   return (
     <div className="bg-white text-gray-800 font-sans min-h-screen">
       {/* Header Section */}
