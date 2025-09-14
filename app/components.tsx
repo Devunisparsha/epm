@@ -358,18 +358,39 @@ export const YouthRetreat = () => {
           </p>
 
           {/* Tagline in Telugu */}
-          <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-8 leading-snug">
-            దేవుని ప్రేమను అనుభవించి, కొత్తగా జీవించండి! </p>
+          <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-6 leading-snug">
+            దేవుని ప్రేమను అనుభవించి, కొత్తగా జీవించండి!
+          </p>
+
+          {/* Event Info Boxes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {/* Date Box */}
+            <div className="bg-[#EEF2FF] border border-[#CBD5E1] rounded-xl shadow-sm px-5 py-4 text-left">
+              <h3 className="text-[#2D3ED2] font-semibold text-lg mb-2">📅 Dates</h3>
+              <p className="text-gray-800 font-medium text-base">September 22 – 24, 2025</p>
+            </div>
+
+            {/* Venue Box */}
+            <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl shadow-sm px-5 py-4 text-left">
+              <h3 className="text-green-700 font-semibold text-lg mb-2">📍 Venue</h3>
+              <p className="text-gray-800 text-base leading-relaxed">
+                WORD AND DEED HIGH SCHOOL, Vijayawada Hwy, Samson Colony, Hayathnagar_Khalsa, Hyderabad, Telangana 501505
+              </p>
+            </div>
+          </div>
+
+          {/* Register Button */}
           <a
             href={googleFormLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-[#2D3ED2] text-white font-semibold text-md sm:text-lg py-3 px-8 rounded-full shadow-lg hover:bg-[#1f2aad] focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 transform hover:scale-105"
           >
-            Register Now
+            Enroll Now
           </a>
         </div>
       </div>
     </>
   );
 };
+
