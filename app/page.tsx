@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
-import { Carousel } from "./components";
+import { Carousel, YouthRetreat } from "./components";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
       <Carousel />
+      <YouthRetreat/>
       <EpaphraMinistries />
       <WorshipPlaces />
       <MagazineDisplay />

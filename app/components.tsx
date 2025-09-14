@@ -183,9 +183,8 @@ export const Carousel = () => {
             key={item.id}
             src={item.image}
             alt={`Slide ${index + 1}`}
-            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
           />
         ))}
       </div>
@@ -196,10 +195,9 @@ export const Carousel = () => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 md:w-4 md:h-4 rounded-full bg-white transition-all transform duration-300
-              ${
-                index === currentIndex
-                  ? "scale-125 ring-2 ring-blue-500 shadow-md"
-                  : "opacity-70 hover:opacity-100"
+              ${index === currentIndex
+                ? "scale-125 ring-2 ring-blue-500 shadow-md"
+                : "opacity-70 hover:opacity-100"
               }
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300`}
             aria-label={`Go to slide ${index + 1}`}
@@ -314,5 +312,64 @@ export const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+  );
+};
+
+
+import Head from 'next/head';
+
+export const YouthRetreat = () => {
+  const googleFormLink = 'https://forms.gle/5zrt3denr5RBcQqHA';
+
+  return (
+    <>
+      <Head>
+        <title>Epaphras Ministries Youth Retreat 2025</title>
+        <meta
+          name="description"
+          content="Join us for a spiritual journey at the Epaphras Ministries Youth Retreat!"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="relative bg-gradient-to-br from-[#2D3ED2] via-[#3DC4F0] to-[#9C8CF3] min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+        {/* Decorative Blurs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-72 h-72 bg-white opacity-10 rounded-full top-[-4rem] left-[-4rem] blur-3xl"></div>
+          <div className="absolute w-96 h-96 bg-white opacity-10 rounded-full bottom-[-6rem] right-[-6rem] blur-3xl"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="relative z-10 bg-white/90 backdrop-blur-md p-10 sm:p-12 rounded-3xl shadow-2xl max-w-2xl w-full text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Epaphras Ministries
+          </h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#2D3ED2] mb-6">
+            Youth Retreat 2025
+          </h2>
+
+          <p className="text-gray-700 text-md sm:text-lg md:text-xl mb-4 leading-relaxed">
+            Join us for a powerful weekend of worship, growth, and unforgettable memories.
+          </p>
+
+          {/* Tagline in English */}
+          <p className="text-gray-800 font-medium text-sm sm:text-base md:text-lg italic mb-2">
+            "Encounter God. Embrace Purpose. Ignite Your Faith."
+          </p>
+
+          {/* Tagline in Telugu */}
+          <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-8 leading-snug">
+            దేవుని ప్రేమను అనుభవించి, కొత్తగా జీవించండి! </p>
+          <a
+            href={googleFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#2D3ED2] text-white font-semibold text-md sm:text-lg py-3 px-8 rounded-full shadow-lg hover:bg-[#1f2aad] focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 transform hover:scale-105"
+          >
+            Register Now
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
