@@ -367,7 +367,7 @@ export const YouthRetreat = () => {
             {/* Date Box */}
             <div className="bg-[#EEF2FF] border border-[#CBD5E1] rounded-xl shadow-sm px-5 py-4 text-left">
               <h3 className="text-[#2D3ED2] font-semibold text-lg mb-2">📅 Dates</h3>
-              <p className="text-gray-800 font-medium text-base">September 22 – 24, 2025</p>
+              <p className="text-gray-800 font-medium text-base">September 23 – 25, 2025</p>
             </div>
 
             {/* Venue Box */}
