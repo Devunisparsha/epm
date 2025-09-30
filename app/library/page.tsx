@@ -500,6 +500,12 @@ const LibraryPage: React.FC = () => {
       image: "/magazine/jul_aug_2025.webp",
       download_url: "/magazine/sparsha_jul_aug_2025.pdf",
     },
+    {
+      name: "Devuni Sparsha ",
+      month: "Sep Oct 2025",
+      image: "/magazine/sep_oct_2025.webp",
+      download_url: "https://drive.google.com/file/d/14-dVK1GAbNNUlfivRclDfGfbBh3cM760/view?usp=sharing",
+    },
   ];
 
   const [allMagazines, setAllMagazines] =
