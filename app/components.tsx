@@ -139,7 +139,7 @@ export const Carousel = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length
+      (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length,
     );
   };
 
@@ -183,8 +183,9 @@ export const Carousel = () => {
             key={item.id}
             src={item.image}
             alt={`Slide ${index + 1}`}
-            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+            className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-700 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
           />
         ))}
       </div>
@@ -195,9 +196,10 @@ export const Carousel = () => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 md:w-4 md:h-4 rounded-full bg-white transition-all transform duration-300
-              ${index === currentIndex
-                ? "scale-125 ring-2 ring-blue-500 shadow-md"
-                : "opacity-70 hover:opacity-100"
+              ${
+                index === currentIndex
+                  ? "scale-125 ring-2 ring-blue-500 shadow-md"
+                  : "opacity-70 hover:opacity-100"
               }
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300`}
             aria-label={`Go to slide ${index + 1}`}
@@ -315,11 +317,10 @@ export const Footer: React.FC = () => {
   );
 };
 
-
-import Head from 'next/head';
+import Head from "next/head";
 
 export const YouthRetreat = () => {
-  const googleFormLink = 'https://forms.gle/5zrt3denr5RBcQqHA';
+  const googleFormLink = "https://forms.gle/5zrt3denr5RBcQqHA";
 
   return (
     <>
@@ -349,7 +350,8 @@ export const YouthRetreat = () => {
           </h2>
 
           <p className="text-gray-700 text-md sm:text-lg md:text-xl mb-4 leading-relaxed">
-            Join us for a powerful weekend of worship, growth, and unforgettable memories.
+            Join us for a powerful weekend of worship, growth, and unforgettable
+            memories.
           </p>
 
           {/* Tagline in English */}
@@ -366,15 +368,22 @@ export const YouthRetreat = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             {/* Date Box */}
             <div className="bg-[#EEF2FF] border border-[#CBD5E1] rounded-xl shadow-sm px-5 py-4 text-left">
-              <h3 className="text-[#2D3ED2] font-semibold text-lg mb-2">📅 Dates</h3>
-              <p className="text-gray-800 font-medium text-base">September 23 – 25, 2025</p>
+              <h3 className="text-[#2D3ED2] font-semibold text-lg mb-2">
+                📅 Dates
+              </h3>
+              <p className="text-gray-800 font-medium text-base">
+                September 23 – 25, 2025
+              </p>
             </div>
 
             {/* Venue Box */}
             <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl shadow-sm px-5 py-4 text-left">
-              <h3 className="text-green-700 font-semibold text-lg mb-2">📍 Venue</h3>
+              <h3 className="text-green-700 font-semibold text-lg mb-2">
+                📍 Venue
+              </h3>
               <p className="text-gray-800 text-base leading-relaxed">
-                WORD AND DEED HIGH SCHOOL, Vijayawada Hwy, Samson Colony, Hayathnagar_Khalsa, Hyderabad, Telangana 501505
+                WORD AND DEED HIGH SCHOOL, Vijayawada Hwy, Samson Colony,
+                Hayathnagar_Khalsa, Hyderabad, Telangana 501505
               </p>
             </div>
           </div>
@@ -393,4 +402,3 @@ export const YouthRetreat = () => {
     </>
   );
 };
-
