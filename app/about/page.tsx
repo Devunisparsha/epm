@@ -6,7 +6,7 @@ import Image from "next/image";
 const AboutUs: React.FC = () => {
   const [about] = useState({
     image: "/aboutus/1.webp",
-    description:`
+    description: `
 Bro. Epaphras came to know the Lord personally in the year 1990 and the truth and love which he experienced through the Lord Jesus Christ inspired him to share this good news to two persons initially and later on grew in the Lord. By the will of God, he established Epaphras Ministry in the year 2004 and started serving the Lord in full-time ministry, in and around Hyderabad.
 
 He always exhorts people saying that it is not enough to proclaim the Gospel or good news but it is significantly important that we need to live by what we preach and thereby we can attract many persons to the living Christ. He always encourages people that we have only one life to live on this earth and we need to offer ourselves to Christ and be a blessing and a source of inspiration to people around us.

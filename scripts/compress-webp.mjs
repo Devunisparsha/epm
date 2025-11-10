@@ -44,7 +44,7 @@ async function compressImage(src, dst, options) {
   const after = await getFileSize(dst);
 
   console.log(
-    `✅ ${path.basename(src)} → ${path.basename(dst)} | ${before} → ${after}`
+    `✅ ${path.basename(src)} → ${path.basename(dst)} | ${before} → ${after}`,
   );
 }
 
@@ -98,7 +98,8 @@ const args = process.argv.slice(2);
 const options = {
   input: args[0] || "public/",
   output: args[1] || "public_compressed",
-  quality: parseInt(args.find((a) => a.startsWith("--q="))?.split("=")[1]) || 70,
+  quality:
+    parseInt(args.find((a) => a.startsWith("--q="))?.split("=")[1]) || 70,
   lossless: args.includes("--lossless"),
   overwrite: args.includes("--overwrite"),
   maxWidth: parseInt(args.find((a) => a.startsWith("--w="))?.split("=")[1]),

@@ -51,7 +51,7 @@ async function compressImage(src, dst, options) {
   const saved = (((before - after) / before) * 100).toFixed(1);
 
   console.log(
-    `✅ (WebP) ${path.basename(src)} | ${formatSize(before)} → ${formatSize(after)} (${saved}% saved)`
+    `✅ (WebP) ${path.basename(src)} | ${formatSize(before)} → ${formatSize(after)} (${saved}% saved)`,
   );
 }
 
@@ -100,18 +100,25 @@ async function compressPDF(inputFile, outputFile, maxSizeMB = 5) {
 
   for (let i = 0; i < strategies.length; i++) {
     const strat = strategies[i];
-    const currentOutputFile = (i === strategies.length - 1 || after / 1024 / 1024 <= maxSizeMB)
-                                ? outputFile
-                                : path.join(path.dirname(outputFile), `temp_${path.basename(outputFile)}`);
-
+    const currentOutputFile =
+      i === strategies.length - 1 || after / 1024 / 1024 <= maxSizeMB
+        ? outputFile
+        : path.join(
+            path.dirname(outputFile),
+            `temp_${path.basename(outputFile)}`,
+          );
 
     try {
-      await runGhostscript(currentInputForNextPass, currentOutputFile, strat.args);
+      await runGhostscript(
+        currentInputForNextPass,
+        currentOutputFile,
+        strat.args,
+      );
       after = (await fs.stat(currentOutputFile)).size;
       chosenStrategyName = strat.name;
 
       console.log(
-        `   ⚙️ ${strat.name}: ${formatSize(before)} → ${formatSize(after)}`
+        `   ⚙️ ${strat.name}: ${formatSize(before)} → ${formatSize(after)}`,
       );
 
       if (after / 1024 / 1024 <= maxSizeMB) {
@@ -124,38 +131,67 @@ async function compressPDF(inputFile, outputFile, maxSizeMB = 5) {
       if (i < strategies.length - 1) {
         currentInputForNextPass = currentOutputFile;
       }
-
     } catch (err) {
-      console.error(`Error with strategy ${strat.name} for ${inputFile}: ${err.message}`);
+      console.error(
+        `Error with strategy ${strat.name} for ${inputFile}: ${err.message}`,
+      );
       currentInputForNextPass = inputFile;
-      if (currentOutputFile !== outputFile && await fs.access(currentOutputFile).then(() => true).catch(() => false)) {
-          await fs.unlink(currentOutputFile);
+      if (
+        currentOutputFile !== outputFile &&
+        (await fs
+          .access(currentOutputFile)
+          .then(() => true)
+          .catch(() => false))
+      ) {
+        await fs.unlink(currentOutputFile);
       }
     }
   }
 
-  const finalOutputExists = await fs.access(outputFile).then(() => true).catch(() => false);
-  if (!finalOutputExists && currentInputForNextPass !== inputFile && await fs.access(currentInputForNextPass).then(() => true).catch(() => false)) {
-      await fs.rename(currentInputForNextPass, outputFile);
-      after = (await fs.stat(outputFile)).size;
+  const finalOutputExists = await fs
+    .access(outputFile)
+    .then(() => true)
+    .catch(() => false);
+  if (
+    !finalOutputExists &&
+    currentInputForNextPass !== inputFile &&
+    (await fs
+      .access(currentInputForNextPass)
+      .then(() => true)
+      .catch(() => false))
+  ) {
+    await fs.rename(currentInputForNextPass, outputFile);
+    after = (await fs.stat(outputFile)).size;
   } else if (!finalOutputExists) {
-      after = before;
+    after = before;
   }
 
   const saved = (((before - after) / before) * 100).toFixed(1);
   console.log(
-    `✅ (PDF) ${path.basename(inputFile)} | ${formatSize(before)} → ${formatSize(after)} (${saved}% saved) [${chosenStrategyName || 'no strategy applied'}]`
+    `✅ (PDF) ${path.basename(inputFile)} | ${formatSize(before)} → ${formatSize(after)} (${saved}% saved) [${chosenStrategyName || "no strategy applied"}]`,
   );
 
   if (after / 1024 / 1024 > maxSizeMB) {
     console.warn(
-      `⚠️ Still above ${maxSizeMB} MB: ${path.basename(inputFile)} (${formatSize(after)})`
+      `⚠️ Still above ${maxSizeMB} MB: ${path.basename(inputFile)} (${formatSize(after)})`,
     );
   }
 
-  const tempFileBase = path.join(path.dirname(outputFile), `temp_${path.basename(outputFile)}`);
-  if (await fs.access(tempFileBase).then(() => true).catch(() => false)) {
-      await fs.unlink(tempFileBase).catch(e => console.error(`Error deleting temp file ${tempFileBase}: ${e.message}`));
+  const tempFileBase = path.join(
+    path.dirname(outputFile),
+    `temp_${path.basename(outputFile)}`,
+  );
+  if (
+    await fs
+      .access(tempFileBase)
+      .then(() => true)
+      .catch(() => false)
+  ) {
+    await fs
+      .unlink(tempFileBase)
+      .catch((e) =>
+        console.error(`Error deleting temp file ${tempFileBase}: ${e.message}`),
+      );
   }
 }
 
@@ -179,16 +215,17 @@ async function run({
   console.log(`--- WebP Settings ---`);
   console.log(`⚙️ WebP Quality: ${webpQuality}, Lossless: ${webpLossless}`);
   if (webpMaxWidth || webpMaxHeight) {
-    console.log(`📐 Max WebP dimensions: ${webpMaxWidth || "∞"}x${webpMaxHeight || "∞"}`);
+    console.log(
+      `📐 Max WebP dimensions: ${webpMaxWidth || "∞"}x${webpMaxHeight || "∞"}`,
+    );
   }
   console.log(`---------------------`);
-
 
   let count = 0;
   let totalBefore = 0;
   let totalAfter = 0;
 
-  const supportedExtensions = ['.pdf', '.webp'];
+  const supportedExtensions = [".pdf", ".webp"];
 
   for await (const src of walk(inAbs, supportedExtensions)) {
     const rel = path.relative(inAbs, src);
@@ -202,21 +239,20 @@ async function run({
         await fs.access(dst);
         console.log(`⏭️ Skipped (exists): ${dst}`);
         continue;
-      } catch {
-      }
+      } catch {}
     }
 
     const before = (await fs.stat(src)).size;
 
     try {
-      if (ext === '.webp') {
+      if (ext === ".webp") {
         await compressImage(src, dst, {
           quality: webpQuality,
           lossless: webpLossless,
           maxWidth: webpMaxWidth,
           maxHeight: webpMaxHeight,
         });
-      } else if (ext === '.pdf') {
+      } else if (ext === ".pdf") {
         await compressPDF(src, dst, pdfMaxSizeMB);
       }
       const after = (await fs.stat(dst)).size;
@@ -228,9 +264,11 @@ async function run({
     }
   }
 
-  const totalSaved = (((totalBefore - totalAfter) / totalBefore) * 100).toFixed(1);
+  const totalSaved = (((totalBefore - totalAfter) / totalBefore) * 100).toFixed(
+    1,
+  );
   console.log(
-    `\n✨ Done! Processed ${count} media file(s). Total: ${formatSize(totalBefore)} → ${formatSize(totalAfter)} (${totalSaved}% saved)`
+    `\n✨ Done! Processed ${count} media file(s). Total: ${formatSize(totalBefore)} → ${formatSize(totalAfter)} (${totalSaved}% saved)`,
   );
 }
 
@@ -247,18 +285,17 @@ const options = {
   webpMaxHeight: undefined,
 };
 
-args.forEach(arg => {
-    if (arg.startsWith("--pdf-max-size=")) {
-        options.pdfMaxSizeMB = parseFloat(arg.split("=")[1]);
-    } else if (arg.startsWith("--webp-q=")) {
-        options.webpQuality = parseInt(arg.split("=")[1]);
-    } else if (arg.startsWith("--webp-w=")) {
-        options.webpMaxWidth = parseInt(arg.split("=")[1]);
-    } else if (arg.startsWith("--webp-h=")) {
-        options.webpMaxHeight = parseInt(arg.split("=")[1]);
-    }
+args.forEach((arg) => {
+  if (arg.startsWith("--pdf-max-size=")) {
+    options.pdfMaxSizeMB = parseFloat(arg.split("=")[1]);
+  } else if (arg.startsWith("--webp-q=")) {
+    options.webpQuality = parseInt(arg.split("=")[1]);
+  } else if (arg.startsWith("--webp-w=")) {
+    options.webpMaxWidth = parseInt(arg.split("=")[1]);
+  } else if (arg.startsWith("--webp-h=")) {
+    options.webpMaxHeight = parseInt(arg.split("=")[1]);
+  }
 });
-
 
 run(options).catch((err) => {
   console.error("🚨 Fatal error:", err);

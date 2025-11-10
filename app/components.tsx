@@ -139,7 +139,7 @@ export const Carousel = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length
+      (prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length,
     );
   };
 
@@ -314,5 +314,91 @@ export const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+  );
+};
+
+import Head from "next/head";
+
+export const YouthRetreat = () => {
+  const googleFormLink = "https://forms.gle/5zrt3denr5RBcQqHA";
+
+  return (
+    <>
+      <Head>
+        <title>Epaphras Ministries Youth Retreat 2025</title>
+        <meta
+          name="description"
+          content="Join us for a spiritual journey at the Epaphras Ministries Youth Retreat!"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="relative bg-gradient-to-br from-[#2D3ED2] via-[#3DC4F0] to-[#9C8CF3] min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+        {/* Decorative Blurs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-72 h-72 bg-white opacity-10 rounded-full top-[-4rem] left-[-4rem] blur-3xl"></div>
+          <div className="absolute w-96 h-96 bg-white opacity-10 rounded-full bottom-[-6rem] right-[-6rem] blur-3xl"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="relative z-10 bg-white/90 backdrop-blur-md p-10 sm:p-12 rounded-3xl shadow-2xl max-w-2xl w-full text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Epaphras Ministries
+          </h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#2D3ED2] mb-6">
+            Youth Retreat 2025
+          </h2>
+
+          <p className="text-gray-700 text-md sm:text-lg md:text-xl mb-4 leading-relaxed">
+            Join us for a powerful weekend of worship, growth, and unforgettable
+            memories.
+          </p>
+
+          {/* Tagline in English */}
+          <p className="text-gray-800 font-medium text-sm sm:text-base md:text-lg italic mb-2">
+            "Encounter God. Embrace Purpose. Ignite Your Faith."
+          </p>
+
+          {/* Tagline in Telugu */}
+          <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-6 leading-snug">
+            దేవుని ప్రేమను అనుభవించి, కొత్తగా జీవించండి!
+          </p>
+
+          {/* Event Info Boxes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {/* Date Box */}
+            <div className="bg-[#EEF2FF] border border-[#CBD5E1] rounded-xl shadow-sm px-5 py-4 text-left">
+              <h3 className="text-[#2D3ED2] font-semibold text-lg mb-2">
+                📅 Dates
+              </h3>
+              <p className="text-gray-800 font-medium text-base">
+                September 23 – 25, 2025
+              </p>
+            </div>
+
+            {/* Venue Box */}
+            <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl shadow-sm px-5 py-4 text-left">
+              <h3 className="text-green-700 font-semibold text-lg mb-2">
+                📍 Venue
+              </h3>
+              <p className="text-gray-800 text-base leading-relaxed">
+                WORD AND DEED HIGH SCHOOL, Vijayawada Hwy, Samson Colony,
+                Hayathnagar_Khalsa, Hyderabad, Telangana 501505
+              </p>
+            </div>
+          </div>
+
+          {/* Register Button */}
+          <a
+            href={googleFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#2D3ED2] text-white font-semibold text-md sm:text-lg py-3 px-8 rounded-full shadow-lg hover:bg-[#1f2aad] focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 transform hover:scale-105"
+          >
+            Enroll Now
+          </a>
+        </div>
+      </div>
+    </>
   );
 };

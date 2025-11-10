@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
-import { Carousel } from "./components";
+import { Carousel, YouthRetreat } from "./components";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
       <Carousel />
+      {/* <YouthRetreat/> */}
       <EpaphraMinistries />
       <WorshipPlaces />
       <MagazineDisplay />
@@ -79,11 +80,11 @@ function EpaphraMinistries() {
         {/* English Content */}
         <div className="space-y-6 text-base sm:text-lg leading-relaxed">
           <p>
-            Brother Epaphras began teaching the love of Christ to two individuals
-            in 1998. According to God's will, in 2004, he established Epaphra
-            Ministries. Through worship services and gospel meetings held around
-            Hyderabad, they prepare unbelievers and nominal Christians for the
-            Kingdom of God.
+            Brother Epaphras began teaching the love of Christ to two
+            individuals in 1998. According to God's will, in 2004, he
+            established Epaphra Ministries. Through worship services and gospel
+            meetings held around Hyderabad, they prepare unbelievers and nominal
+            Christians for the Kingdom of God.
           </p>
           <p>
             His mission is not just to teach about Christ, but to live according
@@ -114,16 +115,19 @@ const MagazineDisplay: React.FC = () => {
   const [magazines] = useState<Magazine[]>([
     {
       name: "Devuni Sparsha ",
-      month: "Jul Aug 2025",
-      image: "/magazine/jul_aug_2025.webp",
-      download_url: "/magazine/sparsha_jul_aug_2025.pdf",
+      month: "Nov Dec 2025",
+      image: "/magazine/nov_dec_2025.webp",
+      download_url:
+        "https://drive.google.com/file/d/1Abglubsnwan-g8_JBRhn4rAzuKH5SjB1/view?usp=sharing",
     },
     {
       name: "Devuni Sparsha ",
-      month: "May June 2025",
-      image: "/magazine/may_jun_2025.webp",
-      download_url: "/magazine/sparsha_may_jun_2025.pdf",
+      month: "Sep Oct 2025",
+      image: "/magazine/sep_oct_2025.webp",
+      download_url:
+        "https://drive.google.com/file/d/14-dVK1GAbNNUlfivRclDfGfbBh3cM760/view?usp=sharing",
     },
+
   ]);
 
   return (
@@ -140,7 +144,7 @@ const MagazineDisplay: React.FC = () => {
             <Image
               src={magazine.image.replace(
                 /.*\/public/,
-                "http://localhost:3000/"
+                "http://localhost:3000/",
               )}
               alt={`${magazine.name}`}
               className="w-1/3 object-fill"
