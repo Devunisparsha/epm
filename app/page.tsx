@@ -122,10 +122,10 @@ const MagazineDisplay: React.FC = () => {
     },
     {
       name: "Devuni Sparsha ",
-      month: "Jul Aug 2025",
-      image: "/magazine/jul_aug_2025.webp",
+      month: "Nov Dec 2025",
+      image: "/magazine/nov_dec_2025.webp",
       download_url:
-        "https://drive.google.com/file/d/1Rf0okFKuXz5l1sIIbZfQX-3WSj_fDpV2/view?usp=sharing",
+        "https://drive.google.com/file/d/1Abglubsnwan-g8_JBRhn4rAzuKH5SjB1/view?usp=sharing",
     },
   ]);
 

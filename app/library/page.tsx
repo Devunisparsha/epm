@@ -588,6 +588,13 @@ const LibraryPage: React.FC = () => {
       download_url:
         "https://drive.google.com/file/d/14-dVK1GAbNNUlfivRclDfGfbBh3cM760/view?usp=sharing",
     },
+    {
+      name: "Devuni Sparsha ",
+      month: "Nov Dec 2025",
+      image: "/magazine/nov_dec_2025.webp",
+      download_url:
+        "https://drive.google.com/file/d/1Abglubsnwan-g8_JBRhn4rAzuKH5SjB1/view?usp=sharing",
+    },
   ];
 
   const [allMagazines, setAllMagazines] =
