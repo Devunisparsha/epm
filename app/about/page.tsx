@@ -84,14 +84,14 @@ The messages which are being preached by Bro.Epaphras from 10 long years are eas
                   Established
                 </p>
               </div>
-              <div className="text-center sm:text-left">
+              {/* <div className="text-center sm:text-left">
                 <p className="text-3xl md:text-4xl font-black text-accent">
                   10+
                 </p>
                 <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">
                   Years Exp
                 </p>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
