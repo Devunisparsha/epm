@@ -207,8 +207,13 @@ const WorshipPlaces = () => {
   const [selectedPlace, setSelectedPlace] = useState<WorshipPlace | null>(null);
 
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Super Dense Decorative patterns */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.08] pointer-events-none" 
+           style={{ backgroundImage: `radial-gradient(var(--primary) 1px, transparent 1px)`, backgroundSize: '8px 8px' }} 
+      />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Worship Locations</h2>
           <p className="text-base sm:text-xl text-gray-500 font-light max-w-2xl mx-auto">Join us for worship and prayer at any of our established locations in and around Hyderabad.</p>
@@ -223,8 +228,8 @@ const WorshipPlaces = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="relative aspect-[4/5] sm:aspect-[3/4] rounded-3xl md:rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-premium"
               onClick={() => setSelectedPlace(place)}
+              className="relative aspect-[4/5] sm:aspect-[3/4] rounded-3xl md:rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-premium border border-gray-100 bg-white"
             >
               <img
                 src={place.image}
@@ -245,60 +250,61 @@ const WorshipPlaces = () => {
 
       <AnimatePresence>
         {selectedPlace && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-8">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-foreground/40 backdrop-blur-md"
+              className="absolute inset-0 bg-foreground/60 backdrop-blur-xl"
               onClick={() => setSelectedPlace(null)}
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
+              className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl max-h-[92vh] flex flex-col"
             >
-              <div className="relative h-48 md:h-64">
+              <div className="relative h-44 sm:h-56 md:h-72 shrink-0">
                 <img
                   src={selectedPlace.image}
                   alt={selectedPlace.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
                 <button
                   onClick={() => setSelectedPlace(null)}
-                  className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-primary transition-all"
+                  className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-white/40 backdrop-blur-md text-primary hover:bg-primary hover:text-white transition-all shadow-lg active:scale-95"
                 >
                   <X size={20} className="md:w-6 md:h-6" />
                 </button>
               </div>
 
-              <div className="p-6 md:p-10 -mt-8 md:-mt-12 relative z-10">
-                <h4 className="text-2xl md:text-4xl font-black text-primary mb-6 md:mb-8 tracking-tighter">Prayer Schedule: {selectedPlace.name}</h4>
-                <div className="space-y-3 md:space-y-4">
+              <div className="p-6 md:p-10 -mt-8 md:-mt-12 relative z-10 overflow-y-auto flex-1 custom-scrollbar">
+                <h4 className="text-2xl md:text-4xl font-black text-primary mb-6 md:mb-8 tracking-tighter leading-tight">Prayer House: <br className="sm:hidden" /> {selectedPlace.name}</h4>
+                
+                <div className={`grid grid-cols-1 ${prayers.filter(p => p.place === selectedPlace.id).length > 2 ? 'lg:grid-cols-2' : 'max-w-2xl'} gap-4 md:gap-6`}>
                   {prayers
                     .filter((p) => p.place === selectedPlace.id)
                     .map((prayer) => (
-                      <div key={prayer.id} className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-primary/20 hover:bg-primary/5 transition-all">
+                      <div key={prayer.id} className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-primary/20 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div className="p-3 md:p-4 rounded-xl bg-white shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-all">
                           <Clock size={20} className="md:w-6 md:h-6" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex flex-wrap justify-between items-center mb-1 gap-1">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1 gap-1">
                             <span className="font-bold text-base md:text-lg text-gray-900">{prayer.day}</span>
-                            <span className="text-primary font-black uppercase text-xs sm:text-sm tracking-wider">{prayer.time}</span>
+                            <span className="text-primary font-black uppercase text-xs sm:text-sm tracking-wider bg-primary/5 px-2 py-0.5 rounded-md w-fit">{prayer.time}</span>
                           </div>
-                          <p className="text-gray-500 font-telugu text-base md:text-lg truncate sm:whitespace-normal">{prayer.description}</p>
+                          <p className="text-gray-500 font-telugu text-base md:text-lg leading-relaxed">{prayer.description}</p>
                         </div>
                       </div>
                     ))}
                 </div>
                 <button
                   onClick={() => setSelectedPlace(null)}
-                  className="mt-8 md:mt-10 w-full py-4 md:py-5 rounded-2xl bg-primary text-white font-bold text-lg md:text-xl hover:bg-primary-dark transition-all shadow-premium"
+                  className="mt-8 md:mt-12 w-full py-4 md:py-5 rounded-2xl bg-primary text-white font-bold text-lg md:text-xl hover:bg-primary-dark hover:shadow-2xl transition-all shadow-premium active:scale-[0.98]"
                 >
-                  Close Schedule
+                  Return
                 </button>
               </div>
             </motion.div>
