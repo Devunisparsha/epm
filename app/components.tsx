@@ -9,7 +9,9 @@ import { CiUser } from "react-icons/ci";
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Menu, X, Facebook, Youtube, Instagram, Twitter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, X, Facebook, Youtube, Instagram, Twitter, MapPin, Phone, Mail, Map } from "lucide-react";
+import Head from "next/head";
+import { BsWhatsapp } from "react-icons/bs";
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -197,6 +199,7 @@ export const Carousel = () => {
 };
 
 export const Footer: React.FC = () => {
+  const [showMap, setShowMap] = useState(false);
   const footerLinks = [
     { name: "About us", href: "/about" },
     { name: "Library", href: "/library" },
@@ -205,41 +208,56 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-white">
-      <div className="container mx-auto py-12 md:py-20 px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          <div className="space-y-6 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-xl md:text-2xl font-black tracking-tighter">
-              Epaphras <span className="text-secondary">Ministries</span>
-            </h3>
-            <p className="text-gray-400 max-w-xs leading-relaxed text-sm md:text-base">
-              Dedicated to serving communities and sharing the transformative power of faith since 1998.
-            </p>
-            <div className="flex gap-3 md:gap-4">
-              <a href="#" className="p-2.5 md:p-3 bg-white/5 rounded-full hover:bg-primary transition-all text-white">
-                <Facebook size={18} className="md:w-5 md:h-5" />
-              </a>
-              <a href="#" className="p-2.5 md:p-3 bg-white/5 rounded-full hover:bg-primary transition-all text-white">
-                <Youtube size={18} className="md:w-5 md:h-5" />
-              </a>
-              <a href="#" className="p-2.5 md:p-3 bg-white/5 rounded-full hover:bg-primary transition-all text-white">
-                <Instagram size={18} className="md:w-5 md:h-5" />
-              </a>
-              <a href="#" className="p-2.5 md:p-3 bg-white/5 rounded-full hover:bg-primary transition-all text-white">
-                <Twitter size={18} className="md:w-5 md:h-5" />
-              </a>
+    <footer className="bg-[#010625] text-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      
+      <div className="container mx-auto py-16 md:py-24 px-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+          <div className="space-y-8 sm:col-span-2 lg:col-span-2">
+            <div>
+              <Link href="/" className="flex items-center gap-3 mb-6">
+                <img
+                  src="/logo.png"
+                  alt="Epaphras Ministries Logo"
+                  className="w-10 h-10 object-contain"
+                />
+                <h3 className="text-2xl font-black tracking-tighter">
+                  Epaphras <span className="text-secondary">Ministries</span>
+                </h3>
+              </Link>
+              <p className="text-gray-400 max-w-sm leading-relaxed text-base">
+                Dedicated to serving communities and sharing the transformative power of faith since 1998. Join us as we build a legacy of love and purpose.
+              </p>
+            </div>
+            
+            <div className="flex gap-4">
+              {[
+                { icon: Facebook, href: "https://www.facebook.com/Epaphrasministrieshyd/" },
+                { icon: Youtube, href: "https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA" },
+                { icon: Instagram, href: "https://www.instagram.com/devunisparsha/" },
+                { icon: BsWhatsapp, href: "https://whatsapp.com/channel/0029Va9abgn2phHNWwktr839" }
+              ].map((social, i) => (
+                <a 
+                  key={i} 
+                  href={social.href} 
+                  className="w-11 h-11 flex items-center justify-center bg-white/5 rounded-2xl hover:bg-primary hover:scale-110 transition-all text-white border border-white/5"
+                >
+                  <social.icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-8 text-white">Quick Navigation</h4>
             <ul className="space-y-4">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-secondary flex items-center gap-2 group transition-all"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all" />
                     {link.name}
                   </Link>
                 </li>
@@ -248,34 +266,66 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Newsletter</h4>
-            <p className="text-gray-400 mb-6">Keep up to date with our ministry and upcoming events.</p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 flex-1 focus:outline-none focus:border-primary transition-colors"
-              />
-              <button className="bg-primary hover:bg-primary-dark px-6 py-2 rounded-xl font-bold transition-all">
-                Join
-              </button>
-            </form>
+            <h4 className="text-lg font-bold mb-8 text-white">Contact Info</h4>
+            <ul className="space-y-6">
+              <li className="flex gap-4 items-start">
+                <MapPin className="text-primary shrink-0 mt-1" size={20} />
+                <div className="space-y-3">
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Plot number 1, Shanti Nagar, Bhagyalatha Colony, Hyderabad-500070
+                  </p>
+                  <button 
+                    onClick={() => setShowMap(!showMap)}
+                    className="flex items-center gap-2 text-secondary hover:text-white transition-all text-xs font-bold group bg-white/5 py-1.5 px-3 rounded-lg border border-white/5 w-fit"
+                  >
+                    <Map size={14} className="group-hover:scale-110 transition-transform" />
+                    {showMap ? "Hide Map" : "View on Map"}
+                  </button>
+                </div>
+              </li>
+              <li className="flex items-center gap-4">
+                <Phone className="text-primary shrink-0" size={20} />
+                <span className="text-gray-400 text-sm">96666 66249</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <Mail className="text-primary shrink-0" size={20} />
+                <span className="text-gray-400 text-sm truncate">mail2church@gmail.com</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Epaphras Ministries. All rights reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
+        <AnimatePresence>
+          {showMap && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "450px", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="mt-12 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative"
+            >
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1910.965123064141!2d78.58926183249288!3d17.329661927186777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcba119b342fb41%3A0x69d3bf88abc71ae7!2sEpaphras%20Ministries%20Trust%20Office!5e0!3m2!1sen!2sin!4v1768925067334!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-gray-500 text-sm font-medium">
+            © {new Date().getFullYear()} Epaphras Ministries. Crafted with faith.
+          </p>
         </div>
       </div>
     </footer>
   );
 };
 
-import Head from "next/head";
 
 export const YouthRetreat = () => {
   const googleFormLink = "https://forms.gle/5zrt3denr5RBcQqHA";
