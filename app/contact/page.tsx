@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
           <div className="w-12 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mt-8" />
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
             We are here to support you in your spiritual journey. Reach out for
             wisdom, fellowship, or to share how we can grow together in faith.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Contact Info */}
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
                 <Church size={20} className="md:w-6 md:h-6" />
               </div>
               <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-4">
-                Worship With Us
+                Office location
               </h3>
               <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed">
                 Plot number 1, Shanti Nagar
