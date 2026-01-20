@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
           className="text-primary font-black text-lg sm:text-2xl tracking-tighter flex items-center gap-1.5 md:gap-2"
         >
           <img
-            src="/logo.png"
+            src="/Logo.png"
             alt="Epaphras Ministries Logo"
             className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
           />
@@ -217,7 +217,7 @@ export const Footer: React.FC = () => {
             <div>
               <Link href="/" className="flex items-center gap-3 mb-6">
                 <img
-                  src="/logo.png"
+                  src="/Logo.png"
                   alt="Epaphras Ministries Logo"
                   className="w-10 h-10 object-contain"
                 />

@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Carousel, YouthRetreat } from "./components";
-import Image from "next/image";
+import { Carousel } from "./components";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, MapPin, Calendar, Clock, ChevronRight, X } from "lucide-react";
+import { Download, MapPin, Clock, X } from "lucide-react";
 
 export default function Home() {
   return (
