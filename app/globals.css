@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Mandali&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Gidugu&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@
   --primary-dark: #1f2aad;
   --secondary: #3dc4f0;
   --accent: #9c8cf3;
-  --background: #f8fafc;
+  --background: #e8eef4;
   --foreground: #0f172a;
   --glass: rgba(255, 255, 255, 0.7);
   --glass-dark: rgba(15, 23, 42, 0.8);
@@ -23,7 +23,9 @@ body {
 }
 
 .font-telugu {
-  font-family: "Mandali", sans-serif;
+  font-family: "Gidugu", sans-serif;
+  font-size: 1.35em;
+  line-height: 1.4;
 }
 
 .glass {

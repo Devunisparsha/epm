@@ -208,7 +208,7 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#010625] text-white relative overflow-hidden">
+    <footer className="bg-[#0f0f1d] text-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       
       <div className="container mx-auto py-16 md:py-24 px-6 relative z-10">

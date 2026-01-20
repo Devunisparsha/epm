@@ -103,7 +103,7 @@ const MagazineDisplay: React.FC = () => {
     <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
       {/* Decorative patterns */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.1] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(#2d3ed2 1.2px, transparent 1.2px)`, backgroundSize: '10px 10px' }} 
+           style={{ backgroundImage: `radial-gradient(var(--primary) 1.2px, transparent 1.2px)`, backgroundSize: '10px 10px' }} 
       />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
