@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Carousel, YouthRetreat } from "./components";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, MapPin, Calendar, Clock, ChevronRight, X } from "lucide-react";
 
@@ -106,9 +107,12 @@ const MagazineDisplay: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Publications</h2>
             <p className="text-lg md:text-xl text-gray-500 font-light">Stay connected with our latest spiritual insights through our bi-monthly magazines.</p>
           </div>
-          <button className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition-all shadow-premium">
+          <Link 
+            href="/library" 
+            className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition-all shadow-premium text-center"
+          >
             View All Issues
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
