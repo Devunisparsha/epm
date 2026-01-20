@@ -1,15 +1,9 @@
 "use client";
-import { deleteCookie, getCookie } from "cookies-next";
-import { cookies } from "next/headers";
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
-import { CiUser } from "react-icons/ci";
-import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Menu, X, Facebook, Youtube, Instagram, Twitter, MapPin, Phone, Mail, Map } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, X, Facebook, Youtube, Instagram, MapPin, Phone, Mail, Map } from "lucide-react";
 import Head from "next/head";
 import { BsWhatsapp } from "react-icons/bs";
 
@@ -105,11 +99,10 @@ export const Navbar: React.FC = () => {
 
 export const Carousel = () => {
   const images = [
-    "/home/carousel/1.webp",
-    "/home/carousel/2.webp",
-    "/home/carousel/3.webp",
-    "/home/carousel/4.webp",
-    "/home/carousel/5.webp",
+    "/home/carousel/_DSC6521.jpeg",
+    "/home/carousel/_DSC6126.jpeg",
+    "/home/carousel/_DSC6215.jpeg",
+    "/home/carousel/DSC06515.jpeg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -128,71 +121,78 @@ export const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] md:h-[700px] overflow-hidden bg-gray-900">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-0"
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-10" />
-          <img
-            src={images[currentIndex]}
-            alt="Hero Carousel"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          key={`title-${currentIndex}`}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-4 md:mb-6"
-        >
-          Welcome to <span className="text-secondary">Epaphras Ministries</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          key={`desc-${currentIndex}`}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="text-gray-200 text-base sm:text-xl md:text-2xl max-w-2xl font-light"
-        >
-          Spreading the Love of Christ and Transforming Lives through Faith and Action.
-        </motion.p>
-      </div>
-
-      {/* Navigation Buttons */}
-      <div className="absolute bottom-6 md:bottom-10 left-0 right-0 z-30 flex items-center justify-center gap-4 md:gap-6">
-        <button
-          onClick={handlePrev}
-          className="p-2 md:p-3 rounded-full glass hover:bg-white transition-all text-primary"
-        >
-          <ChevronLeft size={20} className="md:w-6 md:h-6" />
-        </button>
-        <div className="flex gap-1.5 md:gap-2">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`h-1 md:h-1.5 transition-all duration-300 rounded-full ${
-                i === currentIndex ? "w-6 md:w-8 bg-secondary" : "w-1.5 md:w-2 bg-white/40"
-              }`}
+    <div className="relative w-full px-4 md:px-6 pt-24 md:pt-32 pb-12">
+      <div className="relative w-full h-[500px] md:h-[800px] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-premium-dark bg-gray-900">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute inset-0"
+          >
+            {/* Stronger bottom gradient for text clarity */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent z-10" />
+            
+            <img
+              src={images[currentIndex]}
+              alt="Hero Carousel"
+              className="w-full h-full object-cover"
             />
-          ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Text Area - Bottom Aligned */}
+        <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center justify-end text-center px-6 md:px-12 pb-14 md:pb-20">
+          <motion.div
+            key={`content-${currentIndex}`}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
+            className="max-w-4xl"
+          >
+            <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-4 md:mb-6 leading-tight drop-shadow-2xl">
+              Welcome to <span className="text-secondary">Epaphras Ministries</span>
+            </h1>
+            <p className="text-gray-100 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto font-light leading-relaxed drop-shadow-lg">
+              Spreading the Love of Christ and Transforming Lives through Faith and Action.
+            </p>
+          </motion.div>
         </div>
-        <button
-          onClick={handleNext}
-          className="p-2 md:p-3 rounded-full glass hover:bg-white transition-all text-primary"
-        >
-          <ChevronRight size={20} className="md:w-6 md:h-6" />
-        </button>
+
+        {/* Navigation Buttons - Inset style */}
+        <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 z-30 flex items-center justify-between">
+          <div className="flex gap-2">
+            <button
+              onClick={handlePrev}
+              className="p-3 md:p-4 rounded-full glass hover:bg-white hover:text-primary transition-all text-white backdrop-blur-xl border border-white/20 active:scale-90"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={handleNext}
+              className="p-3 md:p-4 rounded-full glass hover:bg-white hover:text-primary transition-all text-white backdrop-blur-xl border border-white/20 active:scale-90"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          <div className="flex gap-2 items-center bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`transition-all duration-500 rounded-full ${
+                  i === currentIndex 
+                    ? "w-8 md:w-10 h-1.5 bg-secondary" 
+                    : "w-2 h-1.5 bg-white/40 hover:bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
