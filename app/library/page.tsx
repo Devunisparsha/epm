@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-// components/LibraryPage.tsx
-
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Filter, Download, BookOpen, Clock } from "lucide-react";
 
 const LibraryPage: React.FC = () => {
   interface Magazine {
@@ -597,28 +597,21 @@ const LibraryPage: React.FC = () => {
     },
   ];
 
-  const [allMagazines, setAllMagazines] =
-    useState<Magazine[]>(initialMagazines);
-  const [filteredMagazines, setFilteredMagazines] =
-    useState<Magazine[]>(initialMagazines);
-  const [selectedYear, setSelectedYear] = useState<string>("2025"); // State to hold the selected year
+  const [allMagazines] = useState<Magazine[]>(initialMagazines);
+  const [filteredMagazines, setFilteredMagazines] = useState<Magazine[]>(initialMagazines);
+  const [selectedYear, setSelectedYear] = useState<string>("2025");
 
-  // Extract unique years from the magazines data
   const getUniqueYears = (magazines: Magazine[]): string[] => {
     const years = new Set<string>();
     magazines.forEach((magazine) => {
       const yearMatch = magazine.month.match(/\d{4}/);
-      if (yearMatch) {
-        years.add(yearMatch[0]);
-      }
+      if (yearMatch) years.add(yearMatch[0]);
     });
-    // Sort years in descending order to show latest first in the dropdown
     return Array.from(years).sort((a, b) => parseInt(b) - parseInt(a));
   };
 
   const uniqueYears = ["All", ...getUniqueYears(allMagazines)];
 
-  // Filter magazines based on the selected year
   useEffect(() => {
     if (selectedYear === "All") {
       setFilteredMagazines(allMagazines);
@@ -628,48 +621,58 @@ const LibraryPage: React.FC = () => {
       );
       setFilteredMagazines(filtered);
     }
-  }, [selectedYear, allMagazines]); // Depend on selectedYear and allMagazines
-
-  // You can keep the fetch logic if you need to load data dynamically
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/magazines")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setAllMagazines(data); // Set all fetched data
-  //       setFilteredMagazines(data); // Initially display all fetched data
-  //     });
-  // }, []);
+  }, [selectedYear, allMagazines]);
 
   return (
-    <div className=" md:mx-20 my-10 mx-[2%]">
-      <p className="text-2xl text-center bg-fourth py-4 rounded-full mb-8">
-        Welcome to the Epaphras Ministries Library
-      </p>
+    <main className="pt-32 pb-24 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12 md:mb-20"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-primary mb-4 md:mb-6">
+            Spiritual <span className="text-secondary">Library</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+            Access our complete collection of Devuni Sparsha magazines, dating back to 2008.
+          </p>
+        </motion.div>
 
-      <div className="flex justify-between items-center mb-4">
-        <p className="text-xl">Devuni Sparsha Magazines</p>
-        <div className="flex items-center">
-          <label htmlFor="year-select" className="mr-2 font-medium">
-            Filter by Year:
-          </label>
-          <select
-            id="year-select"
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(e.target.value)}
-            className="p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {uniqueYears.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+        {/* Filter Section */}
+        <div className="glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-primary/5 shadow-premium mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4 text-center md:text-left">
+            <div className="p-3 bg-primary/10 text-primary rounded-xl md:rounded-2xl shrink-0">
+              <BookOpen size={20} className="md:w-6 md:h-6" />
+            </div>
+            <div>
+              <h3 className="text-lg md:text-xl font-bold">Devuni Sparsha</h3>
+              <p className="text-[10px] md:text-sm text-gray-400 font-bold uppercase tracking-wider">Archives</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 w-full md:w-auto">
+            <div className="relative flex-1 md:w-64">
+              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+              <select
+                id="year-select"
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="w-full bg-white border border-gray-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-6 py-3 md:py-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all appearance-none font-bold text-gray-700 text-sm md:text-base"
+              >
+                {uniqueYears.map((year) => (
+                  <option key={year} value={year}>
+                    Year: {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>
+
         <MagazineView magazines={filteredMagazines} />
       </div>
-    </div>
+    </main>
   );
 };
 
@@ -684,56 +687,55 @@ interface MagazineViewProps {
 
 const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
   return (
-    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-svh flex flex-col items-center">
-      {magazines.length > 0 ? (
-        <div className="w-full max-w-4xl mx-auto space-y-4">
-          {magazines.map((item, index) => (
-            <div
-              key={index}
-              className="group flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+    <div className="grid grid-cols-1 gap-4">
+      <AnimatePresence mode="popLayout">
+        {magazines.length > 0 ? (
+          magazines.map((item, index) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              key={`${item.month}-${index}`}
+              className="group glass p-4 md:p-6 rounded-2xl md:rounded-[2rem] border border-gray-100 hover:border-primary/20 hover:bg-primary/5 transition-all flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6"
             >
-              <div className="flex-1 text-center sm:text-left mb-3 sm:mb-0">
-                <h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 group-hover:text-blue-600">
-                  {item.name}
-                </h3>
-                <p className="text-base text-gray-500 mt-1">{item.month}</p>
+              <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto text-center sm:text-left">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+                  <Clock size={20} className="md:w-6 md:h-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors truncate">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-500 font-medium">{item.month}</p>
+                </div>
               </div>
+
               <a
                 href={item.download_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border-2 border-transparent text-sm font-bold rounded-full shadow-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105"
-                aria-label={`Download ${item.name} for ${item.month}`}
+                className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-gray-900 text-white rounded-xl md:rounded-2xl font-bold text-sm md:text-base hover:bg-primary transition-all group/btn"
               >
+                <Download size={18} className="md:w-5 md:h-5 group-hover/btn:animate-bounce" />
                 Download PDF
-                <svg
-                  className="ml-2 h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.6 4h18.8l.6-4" />
-                </svg>
               </a>
+            </motion.div>
+          ))
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="py-20 text-center"
+          >
+            <div className="inline-block p-10 bg-gray-50 rounded-[3rem] border border-dashed border-gray-200">
+              <Search size={48} className="mx-auto text-gray-300 mb-6" />
+              <h4 className="text-2xl font-bold text-gray-400 mb-2">No magazines found</h4>
+              <p className="text-gray-500">Please try selecting a different year.</p>
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className="flex-1 flex items-center justify-center text-center">
-          <div className="p-12 bg-white rounded-lg shadow-md max-w-sm">
-            <h4 className="text-2xl font-bold text-gray-700 mb-2">
-              No magazines found
-            </h4>
-            <p className="text-lg text-gray-500">
-              Please select a different year.
-            </p>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

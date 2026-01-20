@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const AboutUs: React.FC = () => {
   const [about] = useState({
@@ -20,34 +21,82 @@ The messages which are being preached by Bro.Epaphras from 10 long years are eas
   });
 
   return (
-    <section className="bg-gradient-to-br from-white to-blue-50 py-16 px-6 md:px-20">
-      {/* Header */}
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12">
-        <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
-          About Us
-        </span>
-      </h1>
-
-      {/* Content Card */}
-      <div className="bg-white shadow-lg rounded-2xl overflow-hidden max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
-        {/* Image */}
-        <div className="relative h-72 md:h-full">
-          <Image
-            src={about.image}
-            alt="About Epaphras Ministries"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Text */}
-        <div className="p-8 flex flex-col justify-center">
-          <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line">
-            {about.description}
+    <main className="pt-32 pb-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12 md:mb-20"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-primary mb-4 md:mb-6">
+            Our <span className="text-secondary">Mission</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+            Discover the heart and soul of Epaphras Ministries and our journey
+            of faith.
           </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative order-2 lg:order-1"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] md:rounded-[3rem] blur-3xl opacity-20" />
+            <div className="relative aspect-square rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-premium border-2 md:border-4 border-white">
+              <Image
+                src={about.image}
+                alt="About Epaphras Ministries"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6 md:space-y-8 order-1 lg:order-2"
+          >
+            <div className="glass p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-primary/5 shadow-premium">
+              <p className="text-gray-700 leading-relaxed text-base md:text-lg whitespace-pre-line font-light">
+                {about.description}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-6 md:gap-12 p-6 md:p-8 bg-primary/5 rounded-[2rem] border border-primary/10 justify-center sm:justify-start">
+              <div className="text-center sm:text-left">
+                <p className="text-3xl md:text-4xl font-black text-primary">
+                  1990
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">
+                  Inception
+                </p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-3xl md:text-4xl font-black text-secondary">
+                  2004
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">
+                  Established
+                </p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-3xl md:text-4xl font-black text-accent">
+                  10+
+                </p>
+                <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">
+                  Years Exp
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
