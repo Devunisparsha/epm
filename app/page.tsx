@@ -21,10 +21,10 @@ function EpaphraMinistries() {
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/2" />
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -38,7 +38,7 @@ function EpaphraMinistries() {
                 className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full shadow-premium mx-auto md:mx-0 object-cover border-4 border-white"
               />
             </div>
-            
+
             <h2 className="mt-8 md:mt-12 text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-primary leading-tight">
               A Life of <span className="text-secondary">Example</span>
             </h2>
@@ -47,7 +47,7 @@ function EpaphraMinistries() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -86,23 +86,24 @@ const MagazineDisplay: React.FC = () => {
   const [magazines] = useState<Magazine[]>([
     {
       name: "Devuni Sparsha",
+      month: "Mar Apr 2026",
+      image: "/magazine/mar_apr_2026.jpg",
+      download_url: "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
+    },
+    {
+      name: "Devuni Sparsha",
       month: "Jan Feb 2026",
       image: "/magazine/jan_feb_2026.jpg",
       download_url: "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
-    },{
-      name: "Devuni Sparsha",
-      month: "Nov Dec 2025",
-      image: "/magazine/nov_dec_2025.webp",
-      download_url: "https://drive.google.com/file/d/1Abglubsnwan-g8_JBRhn4rAzuKH5SjB1/view?usp=sharing",
-    },
-    
+    }
+
   ]);
 
   return (
     <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
       {/* Decorative patterns */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.1] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(var(--primary) 1.2px, transparent 1.2px)`, backgroundSize: '10px 10px' }} 
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.1] pointer-events-none"
+        style={{ backgroundImage: `radial-gradient(var(--primary) 1.2px, transparent 1.2px)`, backgroundSize: '10px 10px' }}
       />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
@@ -113,8 +114,8 @@ const MagazineDisplay: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Publications</h2>
             <p className="text-lg md:text-xl text-gray-500 font-light">Stay connected with our latest spiritual insights through our bi-monthly magazines.</p>
           </div>
-          <Link 
-            href="/library" 
+          <Link
+            href="/library"
             className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition-all shadow-premium text-center"
           >
             View All Issues
@@ -147,7 +148,7 @@ const MagazineDisplay: React.FC = () => {
                   <h3 className="text-xl md:text-3xl font-black text-gray-900 mb-1 md:mb-2">{magazine.name}</h3>
                   <p className="text-gray-500 text-base md:text-lg mb-6 md:mb-8">{magazine.month}</p>
                 </div>
-                
+
                 <a
                   href={magazine.download_url}
                   target="_blank"
@@ -208,10 +209,10 @@ const WorshipPlaces = () => {
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Super Dense Decorative patterns */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.08] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(var(--primary) 1px, transparent 1px)`, backgroundSize: '8px 8px' }} 
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.08] pointer-events-none"
+        style={{ backgroundImage: `radial-gradient(var(--primary) 1px, transparent 1px)`, backgroundSize: '8px 8px' }}
       />
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Worship Locations</h2>
@@ -280,7 +281,7 @@ const WorshipPlaces = () => {
 
               <div className="p-6 md:p-10 -mt-8 md:-mt-12 relative z-10 overflow-y-auto flex-1 custom-scrollbar">
                 <h4 className="text-2xl md:text-4xl font-black text-primary mb-6 md:mb-8 tracking-tighter leading-tight">Prayer House: <br className="sm:hidden" /> {selectedPlace.name}</h4>
-                
+
                 <div className={`grid grid-cols-1 ${prayers.filter(p => p.place === selectedPlace.id).length > 2 ? 'lg:grid-cols-2' : 'max-w-2xl'} gap-4 md:gap-6`}>
                   {prayers
                     .filter((p) => p.place === selectedPlace.id)

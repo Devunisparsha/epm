@@ -595,12 +595,19 @@ const LibraryPage: React.FC = () => {
       download_url:
         "https://drive.google.com/file/d/1Abglubsnwan-g8_JBRhn4rAzuKH5SjB1/view?usp=sharing",
     },
-     {
+    {
       name: "Devuni Sparsha",
       month: "Jan Feb 2026",
       image: "/magazine/jan_feb_2026.jpg",
       download_url: "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
-    }
+    },
+    {
+      name: "Devuni Sparsha",
+      month: "Mar Apr 2026",
+      image: "/magazine/mar_apr_2026.jpg",
+      download_url: "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
+    },
+
   ];
 
   const [allMagazines] = useState<Magazine[]>(initialMagazines);
