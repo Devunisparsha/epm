@@ -70,7 +70,7 @@ The messages which are being preached by Bro.Epaphras from 10 long years are eas
             <div className="flex flex-wrap gap-6 md:gap-12 p-6 md:p-8 bg-primary/5 rounded-[2rem] border border-primary/10 justify-center sm:justify-start">
               <div className="text-center sm:text-left">
                 <p className="text-3xl md:text-4xl font-black text-primary">
-                  1990
+                  1998
                 </p>
                 <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">
                   Inception

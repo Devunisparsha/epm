@@ -232,7 +232,7 @@ export const Footer: React.FC = () => {
             
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "https://www.facebook.com/Epaphrasministrieshyd/" },
+                { icon: Facebook, href: "https://www.facebook.com/epaphrasministries/" },
                 { icon: Youtube, href: "https://www.youtube.com/channel/UCtBqdgXf6fmgAVYT1X-_aDA" },
                 { icon: Instagram, href: "https://www.instagram.com/devunisparsha/" },
                 { icon: BsWhatsapp, href: "https://whatsapp.com/channel/0029Va9abgn2phHNWwktr839" }
