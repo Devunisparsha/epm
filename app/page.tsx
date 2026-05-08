@@ -43,7 +43,8 @@ function EpaphraMinistries() {
               A Life of <span className="text-secondary">Example</span>
             </h2>
             <p className="mt-4 md:mt-6 text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-              The Journey of Epaphras Ministries — Dedicated to transforming lives through the power of faith and service.
+              The Journey of Epaphras Ministries — Dedicated to transforming
+              lives through the power of faith and service.
             </p>
           </motion.div>
 
@@ -54,18 +55,40 @@ function EpaphraMinistries() {
             className="w-full md:w-1/2 space-y-12"
           >
             <div className="glass p-8 rounded-3xl border border-primary/10 shadow-premium">
-              <h3 className="text-3xl font-bold mb-6 text-primary font-telugu">ఎపఫ్రా మినిస్ట్రీస్ ప్రయాణం</h3>
+              <h3 className="text-3xl font-bold mb-6 text-primary font-telugu">
+                ఎపఫ్రా మినిస్ట్రీస్ ప్రయాణం
+              </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed font-telugu text-lg">
-                <p>బ్రదర్ ఎపఫ్రా గారు 1998 లో ఇద్దరికి క్రీస్తు ప్రేమను బోధించుట ప్రారంభించి, దైవ చిత్తానుసారముగా 2004 లో ఎపఫ్రా మినిస్ట్రీస్ ను స్థాపించారు.</p>
-                <p>హైదరాబాద్ పరిసర ప్రాంతాలలో నిర్వహిస్తున్న ఆరాధనలు, సువార్త సభల ద్వారా అన్యులు, నామకార్ధపు అనుభవములలో ఉన్నవారిని దేవుని రాజ్యము కొరకు సిద్దపరుస్తున్నారు.</p>
-                <p>క్రీస్తు గురించి బోధించుట మాత్రమే కాదు గాని, బోధించిన దాని ప్రకారం జీవించడం ద్వారా అనేకులను క్రీస్తు వైపు ఆకర్షించవచ్చని నమ్ముతున్నాము.</p>
+                <p>
+                  బ్రదర్ ఎపఫ్రా గారు 1998 లో ఇద్దరికి క్రీస్తు ప్రేమను బోధించుట
+                  ప్రారంభించి, దైవ చిత్తానుసారముగా 2004 లో ఎపఫ్రా మినిస్ట్రీస్
+                  ను స్థాపించారు.
+                </p>
+                <p>
+                  హైదరాబాద్ పరిసర ప్రాంతాలలో నిర్వహిస్తున్న ఆరాధనలు, సువార్త సభల
+                  ద్వారా అన్యులు, నామకార్ధపు అనుభవములలో ఉన్నవారిని దేవుని
+                  రాజ్యము కొరకు సిద్దపరుస్తున్నారు.
+                </p>
+                <p>
+                  క్రీస్తు గురించి బోధించుట మాత్రమే కాదు గాని, బోధించిన దాని
+                  ప్రకారం జీవించడం ద్వారా అనేకులను క్రీస్తు వైపు ఆకర్షించవచ్చని
+                  నమ్ముతున్నాము.
+                </p>
               </div>
             </div>
 
             <div className="bg-primary/5 p-8 rounded-3xl border border-primary/5">
               <div className="space-y-4 text-gray-600 leading-relaxed text-lg italic">
-                <p>"Brother Epaphras began teaching the love of Christ to two individuals in 1998. According to God's will, in 2004, he established Epaphra Ministries."</p>
-                <p>"Our mission is not just to teach about Christ, but to live according to his teaching, believing that a life lived as an example can attract many toward Him."</p>
+                <p>
+                  "Brother Epaphras began teaching the love of Christ to two
+                  individuals in 1998. According to God's will, in 2004, he
+                  established Epaphra Ministries."
+                </p>
+                <p>
+                  "Our mission is not just to teach about Christ, but to live
+                  according to his teaching, believing that a life lived as an
+                  example can attract many toward Him."
+                </p>
               </div>
             </div>
           </motion.div>
@@ -86,24 +109,29 @@ const MagazineDisplay: React.FC = () => {
   const [magazines] = useState<Magazine[]>([
     {
       name: "Devuni Sparsha",
-      month: "Mar Apr 2026",
-      image: "/magazine/mar_apr_2026.jpg",
-      download_url: "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
+      month: "Jan Feb 2026",
+      image: "/magazine/jan_feb_2026.jpg",
+      download_url:
+        "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
     },
     {
       name: "Devuni Sparsha",
-      month: "Jan Feb 2026",
-      image: "/magazine/jan_feb_2026.jpg",
-      download_url: "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
-    }
-
+      month: "May June 2026",
+      image: "/magazine/may_june_2026.heic",
+      download_url:
+        "https://drive.google.com/file/d/1HZHv_IBPL6gFAbgBh9dguO8O52otQsHO/view?usp=sharing",
+    },
   ]);
 
   return (
     <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
       {/* Decorative patterns */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.1] pointer-events-none"
-        style={{ backgroundImage: `radial-gradient(var(--primary) 1.2px, transparent 1.2px)`, backgroundSize: '10px 10px' }}
+      <div
+        className="absolute top-0 left-0 w-full h-full opacity-[0.1] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(var(--primary) 1.2px, transparent 1.2px)`,
+          backgroundSize: "10px 10px",
+        }}
       />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
@@ -111,8 +139,13 @@ const MagazineDisplay: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 md:mb-16 gap-6 text-center md:text-left">
           <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Publications</h2>
-            <p className="text-lg md:text-xl text-gray-500 font-light">Stay connected with our latest spiritual insights through our bi-monthly magazines.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">
+              Publications
+            </h2>
+            <p className="text-lg md:text-xl text-gray-500 font-light">
+              Stay connected with our latest spiritual insights through our
+              bi-monthly magazines.
+            </p>
           </div>
           <Link
             href="/library"
@@ -145,8 +178,12 @@ const MagazineDisplay: React.FC = () => {
                   <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3 md:mb-4">
                     MAGAZINE
                   </div>
-                  <h3 className="text-xl md:text-3xl font-black text-gray-900 mb-1 md:mb-2">{magazine.name}</h3>
-                  <p className="text-gray-500 text-base md:text-lg mb-6 md:mb-8">{magazine.month}</p>
+                  <h3 className="text-xl md:text-3xl font-black text-gray-900 mb-1 md:mb-2">
+                    {magazine.name}
+                  </h3>
+                  <p className="text-gray-500 text-base md:text-lg mb-6 md:mb-8">
+                    {magazine.month}
+                  </p>
                 </div>
 
                 <a
@@ -155,7 +192,10 @@ const MagazineDisplay: React.FC = () => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-gray-900 text-white font-bold hover:bg-primary transition-all group/btn"
                 >
-                  <Download size={20} className="group-hover/btn:animate-bounce" />
+                  <Download
+                    size={20}
+                    className="group-hover/btn:animate-bounce"
+                  />
                   Download PDF
                 </a>
               </div>
@@ -184,24 +224,98 @@ interface Prayer {
 
 const WorshipPlaces = () => {
   const [worshipPlaces] = useState<WorshipPlace[]>([
-    { id: 0, name: "Pedda Amberpet", image: "/home/worshipPlace/peddaamberpet.webp" },
-    { id: 1, name: "Bhagyalatha", image: "/home/worshipPlace/bhagyalatha.webp" },
+    {
+      id: 0,
+      name: "Pedda Amberpet",
+      image: "/home/worshipPlace/peddaamberpet.webp",
+    },
+    {
+      id: 1,
+      name: "Bhagyalatha",
+      image: "/home/worshipPlace/bhagyalatha.webp",
+    },
     { id: 2, name: "Chinthal", image: "/home/worshipPlace/chinthal.webp" },
     { id: 3, name: "Anajpur", image: "/home/worshipPlace/anajpur.webp" },
   ]);
 
   const [prayers] = useState<Prayer[]>([
-    { id: 0, day: "Sunday", time: "9:30 AM", description: "పునరుత్థానపు ఆరాధన", place: 0 },
-    { id: 1, day: "Sunday", time: "8:00 AM", description: "పునరుత్థానపు ఆరాధన", place: 1 },
-    { id: 2, day: "Sunday", time: "10:00 AM", description: "పునరుత్థానపు ఆరాధన", place: 1 },
-    { id: 3, day: "Saturday", time: "7:00 PM", description: "శనివారం ఉపవాస ప్రార్ధన", place: 1 },
-    { id: 4, day: "1st Wednesday", time: "7:00 PM", description: "స్త్రీల కూడిక", place: 1 },
-    { id: 5, day: "2nd Wednesday", time: "7:00 PM", description: "Youth Meeting", place: 1 },
-    { id: 6, day: "Sunday", time: "10:00 AM", description: "పునరుత్థానపు ఆరాధన", place: 2 },
-    { id: 7, day: "Sunday", time: "7:00 PM", description: "పునరుత్థానపు ఆరాధన", place: 2 },
-    { id: 8, day: "Friday", time: "7:00 PM", description: "Friday Worship", place: 2 },
-    { id: 9, day: "Sunday", time: "10:00 AM", description: "పునరుత్థానపు ఆరాధన", place: 3 },
-    { id: 10, day: "Saturday", time: "7:00 PM", description: "శనివారం ఉపవాస ప్రార్ధన", place: 3 },
+    {
+      id: 0,
+      day: "Sunday",
+      time: "9:30 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 0,
+    },
+    {
+      id: 1,
+      day: "Sunday",
+      time: "8:00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 1,
+    },
+    {
+      id: 2,
+      day: "Sunday",
+      time: "10:00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 1,
+    },
+    {
+      id: 3,
+      day: "Saturday",
+      time: "7:00 PM",
+      description: "శనివారం ఉపవాస ప్రార్ధన",
+      place: 1,
+    },
+    {
+      id: 4,
+      day: "1st Wednesday",
+      time: "7:00 PM",
+      description: "స్త్రీల కూడిక",
+      place: 1,
+    },
+    {
+      id: 5,
+      day: "2nd Wednesday",
+      time: "7:00 PM",
+      description: "Youth Meeting",
+      place: 1,
+    },
+    {
+      id: 6,
+      day: "Sunday",
+      time: "10:00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 2,
+    },
+    {
+      id: 7,
+      day: "Sunday",
+      time: "7:00 PM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 2,
+    },
+    {
+      id: 8,
+      day: "Friday",
+      time: "7:00 PM",
+      description: "Friday Worship",
+      place: 2,
+    },
+    {
+      id: 9,
+      day: "Sunday",
+      time: "10:00 AM",
+      description: "పునరుత్థానపు ఆరాధన",
+      place: 3,
+    },
+    {
+      id: 10,
+      day: "Saturday",
+      time: "7:00 PM",
+      description: "శనివారం ఉపవాస ప్రార్ధన",
+      place: 3,
+    },
   ]);
 
   const [selectedPlace, setSelectedPlace] = useState<WorshipPlace | null>(null);
@@ -209,14 +323,23 @@ const WorshipPlaces = () => {
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Super Dense Decorative patterns */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.08] pointer-events-none"
-        style={{ backgroundImage: `radial-gradient(var(--primary) 1px, transparent 1px)`, backgroundSize: '8px 8px' }}
+      <div
+        className="absolute top-0 left-0 w-full h-full opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(var(--primary) 1px, transparent 1px)`,
+          backgroundSize: "8px 8px",
+        }}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">Worship Locations</h2>
-          <p className="text-base sm:text-xl text-gray-500 font-light max-w-2xl mx-auto">Join us for worship and prayer at any of our established locations in and around Hyderabad.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-primary mb-4 md:mb-6">
+            Worship Locations
+          </h2>
+          <p className="text-base sm:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+            Join us for worship and prayer at any of our established locations
+            in and around Hyderabad.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -237,7 +360,9 @@ const WorshipPlaces = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent p-6 md:p-8 flex flex-col justify-end">
-                <h3 className="text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">{place.name}</h3>
+                <h3 className="text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">
+                  {place.name}
+                </h3>
                 <div className="flex items-center text-white/80 gap-2 text-xs md:text-sm">
                   <MapPin size={14} />
                   <span>View Details</span>
@@ -280,22 +405,36 @@ const WorshipPlaces = () => {
               </div>
 
               <div className="p-6 md:p-10 -mt-8 md:-mt-12 relative z-10 overflow-y-auto flex-1 custom-scrollbar">
-                <h4 className="text-2xl md:text-4xl font-black text-primary mb-6 md:mb-8 tracking-tighter leading-tight">Prayer House: <br className="sm:hidden" /> {selectedPlace.name}</h4>
+                <h4 className="text-2xl md:text-4xl font-black text-primary mb-6 md:mb-8 tracking-tighter leading-tight">
+                  Prayer House: <br className="sm:hidden" />{" "}
+                  {selectedPlace.name}
+                </h4>
 
-                <div className={`grid grid-cols-1 ${prayers.filter(p => p.place === selectedPlace.id).length > 2 ? 'lg:grid-cols-2' : 'max-w-2xl'} gap-4 md:gap-6`}>
+                <div
+                  className={`grid grid-cols-1 ${prayers.filter((p) => p.place === selectedPlace.id).length > 2 ? "lg:grid-cols-2" : "max-w-2xl"} gap-4 md:gap-6`}
+                >
                   {prayers
                     .filter((p) => p.place === selectedPlace.id)
                     .map((prayer) => (
-                      <div key={prayer.id} className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-primary/20 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                      <div
+                        key={prayer.id}
+                        className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-primary/20 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                      >
                         <div className="p-3 md:p-4 rounded-xl bg-white shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-all">
                           <Clock size={20} className="md:w-6 md:h-6" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1 gap-1">
-                            <span className="font-bold text-base md:text-lg text-gray-900">{prayer.day}</span>
-                            <span className="text-primary font-black uppercase text-xs sm:text-sm tracking-wider bg-primary/5 px-2 py-0.5 rounded-md w-fit">{prayer.time}</span>
+                            <span className="font-bold text-base md:text-lg text-gray-900">
+                              {prayer.day}
+                            </span>
+                            <span className="text-primary font-black uppercase text-xs sm:text-sm tracking-wider bg-primary/5 px-2 py-0.5 rounded-md w-fit">
+                              {prayer.time}
+                            </span>
                           </div>
-                          <p className="text-gray-500 font-telugu text-base md:text-lg leading-relaxed">{prayer.description}</p>
+                          <p className="text-gray-500 font-telugu text-base md:text-lg leading-relaxed">
+                            {prayer.description}
+                          </p>
                         </div>
                       </div>
                     ))}

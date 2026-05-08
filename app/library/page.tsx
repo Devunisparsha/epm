@@ -599,19 +599,28 @@ const LibraryPage: React.FC = () => {
       name: "Devuni Sparsha",
       month: "Jan Feb 2026",
       image: "/magazine/jan_feb_2026.jpg",
-      download_url: "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
+      download_url:
+        "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
     },
     {
       name: "Devuni Sparsha",
       month: "Mar Apr 2026",
       image: "/magazine/mar_apr_2026.jpg",
-      download_url: "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
+      download_url:
+        "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
     },
-
+    {
+      name: "Devuni Sparsha",
+      month: "May June 2026",
+      image: "/magazine/may_june_2026.heic",
+      download_url:
+        "https://drive.google.com/file/d/1HZHv_IBPL6gFAbgBh9dguO8O52otQsHO/view?usp=sharing",
+    },
   ];
 
   const [allMagazines] = useState<Magazine[]>(initialMagazines);
-  const [filteredMagazines, setFilteredMagazines] = useState<Magazine[]>(initialMagazines);
+  const [filteredMagazines, setFilteredMagazines] =
+    useState<Magazine[]>(initialMagazines);
   const [selectedYear, setSelectedYear] = useState<string>("2026");
 
   const getUniqueYears = (magazines: Magazine[]): string[] => {
@@ -648,7 +657,8 @@ const LibraryPage: React.FC = () => {
             Spiritual <span className="text-secondary">Library</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Access our complete collection of Devuni Sparsha magazines, dating back to 2008.
+            Access our complete collection of Devuni Sparsha magazines, dating
+            back to 2008.
           </p>
         </motion.div>
 
@@ -660,13 +670,18 @@ const LibraryPage: React.FC = () => {
             </div>
             <div>
               <h3 className="text-lg md:text-xl font-bold">Devuni Sparsha</h3>
-              <p className="text-[10px] md:text-sm text-gray-400 font-bold uppercase tracking-wider">Archives</p>
+              <p className="text-[10px] md:text-sm text-gray-400 font-bold uppercase tracking-wider">
+                Archives
+              </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
-              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+              <Filter
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                size={16}
+              />
               <select
                 id="year-select"
                 value={selectedYear}
@@ -720,7 +735,9 @@ const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
                   <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors truncate">
                     {item.name}
                   </h3>
-                  <p className="text-sm md:text-base text-gray-500 font-medium">{item.month}</p>
+                  <p className="text-sm md:text-base text-gray-500 font-medium">
+                    {item.month}
+                  </p>
                 </div>
               </div>
 
@@ -730,7 +747,10 @@ const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-gray-900 text-white rounded-xl md:rounded-2xl font-bold text-sm md:text-base hover:bg-primary transition-all group/btn"
               >
-                <Download size={18} className="md:w-5 md:h-5 group-hover/btn:animate-bounce" />
+                <Download
+                  size={18}
+                  className="md:w-5 md:h-5 group-hover/btn:animate-bounce"
+                />
                 Download PDF
               </a>
             </motion.div>
@@ -743,8 +763,12 @@ const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
           >
             <div className="inline-block p-10 bg-gray-50 rounded-[3rem] border border-dashed border-gray-200">
               <Search size={48} className="mx-auto text-gray-300 mb-6" />
-              <h4 className="text-2xl font-bold text-gray-400 mb-2">No magazines found</h4>
-              <p className="text-gray-500">Please try selecting a different year.</p>
+              <h4 className="text-2xl font-bold text-gray-400 mb-2">
+                No magazines found
+              </h4>
+              <p className="text-gray-500">
+                Please try selecting a different year.
+              </p>
             </div>
           </motion.div>
         )}
