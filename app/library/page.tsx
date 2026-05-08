@@ -612,7 +612,7 @@ const LibraryPage: React.FC = () => {
     {
       name: "Devuni Sparsha",
       month: "May June 2026",
-      image: "/magazine/may_june_2026.heic",
+      image: "/magazine/may_june_2026.jpg",
       download_url:
         "https://drive.google.com/file/d/1HZHv_IBPL6gFAbgBh9dguO8O52otQsHO/view?usp=sharing",
     },

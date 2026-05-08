@@ -109,15 +109,15 @@ const MagazineDisplay: React.FC = () => {
   const [magazines] = useState<Magazine[]>([
     {
       name: "Devuni Sparsha",
-      month: "Jan Feb 2026",
-      image: "/magazine/jan_feb_2026.jpg",
+      month: "Mar Apr 2026",
+      image: "/magazine/mar_apr_2026.jpg",
       download_url:
-        "https://drive.google.com/file/d/1qD7fqwCW27JziNxEQsYtMExy-HdbC7ci/view?usp=sharing",
+        "https://drive.google.com/file/d/1zv8bHgj3B9oHNV3lPvohsmSR1hZmwUQb/view?usp=sharing",
     },
     {
       name: "Devuni Sparsha",
       month: "May June 2026",
-      image: "/magazine/may_june_2026.heic",
+      image: "/magazine/may_june_2026.jpg",
       download_url:
         "https://drive.google.com/file/d/1HZHv_IBPL6gFAbgBh9dguO8O52otQsHO/view?usp=sharing",
     },
