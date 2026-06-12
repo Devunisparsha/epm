@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/epm",
-  assetPrefix: "/epm",
-  output: "export",
   
   // Static export for GitHub Pages (no server-side image optimization)
   images: {
