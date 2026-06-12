@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import React, { useEffect, useState, useCallback, memo } from "react";
 
 import { motion, AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
@@ -49,13 +48,10 @@ export const Navbar: React.FC = memo(function Navbar() {
           className="text-primary font-black text-lg sm:text-2xl tracking-tighter flex items-center gap-1.5 md:gap-2"
           prefetch={true}
         >
-          <Image
+          <img
             src="/Logo.png"
             alt="Epaphras Ministries Logo"
-            width={40}
-            height={40}
             className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
-            priority
           />
           <span className="inline">Epaphras Ministries</span>
         </Link>
@@ -168,14 +164,10 @@ export const Carousel = memo(function Carousel() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
               <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent z-10" />
               
-              <Image
+              <img
                 src={carouselImages[currentIndex]}
                 alt={`Epaphras Ministries - Slide ${currentIndex + 1}`}
-                fill
-                className="object-cover"
-                priority={currentIndex === 0}
-                sizes="100vw"
-                quality={85}
+                className="w-full h-full object-cover"
               />
             </m.div>
           </AnimatePresence>
@@ -259,12 +251,10 @@ export const Footer: React.FC = memo(function Footer() {
           <div className="space-y-8 sm:col-span-2 lg:col-span-2">
             <div>
               <Link href="/" className="flex items-center gap-3 mb-6" prefetch={true}>
-                <Image
+                <img
                   src="/Logo.png"
                   alt="Epaphras Ministries Logo"
-                  width={40}
-                  height={40}
-                  className="object-contain"
+                  className="w-10 h-10 object-contain"
                 />
                 <h3 className="text-2xl font-black tracking-tighter">
                   Epaphras <span className="text-secondary">Ministries</span>

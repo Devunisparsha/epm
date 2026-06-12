@@ -2,7 +2,6 @@
 import { useState, useCallback, memo } from "react";
 import { Carousel } from "./components";
 import Link from "next/link";
-import Image from "next/image";
 import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import { Download, MapPin, Clock, X } from "lucide-react";
 
@@ -51,13 +50,10 @@ const EpaphraMinistries = memo(function EpaphraMinistries() {
             >
               <div className="relative group inline-block md:block">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity" />
-                <Image
+                <img
                   src="/Logo.png"
                   alt="Epaphras Ministries Logo"
-                  width={256}
-                  height={256}
                   className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full shadow-premium mx-auto md:mx-0 object-cover border-4 border-white"
-                  priority
                 />
               </div>
 
@@ -196,12 +192,10 @@ const MagazineDisplay = memo(function MagazineDisplay() {
                 className="group relative overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-white border border-gray-100 shadow-premium flex flex-col sm:flex-row"
               >
                 <div className="relative w-full sm:w-2/5 aspect-[4/3] sm:aspect-[3/4] overflow-hidden">
-                  <Image
+                  <img
                     src={magazine.image}
                     alt={`${magazine.name} - ${magazine.month}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 40vw"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -321,12 +315,10 @@ const WorshipPlaces = memo(function WorshipPlaces() {
                 onClick={() => openModal(place)}
                 className="relative aspect-[4/5] sm:aspect-[3/4] rounded-3xl md:rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-premium border border-gray-100 bg-white will-change-transform"
               >
-                <Image
+                <img
                   src={place.image}
                   alt={place.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent p-6 md:p-8 flex flex-col justify-end">
@@ -364,13 +356,10 @@ const WorshipPlaces = memo(function WorshipPlaces() {
                 className="relative w-full max-w-4xl bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl max-h-[92vh] flex flex-col"
               >
                 <div className="relative h-44 sm:h-56 md:h-72 shrink-0">
-                  <Image
+                  <img
                     src={selectedPlace.image}
                     alt={selectedPlace.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 896px"
-                    priority
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
                   <button
