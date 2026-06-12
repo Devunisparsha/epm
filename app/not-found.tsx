@@ -1,5 +1,6 @@
 import React from "react";
-import { SearchX, Home } from "lucide-react"; // Using lucide-react for icons
+import Link from "next/link";
+import { SearchX, Home } from "lucide-react";
 
 const NotFoundPage: React.FC = () => {
   return (
@@ -16,14 +17,14 @@ const NotFoundPage: React.FC = () => {
           Page Not Found
         </p>
 
-        <a
+        <Link
           href="/"
-          className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full shadow-lg text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+          className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full shadow-lg text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 transition-all hover:-translate-y-1"
           aria-label="Go back to the church's home page"
         >
           <Home className="w-5 h-5 mr-3" />
           Return to Our Home
-        </a>
+        </Link>
       </div>
       <footer className="mt-10 text-gray-500 text-sm">
         &copy; {new Date().getFullYear()} Devuni Sparsha. All rights reserved.

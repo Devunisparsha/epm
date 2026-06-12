@@ -7,16 +7,17 @@ import { Home } from "./home";
 import AboutUS from "./aboutus";
 
 export default function AdminPage() {
-  const [component, setComponent] = useState(<Home />);
+  const [component, setComponent] = useState<React.ReactNode>(<Home />);
+  
   useEffect(() => {
     if (!getCookie("is_super_user")) {
       redirect("/login");
     }
-  });
+  }, []);
 
   interface INavLink {
     label: string;
-    component: JSX.Element;
+    component: React.ReactNode;
   }
 
   const Sidebar: React.FC = () => {

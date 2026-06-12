@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState, memo, useCallback } from "react";
+import Image from "next/image";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import {
   Youtube,
   PlayCircle,
-  Clock,
   ChevronRight,
   Loader2,
   Tv,
@@ -145,10 +145,8 @@ const MessagePage: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Scripture Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center mb-16"
+        <div
+          className="flex flex-col items-center mb-16 animate-fade-in"
         >
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
             <BookOpen className="text-primary" size={24} />
@@ -160,12 +158,10 @@ const MessagePage: React.FC = () => {
             </span>
           </p>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mt-8" />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-20"
+        <div
+          className="text-center mb-20 animate-fade-in"
         >
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-primary mb-6">
             Digital <span className="text-secondary">Sanctuary</span>
@@ -174,7 +170,7 @@ const MessagePage: React.FC = () => {
             Experience our messages, worship, and series dynamically updated
             from our official channel. Grow with us wherever you are.
           </p>
-        </motion.div>
+        </div>
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
@@ -184,68 +180,74 @@ const MessagePage: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence>
-              {playlists.map((playlist, index) => (
-                <motion.div
-                  key={playlist.id + index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="group relative flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-premium border border-gray-100 hover:border-primary/20 transition-all duration-500"
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={playlist.thumbnailUrl}
-                      alt={playlist.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <PlayCircle
-                        size={64}
-                        className="text-white transform scale-90 group-hover:scale-100 transition-transform duration-500"
+          <LazyMotion features={domAnimation}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence>
+                {playlists.map((playlist, index) => (
+                  <m.div
+                    key={playlist.id + index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: Math.min(index * 0.05, 0.3), duration: 0.4 }}
+                    className="group relative flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-premium border border-gray-100 hover:border-primary/20 transition-colors"
+                  >
+                    <div className="relative aspect-video overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={playlist.thumbnailUrl}
+                        alt={playlist.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
                       />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <PlayCircle
+                          size={64}
+                          className="text-white transform scale-90 group-hover:scale-100 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-white text-[10px] font-black rounded-full flex items-center gap-1 shadow-lg">
+                        <Youtube size={12} />
+                        PLAYLIST
+                      </div>
                     </div>
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-white text-[10px] font-black rounded-full flex items-center gap-1 shadow-lg">
-                      <Youtube size={12} />
-                      PLAYLIST
-                    </div>
-                  </div>
 
-                  <div className="p-8 flex flex-col flex-grow">
-                    <div className="flex items-center gap-2 text-primary/40 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
-                      <Tv size={14} />
-                      <span>Series & Collections</span>
+                    <div className="p-8 flex flex-col flex-grow">
+                      <div className="flex items-center gap-2 text-primary/40 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
+                        <Tv size={14} />
+                        <span>Series & Collections</span>
+                      </div>
+                      <h2 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors leading-tight">
+                        {playlist.title}
+                      </h2>
+                      <p className="text-gray-400 font-light text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+                        {playlist.description}
+                      </p>
+                      <a
+                        href={playlist.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-primary font-black group-hover:gap-4 transition-all"
+                      >
+                        Watch Series <ChevronRight size={20} />
+                      </a>
                     </div>
-                    <h2 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors leading-tight">
-                      {playlist.title}
-                    </h2>
-                    <p className="text-gray-400 font-light text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
-                      {playlist.description}
-                    </p>
-                    <a
-                      href={playlist.youtubeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary font-black group-hover:gap-4 transition-all"
-                    >
-                      Watch Series <ChevronRight size={20} />
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                  </m.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          </LazyMotion>
         )}
 
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="mt-24 p-12 bg-primary rounded-[3rem] text-center relative overflow-hidden shadow-premium group"
-        >
+        <LazyMotion features={domAnimation}>
+          <m.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
+            className="mt-24 p-12 bg-primary rounded-[3rem] text-center relative overflow-hidden shadow-premium group"
+          >
           <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-white/20 transition-colors duration-700" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
 
@@ -275,7 +277,8 @@ const MessagePage: React.FC = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
+      </LazyMotion>
       </div>
     </main>
   );

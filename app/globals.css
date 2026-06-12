@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Gidugu&display=swap");
+/* Telugu font loaded separately for better performance */
+@import url("https://fonts.googleapis.com/css2?family=Gidugu&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,45 +16,99 @@
   --glass-dark: rgba(15, 23, 42, 0.8);
 }
 
-body {
-  font-family: "Outfit", sans-serif;
-  background-color: var(--background);
-  color: var(--foreground);
-  scroll-behavior: smooth;
+/* Use CSS layers for better specificity management */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-outfit), "Outfit", system-ui, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Optimize images */
+  img {
+    content-visibility: auto;
+  }
 }
 
-.font-telugu {
-  font-family: "Gidugu", sans-serif;
-  font-size: 1.35em;
-  line-height: 1.4;
+@layer components {
+  .font-telugu {
+    font-family: "Gidugu", sans-serif;
+    font-size: 1.35em;
+    line-height: 1.4;
+  }
+
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: var(--glass-dark);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-premium {
+    background: linear-gradient(135deg, #2d3ed2 0%, #3dc4f0 100%);
+  }
+
+  .shadow-premium {
+    box-shadow: 0 10px 40px -10px rgba(45, 62, 210, 0.2);
+  }
+
+  .shadow-premium-dark {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  }
 }
 
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
+@layer utilities {
+  /* GPU-accelerated animations */
+  .will-change-transform {
+    will-change: transform;
+  }
 
-.glass-dark {
-  background: var(--glass-dark);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
+  .will-change-opacity {
+    will-change: opacity;
+  }
 
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  /* Smooth scrolling container */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.bg-gradient-premium {
-  background: linear-gradient(135deg, #2d3ed2 0%, #3dc4f0 100%);
-}
-
-.shadow-premium {
-  box-shadow: 0 10px 40px -10px rgba(45, 62, 210, 0.2);
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @keyframes fadeIn {
@@ -73,4 +128,23 @@ body {
 
 nextjs-portal {
   display: none;
+}
+
+/* Custom scrollbar for better UX */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(45, 62, 210, 0.2);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 62, 210, 0.4);
 }

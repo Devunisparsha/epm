@@ -1,19 +1,18 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState, useMemo, memo, useCallback } from "react";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import { Search, Filter, Download, BookOpen, Clock } from "lucide-react";
 
-const LibraryPage: React.FC = () => {
-  interface Magazine {
-    name: string;
-    month: string;
-    image: string;
-    download_url: string;
-  }
+interface Magazine {
+  name: string;
+  month: string;
+  image: string;
+  download_url: string;
+}
 
-  // Your initial magazine data, sorted latest first
-  const initialMagazines: Magazine[] = [
+// Move static data outside component to prevent recreation
+const initialMagazines: Magazine[] = [
     {
       name: "Devuni Sparsha ",
       month: "Nov Dec 2008",
@@ -618,40 +617,40 @@ const LibraryPage: React.FC = () => {
     },
   ];
 
-  const [allMagazines] = useState<Magazine[]>(initialMagazines);
-  const [filteredMagazines, setFilteredMagazines] =
-    useState<Magazine[]>(initialMagazines);
+// Pre-compute unique years once
+const getUniqueYears = (magazines: Magazine[]): string[] => {
+  const years = new Set<string>();
+  magazines.forEach((magazine) => {
+    const yearMatch = magazine.month.match(/\d{4}/);
+    if (yearMatch) years.add(yearMatch[0]);
+  });
+  return Array.from(years).sort((a, b) => parseInt(b) - parseInt(a));
+};
+
+const uniqueYears = ["All", ...getUniqueYears(initialMagazines)];
+
+const LibraryPage: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>("2026");
 
-  const getUniqueYears = (magazines: Magazine[]): string[] => {
-    const years = new Set<string>();
-    magazines.forEach((magazine) => {
-      const yearMatch = magazine.month.match(/\d{4}/);
-      if (yearMatch) years.add(yearMatch[0]);
-    });
-    return Array.from(years).sort((a, b) => parseInt(b) - parseInt(a));
-  };
-
-  const uniqueYears = ["All", ...getUniqueYears(allMagazines)];
-
-  useEffect(() => {
+  // Use useMemo for filtering instead of useEffect + state
+  const filteredMagazines = useMemo(() => {
     if (selectedYear === "All") {
-      setFilteredMagazines(allMagazines);
-    } else {
-      const filtered = allMagazines.filter((magazine) =>
-        magazine.month.includes(selectedYear),
-      );
-      setFilteredMagazines(filtered);
+      return initialMagazines;
     }
-  }, [selectedYear, allMagazines]);
+    return initialMagazines.filter((magazine) =>
+      magazine.month.includes(selectedYear)
+    );
+  }, [selectedYear]);
+
+  const handleYearChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedYear(e.target.value);
+  }, []);
 
   return (
     <main className="pt-32 pb-24 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12 md:mb-20"
+        <div
+          className="text-center mb-12 md:mb-20 animate-fade-in"
         >
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-primary mb-4 md:mb-6">
             Spiritual <span className="text-secondary">Library</span>
@@ -660,7 +659,7 @@ const LibraryPage: React.FC = () => {
             Access our complete collection of Devuni Sparsha magazines, dating
             back to 2008.
           </p>
-        </motion.div>
+        </div>
 
         {/* Filter Section */}
         <div className="glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-primary/5 shadow-premium mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -685,8 +684,8 @@ const LibraryPage: React.FC = () => {
               <select
                 id="year-select"
                 value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full bg-white border border-gray-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-6 py-3 md:py-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all appearance-none font-bold text-gray-700 text-sm md:text-base"
+                onChange={handleYearChange}
+                className="w-full bg-white border border-gray-100 rounded-xl md:rounded-2xl pl-10 md:pl-12 pr-6 py-3 md:py-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-colors appearance-none font-bold text-gray-700 text-sm md:text-base"
               >
                 {uniqueYears.map((year) => (
                   <option key={year} value={year}>
@@ -698,83 +697,98 @@ const LibraryPage: React.FC = () => {
           </div>
         </div>
 
-        <MagazineView magazines={filteredMagazines} />
+        <MagazineView magazines={filteredMagazines} selectedYear={selectedYear} />
       </div>
     </main>
   );
 };
 
 interface MagazineViewProps {
-  magazines: {
-    name: string;
-    month: string;
-    image: string;
-    download_url: string;
-  }[];
+  magazines: Magazine[];
+  selectedYear: string;
 }
 
-const MagazineView: React.FC<MagazineViewProps> = ({ magazines }) => {
+// Memoized magazine item component
+const MagazineItem = memo(function MagazineItem({ 
+  item, 
+  index 
+}: { 
+  item: Magazine; 
+  index: number;
+}) {
   return (
-    <div className="grid grid-cols-1 gap-4">
-      <AnimatePresence mode="popLayout">
-        {magazines.length > 0 ? (
-          magazines.map((item, index) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              key={`${item.month}-${index}`}
-              className="group glass p-4 md:p-6 rounded-2xl md:rounded-[2rem] border border-gray-100 hover:border-primary/20 hover:bg-primary/5 transition-all flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6"
-            >
-              <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto text-center sm:text-left">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0">
-                  <Clock size={20} className="md:w-6 md:h-6" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors truncate">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-500 font-medium">
-                    {item.month}
-                  </p>
-                </div>
-              </div>
+    <m.div
+      layout
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.03, 0.3) }}
+      className="group glass p-4 md:p-6 rounded-2xl md:rounded-[2rem] border border-gray-100 hover:border-primary/20 hover:bg-primary/5 transition-colors flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6"
+    >
+      <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto text-center sm:text-left">
+        <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+          <Clock size={20} className="md:w-6 md:h-6" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors truncate">
+            {item.name}
+          </h3>
+          <p className="text-sm md:text-base text-gray-500 font-medium">
+            {item.month}
+          </p>
+        </div>
+      </div>
 
-              <a
-                href={item.download_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-gray-900 text-white rounded-xl md:rounded-2xl font-bold text-sm md:text-base hover:bg-primary transition-all group/btn"
-              >
-                <Download
-                  size={18}
-                  className="md:w-5 md:h-5 group-hover/btn:animate-bounce"
-                />
-                Download PDF
-              </a>
-            </motion.div>
-          ))
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="py-20 text-center"
-          >
-            <div className="inline-block p-10 bg-gray-50 rounded-[3rem] border border-dashed border-gray-200">
-              <Search size={48} className="mx-auto text-gray-300 mb-6" />
-              <h4 className="text-2xl font-bold text-gray-400 mb-2">
-                No magazines found
-              </h4>
-              <p className="text-gray-500">
-                Please try selecting a different year.
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      <a
+        href={item.download_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-gray-900 text-white rounded-xl md:rounded-2xl font-bold text-sm md:text-base hover:bg-primary transition-colors group/btn"
+      >
+        <Download
+          size={18}
+          className="md:w-5 md:h-5 group-hover/btn:animate-bounce"
+        />
+        Download PDF
+      </a>
+    </m.div>
   );
-};
+});
+
+const MagazineView: React.FC<MagazineViewProps> = memo(function MagazineView({ magazines, selectedYear }) {
+  return (
+    <LazyMotion features={domAnimation}>
+      <div className="grid grid-cols-1 gap-4">
+        <AnimatePresence mode="popLayout">
+          {magazines.length > 0 ? (
+            magazines.map((item, index) => (
+              <MagazineItem 
+                key={`${item.month}-${selectedYear}`} 
+                item={item} 
+                index={index} 
+              />
+            ))
+          ) : (
+            <m.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="py-20 text-center"
+            >
+              <div className="inline-block p-10 bg-gray-50 rounded-[3rem] border border-dashed border-gray-200">
+                <Search size={48} className="mx-auto text-gray-300 mb-6" />
+                <h4 className="text-2xl font-bold text-gray-400 mb-2">
+                  No magazines found
+                </h4>
+                <p className="text-gray-500">
+                  Please try selecting a different year.
+                </p>
+              </div>
+            </m.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </LazyMotion>
+  );
+});
 
 export default LibraryPage;
