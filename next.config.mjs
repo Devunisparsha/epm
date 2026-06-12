@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // basePath: "/epm",
+  basePath: "/epm",
+  assetPrefix: "/epm",
+  output: "export",
   
   // Static export for GitHub Pages (no server-side image optimization)
   images: {
@@ -20,29 +22,8 @@ const nextConfig = {
   //   optimizeCss: true, // Requires 'critters' package
   // },
   
-  // Headers for caching static assets
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:all*(js|css)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
+  // Note: headers() don't work with static export (GitHub Pages)
+  // Cache control is handled by GitHub Pages / CDN
 };
 
 export default nextConfig;
